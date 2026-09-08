@@ -1,0 +1,17 @@
+.DS_Store
+.env
+.env.local
+.env.*.local
+.next
+node_modules
+coverage
+dist
+*.tsbuildinfo
+.venv/
+__pycache__/
+.pytest_cache/
+.vercel/
+shortcuts/private-access-code.txt
+ops/oracle-cobalt/.env
+ops/oracle-cobalt/client.env
+ops/oracle-cobalt/keys.json

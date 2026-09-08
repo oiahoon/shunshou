@@ -1,0 +1,81 @@
+.shunshou { background:#171717; color:#f7f7f7; font-family:Arial,"PingFang SC","Microsoft YaHei",sans-serif; }
+.setup { padding:62px 22px 38px; min-height:100%; letter-spacing:0; line-height:1.35; }
+.setup button { color:inherit; }
+.brand-row,.brand,.setting-row,.setting-value,.code-row,.connection-row,footer { display:flex; align-items:center; justify-content:space-between; }
+.brand { gap:17px; color:#ffcc29; font-size:36px; font-weight:750; }
+.brand svg { width:31px; height:36px; stroke:currentColor; stroke-width:.7; }
+.brand-mark { display:flex; flex-direction:column; width:31px; height:36px; justify-content:center; }
+.brand-mark svg { height:21px; flex-shrink:0; margin:-2px 0; }
+.icon-button { display:grid; place-items:center; width:44px; height:44px; border:0; padding:5px; background:transparent; color:inherit; }
+.icon-button svg { width:34px; height:34px; }
+.intro { margin-top:25px; }
+.eyebrow { margin:0 0 9px; color:#aaa; font:14px/1.4 ui-monospace,SFMono-Regular,monospace; }
+.intro h1 { margin:0; font-size:39px; line-height:1.25; font-weight:750; }
+.steps { list-style:none; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); padding:0; margin:25px 0 22px; }
+.steps li { display:flex; flex-direction:column; align-items:center; padding:7px 0 12px; gap:11px; border-right:1px solid #4b4b4b; }
+.steps li:last-child { border:0; }
+.step-number { display:grid; place-items:center; width:40px; height:40px; border:1.5px solid #f5f5f5; font:600 18px ui-monospace,monospace; }
+.step-label { font-size:19px; font-weight:600; }
+.step-state { display:flex; align-items:center; gap:8px; margin-top:5px; font-size:15px; font-weight:600; white-space:nowrap; }
+.pending { color:#ff6252; }
+.done { color:#f7f7f7; }
+.ring { display:inline-block; flex-shrink:0; width:20px; height:20px; border:2.5px solid currentColor; border-radius:50%; }
+.check-disc { display:grid; place-items:center; width:20px; height:20px; border-radius:50%; background:#f7f7f7; color:#171717; }
+.check-disc svg { width:17px; height:17px; }
+.preferences { border-top:1px solid #808080; border-bottom:1px solid #808080; }
+.access { padding-top:17px; position:relative; }
+.access h2 { margin:0; font-size:18px; font-weight:600; }
+.code-row { height:76px; }
+.code-mask { flex:1; display:flex; justify-content:space-between; padding:0 32px 0 11px; }
+.code-mask i { display:block; width:12px; height:12px; border-radius:50%; background:#f7f7f7; }
+.copy-button { background:transparent; border:0; border-left:1px solid #777; width:59px; height:55px; display:grid; place-items:center; }
+.copy-button svg { width:31px; height:31px; }
+.copy-status { position:absolute; bottom:2px; left:0; font-size:11px; color:#ffcc29; }
+.setting-row { width:100%; height:64px; padding:0; border:0; border-top:1px solid #808080; background:transparent; font-size:18px; font-weight:600; }
+.setting-value { gap:13px; font-size:17px; font-weight:500; }
+.setting-value svg { width:23px; height:23px; }
+.toggle { display:flex; align-items:center; width:57px; height:44px; padding:8px 0; background:transparent; border:0; position:relative; }
+.toggle::before { content:""; position:absolute; inset:8px 0; border-radius:20px; background:#ffcc29; }
+.toggle span { width:21px; height:21px; border-radius:50%; background:white; position:relative; transform:translateX(32px); transition:transform 150ms; }
+.toggle[aria-checked=false]::before { background:#666; }
+.toggle[aria-checked=false] span { transform:translateX(4px); }
+.install-button { display:flex; align-items:stretch; width:100%; height:76px; padding:0; margin-top:23px; border:0; border-radius:2px; background:#ffcc29; color:#080808!important; font-size:27px; font-weight:750; text-align:left; }
+.install-button>span:first-child { flex:1; align-content:center; padding:0 19px; white-space:nowrap; }
+.install-arrow { display:grid; place-items:center; width:63px; border-left:2px solid #171717; }
+.install-arrow svg { width:39px; height:39px; }
+.connection-row { width:100%; margin-top:20px; min-height:51px; border:0; background:transparent; padding:0; font-size:18px; font-weight:600; }
+.connection-row>span:last-child { display:flex; align-items:center; gap:10px; font-size:17px; font-weight:500; }
+.connection-row svg { width:24px; height:24px; }
+.setup footer { gap:13px; margin-top:25px; color:#aaa; }
+footer button { background:transparent; border:0; padding:0; min-height:44px; font-size:14px; }
+footer>span { flex:1; height:1px; background:#777; }
+.setup button:focus-visible,.panel-body button:focus-visible { outline:2px solid #ffcc29; outline-offset:4px; }
+.bottom-sheet { background:#202020; color:#f7f7f7; }
+.sheet-title { color:#f7f7f7; }
+.panel-body { position:relative; color:#ddd; font:16px/1.7 Arial,"PingFang SC",sans-serif; padding-bottom:30px; }
+.panel-close { margin-left:auto; }
+.panel-body p { color:#ddd; margin:12px 0; font-size:15px; line-height:1.6; }
+.panel-body .panel-kicker { color:#ffcc29; font-size:13px; }
+.panel-close svg { width:22px; height:22px; }
+.panel-kicker { color:#ffcc29; font-size:13px; }
+.panel-primary,.panel-secondary,.quality-options button { width:100%; min-height:50px; display:flex; align-items:center; justify-content:space-between; padding:12px 16px; border:0; margin-top:12px; border-radius:2px; }
+.panel-primary { background:#ffcc29; color:#171717; font-weight:700; }
+.panel-secondary { background:#333; color:#fff; }
+.panel-body button:disabled { opacity:.35; cursor:not-allowed; }
+.quality-options button { background:transparent; color:#fff; border-bottom:1px solid #666; }
+@media(prefers-reduced-motion:reduce) { .toggle span { transition:none; } }
+
+/* Dark app chrome and non-scrolling outer viewport; MobileScroll owns scrolling. */
+.device-screen:has(.shunshou) { overflow:clip; }
+.device-screen:has(.shunshou) .status-bar { color:#fff; }
+.device-screen:has(.shunshou) .status-indicator-svg,
+.device-screen:has(.shunshou) .home-indicator-svg { filter:invert(1); }
+.setup { padding-bottom:34px; }
+.intro { margin-top:22px; }
+.steps { margin-top:20px; margin-bottom:18px; }
+.steps li { padding-bottom:8px; gap:9px; }
+.code-row { height:66px; }
+.setting-row { height:60px; }
+.install-button { height:72px; }
+.connection-row { margin-top:15px; }
+.setup footer { margin-top:12px; }

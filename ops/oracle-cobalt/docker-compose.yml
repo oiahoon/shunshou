@@ -1,0 +1,61 @@
+name: insta-share-cobalt
+
+services:
+  cobalt:
+    image: ghcr.io/imputnet/cobalt:11.7.1
+    container_name: cobalt
+    init: true
+    read_only: true
+    restart: unless-stopped
+    expose:
+      - "9000"
+    environment:
+      API_URL: "https://${COBALT_HOST}/"
+      API_KEY_URL: "file:///keys.json"
+      API_AUTH_REQUIRED: "1"
+      CORS_WILDCARD: "0"
+      DURATION_LIMIT: "600"
+      TUNNEL_LIFESPAN: "90"
+      RATELIMIT_WINDOW: "60"
+      RATELIMIT_MAX: "10"
+      TUNNEL_RATELIMIT_WINDOW: "60"
+      TUNNEL_RATELIMIT_MAX: "20"
+      FORCE_LOCAL_PROCESSING: "never"
+    volumes:
+      - ./keys.json:/keys.json:ro
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - "fetch('http://127.0.0.1:9000/').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  caddy:
+    image: caddy:2-alpine
+    container_name: cobalt-caddy
+    restart: unless-stopped
+    depends_on:
+      cobalt:
+        condition: service_healthy
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    environment:
+      COBALT_HOST: "${COBALT_HOST}"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    security_opt:
+      - no-new-privileges:true
+
+volumes:
+  caddy_data:
+  caddy_config:

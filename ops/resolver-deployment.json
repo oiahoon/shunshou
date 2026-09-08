@@ -1,0 +1,22 @@
+{
+  "date": "2026-09-08",
+  "project": "shunshou-resolver",
+  "projectId": "prj_mS9wxcp7OsjAufGuMORpKzEWLcjc",
+  "team": "joey-huangs-projects",
+  "verifiedPlan": "hobby",
+  "deploymentId": "dpl_5k5TudCHREUGkYswGiHwcnSeURrJ",
+  "productionUrl": "https://shunshou-resolver.vercel.app",
+  "status": "READY",
+  "checks": {
+    "unauthenticatedHealth": 401,
+    "authenticatedHealth": 200,
+    "sampleReelsResolvedFromCloud": 2,
+    "cloudReturnedFilesProbedH264AndAAC": 2,
+    "signedShortcutDownloadsHashMatched": 2,
+    "pythonTestsPassed": 43,
+    "shortcutStructuralTestsPassed": 4,
+    "iPhoneExecution": "pending",
+    "weChatReceiptAndPlayback": "pending"
+  },
+  "costChanges": "No plan upgrade or paid resources enabled. Hobby quota limits still apply."
+}
