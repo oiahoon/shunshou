@@ -87,7 +87,7 @@ The existing Vercel project is connected to [oiahoon/shunshou](https://github.co
 
 Push or merge changes to `main` to build and publish production automatically. Other branches use Vercel preview deployments; the production-only access token is not automatically available there. Do not copy production credentials into preview environments or GitHub. Inspect deployment status and its source commit before assuming a push is live.
 
-Run `.venv/bin/python -m pytest -q` in this directory before pushing resolver changes. When updating shortcuts, regenerate and sign the token-free files, then update both files in `public/` before committing. Never commit a personalized shortcut containing a real access code.
+Run `.venv/bin/python -m pytest -q` in this directory before pushing resolver changes. When updating shortcuts, regenerate and sign the single token-free `shunshou.shortcut`, then copy it to both public filenames. `shunshou-check.shortcut` is a compatibility alias to the same merged workflow. Never commit a personalized shortcut containing a real access code.
 
 This integration uses the existing Hobby project without a paid upgrade or extra CI service. Platform usage limits still apply; automatic deployment is not unlimited hosting.
 

@@ -50,8 +50,8 @@ for (const id of ['DZsVvmmkqXA', 'DZwITAaBfBE']) check(`Reel ${id}`, () => {
 });
 for (const name of ['shunshou', 'shunshou-check']) check(`signed shortcut ${name}`, () => {
   const r = request(`/${name}.shortcut`, { auth: false });
-  const local = readFileSync(new URL(`../shortcuts/build/${name}.shortcut`, import.meta.url));
-  const unsigned = readFileSync(new URL(`../shortcuts/build/${name}.unsigned.shortcut`, import.meta.url), 'utf8');
+  const local = readFileSync(new URL('../shortcuts/build/shunshou.shortcut', import.meta.url));
+  const unsigned = readFileSync(new URL('../shortcuts/build/shunshou.unsigned.shortcut', import.meta.url), 'utf8');
   const hash = value => createHash('sha256').update(value).digest('hex');
   return { status: r.status, bytes: r.body.length, passed: r.status === 200 && hash(r.body) === hash(local) && unsigned.includes(base) && !unsigned.includes(token) };
 });

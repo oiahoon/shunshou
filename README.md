@@ -2,7 +2,7 @@
 
 ## Active Backend Work
 
-The new metadata-only Python/yt-dlp API lives in [`services/resolver`](services/resolver/README.md) and is deployed at https://shunshou.miaowu.org. Both sample Reels passed cloud API and independent CDN metadata checks. [Signed iPhone shortcuts and installation instructions](shortcuts/README.md) are available; actual iPhone/WeChat execution remains to be validated. The Next.js HTML-only implementation below remains unchanged and is not wired to this service.
+The metadata-only Python/yt-dlp API lives in [`services/resolver`](services/resolver/README.md) and is deployed at https://shunshou.miaowu.org. [The single signed Shunshou 0.2 shortcut and installation instructions](shortcuts/README.md) are available. Connection checking is built in, and text comparisons are fixed. Replace an installed older version and enter the private access code again. Actual iPhone/WeChat execution of this update remains to be validated. The Next.js HTML-only implementation below remains unchanged and is not wired to this service.
 
 ## Deployment Layout
 

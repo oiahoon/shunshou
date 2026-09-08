@@ -50,6 +50,9 @@ class Workflow:
         return attachment({"Type":"ActionOutput", "OutputUUID":output, "OutputName":name})
 
     def condition(self, value, code, literal=None):
+        # Dictionary values are untyped in Shortcuts; string operators need Text.
+        if literal is not None:
+            value = self.action("gettext", "Comparison text", WFTextActionText=text(value))
         group = uid()
         parameters = {"WFInput":{"Type":"Variable", "Variable":value}, "WFCondition":code,
                       "WFControlFlowMode":0, "GroupingIdentifier":group}
@@ -70,9 +73,9 @@ class Workflow:
                            WFGetDictionaryValueType="Value")
 
 
-def build(diagnostic=False):
+def build():
     w = Workflow()
-    w.action("comment", WFCommentActionText="顺手 0.1：私人视频分享工具。仅向固定解析域名发送访问码；下载 CDN 视频时不发送访问码。不写入相册或文件目录，临时缓存由系统管理。")
+    w.action("comment", WFCommentActionText="顺手 0.2：分享与连接检测合一。没有 Instagram 链接时检查连接。仅向固定解析域名发送访问码；下载 CDN 视频时不发送访问码。不写入相册或文件目录，临时缓存由系统管理。")
     token_index = len(w.actions)
     token = w.action("gettext", "Access code", WFTextActionText=PLACEHOLDER)
     empty = w.condition(token, 4, PLACEHOLDER)
@@ -80,18 +83,20 @@ def build(diagnostic=False):
     w.action("exit")
     w.end(empty)
     auth = dictionary({"Authorization":text("Bearer ", token), "Content-Type":"application/json"})
-    if diagnostic:
+    def check_connection():
         response = w.action("downloadurl", "Health response", WFURL=BASE+"/api/health",
                             WFHTTPMethod="GET", WFHTTPHeaders=auth, ShowHeaders=False)
         data = w.action("detect.dictionary", "Response", WFInput=response)
         status = w.get(data, "status")
         ok = w.condition(status, 4, "ok")
-        w.alert("服务连接正常", "访问码已通过验证。这只验证服务连接，不代表 Instagram 视频已解析或下载成功。")
+        w.alert("服务连接正常", "未检测到 Instagram 链接。请复制帖子或 Reel 链接后再运行「顺手」，或从系统分享菜单调用。连接正常不代表视频一定能下载。")
         w.action("exit")
         w.end(ok)
         message = w.get(data,"message")
         w.alert("连接失败", text(message))
-    else:
+        w.action("exit")
+
+    def share_video():
         shared = attachment({"Type":"ExtensionInput"})
         w.action("setvariable", WFVariableName="Link input", WFInput=shared)
         input_var = attachment({"Type":"Variable", "VariableName":"Link input"})
@@ -103,8 +108,7 @@ def build(diagnostic=False):
             WFMatchTextPattern=r"https?://(?:(?:www|m)\.)?(?:instagram\.com|instagr\.am)/(?:reels?|p|tv)/[A-Za-z0-9_-]+/?",
             WFMatchTextCaseSensitive=False)
         missing = w.condition(matches, 101)
-        w.alert("没有找到 Instagram 链接", "请先复制帖子或 Reel 链接再运行，或从系统分享菜单选择「顺手」。")
-        w.action("exit")
+        check_connection()
         w.end(missing)
         link = w.action("getitemfromlist", "Instagram URL", WFInput=matches, WFItemSpecifier="First Item")
         response = w.action("downloadurl", "Resolve response", WFURL=BASE+"/api/resolve", WFHTTPMethod="POST",
@@ -139,14 +143,15 @@ def build(diagnostic=False):
         w.action("setitemname", "Named video", WFInput=media, WFName=text(filename))
         files = w.action("repeat.each", "Downloaded videos", WFControlFlowMode=2, GroupingIdentifier=group)
         w.action("share", WFInput=files)
+    share_video()
     workflow = {
-        "WFWorkflowName":"顺手连接检测" if diagnostic else "顺手",
+        "WFWorkflowName":"顺手",
         "WFWorkflowActions":w.actions, "WFWorkflowClientVersion":"3036.0.4.2",
         "WFWorkflowMinimumClientVersion":900, "WFWorkflowMinimumClientVersionString":"900",
         "WFWorkflowIcon":{"WFWorkflowIconGlyphNumber":61440,"WFWorkflowIconStartColor":4292093695},
-        "WFWorkflowTypes":[] if diagnostic else ["ActionExtension"],
+        "WFWorkflowTypes":["ActionExtension"],
         "WFWorkflowInputContentItemClasses":["WFURLContentItem","WFStringContentItem"],
-        "WFWorkflowOutputContentItemClasses":[], "WFWorkflowHasShortcutInputVariables":not diagnostic,
+        "WFWorkflowOutputContentItemClasses":[], "WFWorkflowHasShortcutInputVariables":True,
         "WFWorkflowHasOutputFallback":False,
         "WFWorkflowImportQuestions":[{"ActionIndex":token_index,"Category":"Parameter",
             "ParameterKey":"WFTextActionText","Text":"填入你的顺手个人访问码。不要填写 Instagram 密码，也不要分享配置后的捷径。",
@@ -161,8 +166,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     output = Path(args.output)
     output.mkdir(parents=True, exist_ok=True)
-    for diagnostic, name in ((False,"shunshou"),(True,"shunshou-check")):
-        workflow = build(diagnostic)
-        with (output / f"{name}.unsigned.shortcut").open("wb") as stream:
-            plistlib.dump(workflow, stream, fmt=plistlib.FMT_XML, sort_keys=False)
-        print(f"Built {name}: {len(workflow['WFWorkflowActions'])} actions; no private access code embedded.")
+    workflow = build()
+    with (output / "shunshou.unsigned.shortcut").open("wb") as stream:
+        plistlib.dump(workflow, stream, fmt=plistlib.FMT_XML, sort_keys=False)
+    print(f"Built shunshou: {len(workflow['WFWorkflowActions'])} actions; no private access code embedded.")

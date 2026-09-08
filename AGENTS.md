@@ -49,5 +49,6 @@ When changing legacy Next.js code, also run `corepack pnpm test`, `corepack pnpm
 - `main` pushes trigger native Git production deployment. Verify READY, exact Git SHA and alias before claiming completion.
 - Keep Hobby. No paid upgrades, add-ons, paid proxies or extra cloud instances without explicit authorization. Usage quotas still apply.
 - Production `API_TOKENS` stays sensitive in Vercel; `RESOLVER_PROXY` stays unset in production. Preview deployments do not automatically receive production tokens.
-- After shortcut changes, regenerate, test, sign using `shortcuts sign --mode anyone`, then copy both signed files to `services/resolver/public` before pushing.
+- After shortcut changes, regenerate, test, sign using `shortcuts sign --mode anyone`, then copy the single signed `shunshou.shortcut` to `services/resolver/public`. Keep `shunshou-check.shortcut` as a byte-identical compatibility alias, not a second workflow.
+- Convert dictionary values to native Text before literal If comparisons. Plist validation/signing alone does not verify iOS input typing.
 - Update documentation and dated acceptance evidence. Separate automated, cloud, browser and actual iPhone/WeChat acceptance gates.

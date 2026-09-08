@@ -8,8 +8,8 @@ root = Path(__file__).resolve().parent.parent
 token = (root / "services/resolver/.env.production.local").read_text().strip().split("=",1)[1]
 with httpx.Client(proxy=os.getenv("SMOKE_PROXY"),timeout=30,trust_env=False) as client:
     for name in ("shunshou", "shunshou-check"):
-        signed = (root / f"shortcuts/build/{name}.shortcut").read_bytes()
-        unsigned = (root / f"shortcuts/build/{name}.unsigned.shortcut").read_bytes()
+        signed = (root / "shortcuts/build/shunshou.shortcut").read_bytes()
+        unsigned = (root / "shortcuts/build/shunshou.unsigned.shortcut").read_bytes()
         assert token.encode() not in unsigned
         response = client.get(f"https://shunshou.miaowu.org/{name}.shortcut")
         response.raise_for_status()
