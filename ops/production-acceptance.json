@@ -1,9 +1,14 @@
 {
-  "checkedAt": "2026-09-08T13:45:27.844Z",
+  "checkedAt": "2026-09-08T14:07:44.627Z",
   "base": "https://shunshou.miaowu.org",
-  "commit": "02cabfb042242ddbef33dfee8bf7952dc4fde7ba",
+  "commit": "e231c756ce799e1bbbe9df08f49e54306c2d0bd1",
   "passed": true,
   "results": [
+    {
+      "name": "public homepage",
+      "status": 200,
+      "passed": true
+    },
     {
       "name": "health without token",
       "status": 401,

@@ -12,5 +12,6 @@
 @media(max-width:370px){.shell{width:calc(100% - 32px)}.hero h1{font-size:80px}.hero-statement{font-size:25px}.hero-actions{gap:10px}.hero-actions .button{font-size:14px;gap:11px}.hero-actions .text-link{font-size:12px}.installation h2{font-size:42px}.download-button{font-size:19px}.site-header nav{gap:18px}}
 .site-header::before{content:"";position:absolute;z-index:-1;width:100vw;left:50%;top:0;bottom:0;transform:translateX(-50%);background:#101010}
 @media(max-width:700px){.hero-copy{position:static}.hero-art{width:135%;right:-15%;bottom:180px;mask-image:linear-gradient(to bottom,transparent,#000 24%,#000 88%,transparent)}.hero-actions{top:auto;bottom:65px;left:20px;right:20px;display:grid;grid-template-columns:1fr;gap:3px}.hero-actions .text-link{justify-content:center}.hero-actions .button{min-height:54px}.hero-art{pointer-events:none}}
-@media(max-width:370px){.hero-actions{left:16px;right:16px}}
+@media(max-width:700px){.hero-art{mix-blend-mode:lighten}}
+@media(max-width:370px){.hero-actions{left:16px;right:16px}.hero-art{width:110%;right:-27%;bottom:165px}.hero-description{max-width:210px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.hero-art{will-change:auto}}
