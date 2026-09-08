@@ -4,7 +4,7 @@ from pathlib import Path
 import plistlib
 import uuid
 
-BASE = "https://shunshou-resolver.vercel.app"
+BASE = "https://shunshou.miaowu.org"
 PLACEHOLDER = "FILL_ACCESS_CODE"
 
 

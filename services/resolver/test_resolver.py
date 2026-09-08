@@ -193,6 +193,7 @@ def test_worker_is_reaped_after_timeout(monkeypatch):
 
 
 def test_worker_success_without_shell(monkeypatch):
+    monkeypatch.setenv("API_TOKENS", "must-not-reach-worker")
     expected = build_result({"formats": [fmt()]}, URL, "ABC", "720p")
     class Process:
         returncode = 0
@@ -201,6 +202,8 @@ def test_worker_success_without_shell(monkeypatch):
             return json.dumps(expected).encode(), b""
     async def spawn(*args, **kwargs):
         assert len(args) == 2
+        assert "API_TOKENS" not in kwargs["env"]
+        assert str(api.Path(__file__).parent) in kwargs["env"]["PYTHONPATH"].split(api.os.pathsep)
         return Process()
     monkeypatch.setattr(api.asyncio, "create_subprocess_exec", spawn)
     assert asyncio.run(api.run_worker(URL, "720p")) == expected

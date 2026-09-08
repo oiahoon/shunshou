@@ -2,6 +2,7 @@ import asyncio
 import hashlib
 import hmac
 import json
+import logging
 import os
 from pathlib import Path
 import sys
@@ -75,16 +76,25 @@ async def run_worker(url, quality):
     try:
         # A thread timeout would leave extraction running; a subprocess can be killed.
         async with asyncio.timeout(40):
+            # Serverless runtimes extend sys.path in-process; children need it too.
+            worker_env = dict(os.environ)
+            worker_env["PYTHONPATH"] = os.pathsep.join(str(Path(p).resolve()) for p in sys.path if isinstance(p, str))
+            worker_env.pop("API_TOKENS", None)
             process = await asyncio.create_subprocess_exec(
                 sys.executable, str(Path(__file__).with_name("worker.py")),
                 stdin=asyncio.subprocess.PIPE, stdout=asyncio.subprocess.PIPE,
                 stderr=asyncio.subprocess.DEVNULL,
+                env=worker_env,
             )
             output, _ = await process.communicate(json.dumps({"url": url, "quality": quality}).encode())
             if process.returncode != 0 or len(output) > 1024 * 1024:
+                logging.getLogger(__name__).warning("resolver_worker_failed: process_exit_or_output_limit")
                 raise ResolveError("RESOLVE_FAILED")
             result = json.loads(output)
             if result.get("status") != "ok":
+                diagnostic = result.get("diagnostic")
+                if diagnostic in {"dependency_import", "upstream_extraction", "worker_internal"}:
+                    logging.getLogger(__name__).warning("resolver_worker_failed: %s", diagnostic)
                 raise ResolveError(result.get("code", "RESOLVE_FAILED"))
             return result
     except TimeoutError:

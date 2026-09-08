@@ -3,6 +3,9 @@ from build import build, BASE, PLACEHOLDER
 
 
 class WorkflowTests(unittest.TestCase):
+    def test_production_domain(self):
+        self.assertEqual(BASE, "https://shunshou.miaowu.org")
+
     def test_actions_reference_existing_outputs(self):
         for diagnostic in (False, True):
             workflow = build(diagnostic)

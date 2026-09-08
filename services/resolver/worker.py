@@ -4,7 +4,6 @@ import json
 import os
 import sys
 
-from yt_dlp import YoutubeDL
 from core import ResolveError, build_result, normalize_url
 
 
@@ -16,6 +15,8 @@ class QuietLogger:
 
 def main():
     try:
+        from yt_dlp import YoutubeDL
+        from yt_dlp.utils import DownloadError
         request = json.loads(sys.stdin.read(4096))
         url, shortcode = normalize_url(request["url"])
         options = {
@@ -30,9 +31,12 @@ def main():
         result = build_result(info, url, shortcode, request["quality"])
     except ResolveError as error:
         result = {"status": "error", "code": error.code}
-    except Exception:
+    except ImportError:
+        result = {"status": "error", "code": "RESOLVE_FAILED", "diagnostic": "dependency_import"}
+    except Exception as error:
         # Upstream exceptions can contain signed URLs; never forward or log them.
-        result = {"status": "error", "code": "RESOLVE_FAILED"}
+        result = {"status": "error", "code": "RESOLVE_FAILED",
+                  "diagnostic": "upstream_extraction" if isinstance(error, DownloadError) else "worker_internal"}
     print(json.dumps(result))
 
 
