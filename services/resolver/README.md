@@ -77,6 +77,16 @@ Deployed on 2026-09-08 with explicit user approval to https://shunshou-resolver.
 
 Cloud verification: unauthenticated health returned 401, authenticated health returned 200, and both sample Reel requests returned 200. Independent client-side probes of both cloud-returned URLs found H.264 720 x 1280 and AAC audio. The second sample differs from the earlier local result, so no fixed audio assumption is made. See [shortcut installation](../../shortcuts/README.md).
 
-For redeployment use `vercel deploy --prod --yes --scope joey-huangs-projects` from this directory. See [official FastAPI deployment documentation](https://vercel.com/docs/frameworks/backend/fastapi) and [yt-dlp embedding guidance](https://github.com/yt-dlp/yt-dlp#embedding-yt-dlp).
+### GitHub Auto Deployment
+
+The existing Vercel project is connected to [oiahoon/shunshou](https://github.com/oiahoon/shunshou) through the native GitHub integration. Its production branch is `main`, framework is FastAPI, and Root Directory is `services/resolver`.
+
+Push or merge changes to `main` to build and publish production automatically. Other branches use Vercel preview deployments; the production-only access token is not automatically available there. Do not copy production credentials into preview environments or GitHub. Inspect deployment status and its source commit before assuming a push is live.
+
+Run `.venv/bin/python -m pytest -q` in this directory before pushing resolver changes. When updating shortcuts, regenerate and sign the token-free files, then update both files in `public/` before committing. Never commit a personalized shortcut containing a real access code.
+
+This integration uses the existing Hobby project without a paid upgrade or extra CI service. Platform usage limits still apply; automatic deployment is not unlimited hosting.
+
+For an explicitly requested manual fallback, use `vercel deploy --prod --yes --scope joey-huangs-projects` from this directory. See [official FastAPI deployment documentation](https://vercel.com/docs/frameworks/backend/fastapi) and [yt-dlp embedding guidance](https://github.com/yt-dlp/yt-dlp#embedding-yt-dlp).
 
 Remaining acceptance gates: iPhone download with returned headers, iOS Shortcut execution, and actual WeChat receipt/playback. Mac signing/importer recognition and cloud API checks do not establish those gates.
