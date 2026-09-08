@@ -9,11 +9,14 @@ import sys
 import time
 
 from fastapi import FastAPI, Request
-from fastapi.responses import JSONResponse
+from fastapi.responses import FileResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
 
 from core import ResolveError, normalize_url
 
 app = FastAPI(docs_url=None, redoc_url=None, openapi_url=None)
+public_dir = Path(__file__).with_name("public")
+app.mount("/assets", StaticFiles(directory=public_dir / "assets", check_dir=False), name="assets")
 slots = asyncio.Semaphore(2)
 requests_by_token = {}
 ERRORS = {
@@ -46,6 +49,13 @@ async def no_cache(request, call_next):
     response = await call_next(request)
     response.headers["Cache-Control"] = "private, no-store"
     response.headers["X-Content-Type-Options"] = "nosniff"
+    if request.url.path == "/":
+        response.headers["Referrer-Policy"] = "no-referrer"
+        response.headers["Content-Security-Policy"] = (
+            "default-src 'self'; script-src 'self'; style-src 'self'; "
+            "img-src 'self' data:; object-src 'none'; base-uri 'self'; "
+            "frame-ancestors 'none'; form-action 'none'"
+        )
     return response
 
 
@@ -115,6 +125,19 @@ async def health(request: Request):
         return {"status": "ok", "service": "metadata-resolver", "mediaProxy": False}
     except ResolveError as error:
         return error_response(error.code)
+
+
+@app.get("/", include_in_schema=False)
+async def homepage():
+    return FileResponse(public_dir / "index.html", media_type="text/html")
+
+
+@app.get("/shunshou.shortcut", include_in_schema=False)
+@app.get("/shunshou-check.shortcut", include_in_schema=False)
+async def shortcut_download(request: Request):
+    # These two fixed routes also support local installation checks.
+    name = request.url.path.rsplit("/", 1)[-1]
+    return FileResponse(public_dir / name, media_type="application/octet-stream", filename=name)
 
 
 @app.post("/api/resolve")

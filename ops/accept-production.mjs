@@ -21,6 +21,11 @@ function check(name, run) {
   catch { results.push({ name, passed: false, error: 'Transport or response validation failed' }); }
   console.log(JSON.stringify(results.at(-1)));
 }
+check('public homepage', () => {
+  const r = request('/', { auth: false });
+  const html = r.body.toString();
+  return { status: r.status, passed: r.status === 200 && html.includes('安装快捷指令') && html.includes('href="/shunshou.shortcut"') && !html.includes(token) };
+});
 for (const [name, path, options, expected] of [
   ['health without token', '/api/health', { auth: false }, 401],
   ['health authorized', '/api/health', {}, 200],

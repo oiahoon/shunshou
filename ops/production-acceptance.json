@@ -1,0 +1,78 @@
+{
+  "checkedAt": "2026-09-08T13:45:27.844Z",
+  "base": "https://shunshou.miaowu.org",
+  "commit": "02cabfb042242ddbef33dfee8bf7952dc4fde7ba",
+  "passed": true,
+  "results": [
+    {
+      "name": "health without token",
+      "status": 401,
+      "passed": true
+    },
+    {
+      "name": "health authorized",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "resolve without token",
+      "status": 401,
+      "passed": true
+    },
+    {
+      "name": "missing URL",
+      "status": 400,
+      "passed": true
+    },
+    {
+      "name": "invalid JSON",
+      "status": 400,
+      "passed": true
+    },
+    {
+      "name": "SSRF rejection",
+      "status": 400,
+      "passed": true
+    },
+    {
+      "name": "oversized body",
+      "status": 413,
+      "passed": true
+    },
+    {
+      "name": "method guard",
+      "status": 405,
+      "passed": true
+    },
+    {
+      "name": "private file not public",
+      "status": 404,
+      "passed": true
+    },
+    {
+      "name": "Reel DZsVvmmkqXA",
+      "status": 200,
+      "itemCount": 1,
+      "passed": true
+    },
+    {
+      "name": "Reel DZwITAaBfBE",
+      "status": 200,
+      "itemCount": 1,
+      "passed": true
+    },
+    {
+      "name": "signed shortcut shunshou",
+      "status": 200,
+      "bytes": 26571,
+      "passed": true
+    },
+    {
+      "name": "signed shortcut shunshou-check",
+      "status": 200,
+      "bytes": 23817,
+      "passed": true
+    }
+  ],
+  "deviceAcceptance": "Pending actual iPhone installation, CDN download and WeChat playback"
+}

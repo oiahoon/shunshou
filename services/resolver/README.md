@@ -73,7 +73,11 @@ The extractor omitted codec/dimension metadata for these direct formats, so API 
 
 ## Production Deployment
 
-Deployed on 2026-09-08 with explicit user approval to https://shunshou-resolver.vercel.app under the verified active Hobby team `joey-huangs-projects`. No paid upgrade, database, storage add-on or paid proxy was enabled. Project ID: `prj_mS9wxcp7OsjAufGuMORpKzEWLcjc`. Project root is **this directory**, not the repository root. Production `API_TOKENS` is stored as a sensitive Vercel environment variable; the git-ignored local copy is not uploaded. `RESOLVER_PROXY` is unset in the cloud.
+The public homepage is served at `/` from `public/index.html`; CSS, scripts and generated brand art are in `public/assets`. It contains installation links and privacy guidance, not a public resolver form or token field. Local preview uses the same FastAPI routes. Static installers are available anonymously; both `/api` routes still require authorization.
+
+Custom-domain acceptance and the Python worker import-path repair are recorded in [docs/acceptance.md](../../docs/acceptance.md). Prefer `node ops/accept-production.mjs` from the repository root for release checks. The separate ffprobe smoke client is network-dependent and must not be treated as a phone playback guarantee.
+
+Deployed on 2026-09-08 with explicit user approval to https://shunshou.miaowu.org under the verified active Hobby team `joey-huangs-projects`. No paid upgrade, database, storage add-on or paid proxy was enabled. Project ID: `prj_mS9wxcp7OsjAufGuMORpKzEWLcjc`. Project root is **this directory**, not the repository root. Production `API_TOKENS` is stored as a sensitive Vercel environment variable; the git-ignored local copy is not uploaded. `RESOLVER_PROXY` is unset in the cloud.
 
 Cloud verification: unauthenticated health returned 401, authenticated health returned 200, and both sample Reel requests returned 200. Independent client-side probes of both cloud-returned URLs found H.264 720 x 1280 and AAC audio. The second sample differs from the earlier local result, so no fixed audio assumption is made. See [shortcut installation](../../shortcuts/README.md).
 

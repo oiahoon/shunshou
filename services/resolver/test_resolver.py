@@ -207,3 +207,58 @@ def test_worker_success_without_shell(monkeypatch):
         return Process()
     monkeypatch.setattr(api.asyncio, "create_subprocess_exec", spawn)
     assert asyncio.run(api.run_worker(URL, "720p")) == expected
+
+
+def test_real_subprocess_inherits_runtime_import_path(monkeypatch, tmp_path):
+    package = tmp_path / "yt_dlp"
+    package.mkdir()
+    package.joinpath("utils.py").write_text("class DownloadError(Exception): pass\n")
+    package.joinpath("__init__.py").write_text(
+        "class YoutubeDL:\n"
+        "    def __init__(self, options): assert options['skip_download']\n"
+        "    def __enter__(self): return self\n"
+        "    def __exit__(self, *args): pass\n"
+        "    def extract_info(self, url, download, ie_key):\n"
+        "        assert download is False\n"
+        f"        return {{'formats': [{fmt()!r}]}}\n"
+    )
+    monkeypatch.syspath_prepend(str(tmp_path))
+    result = asyncio.run(api.run_worker(URL, "720p"))
+    assert result["status"] == "ok"
+    assert result["items"][0]["url"] == CDN
+
+
+def test_worker_diagnostic_does_not_leak(monkeypatch, caplog):
+    class Process:
+        returncode = 0
+        async def communicate(self, _):
+            return json.dumps({"status": "error", "code": "RESOLVE_FAILED",
+                               "diagnostic": "secret-signed-url"}).encode(), b""
+    async def spawn(*args, **kwargs):
+        return Process()
+    monkeypatch.setattr(api.asyncio, "create_subprocess_exec", spawn)
+    with pytest.raises(ResolveError, match="RESOLVE_FAILED"):
+        asyncio.run(api.run_worker(URL, "720p"))
+    assert "secret-signed-url" not in caplog.text
+
+
+def test_public_homepage_and_assets(client):
+    client.headers.pop("Authorization")
+    r = client.get("/")
+    assert r.status_code == 200
+    assert r.headers["content-type"].startswith("text/html")
+    assert 'href="/shunshou.shortcut"' in r.text
+    assert "https://shunshou.miaowu.org/" in r.text
+    for path in ("/assets/home.css", "/assets/home.js", "/assets/icons.svg", "/assets/transfer-hero.png"):
+        assert client.get(path).status_code == 200
+    assert client.get("/api/health").status_code == 401
+
+
+def test_signed_shortcuts_are_public_not_secrets(client):
+    client.headers.pop("Authorization")
+    for path in ("/shunshou.shortcut", "/shunshou-check.shortcut"):
+        r = client.get(path)
+        assert r.status_code == 200
+        assert r.headers["content-type"] == "application/octet-stream"
+        assert "attachment" in r.headers["content-disposition"]
+    assert client.get("/.env.production.local").status_code == 404

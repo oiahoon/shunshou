@@ -2,9 +2,11 @@
 
 ## Active Backend Work
 
-The new metadata-only Python/yt-dlp API lives in [`services/resolver`](services/resolver/README.md) and is deployed at https://shunshou-resolver.vercel.app. Both sample Reels passed cloud API and independent CDN metadata checks. [Signed iPhone shortcuts and installation instructions](shortcuts/README.md) are available; actual iPhone/WeChat execution remains to be validated. The Next.js HTML-only implementation below remains unchanged and is not wired to this service.
+The new metadata-only Python/yt-dlp API lives in [`services/resolver`](services/resolver/README.md) and is deployed at https://shunshou.miaowu.org. Both sample Reels passed cloud API and independent CDN metadata checks. [Signed iPhone shortcuts and installation instructions](shortcuts/README.md) are available; actual iPhone/WeChat execution remains to be validated. The Next.js HTML-only implementation below remains unchanged and is not wired to this service.
 
 ## Deployment Layout
+
+Read [AGENTS.md](AGENTS.md) for contributor/agent guardrails and [production acceptance](docs/acceptance.md) for dated verification and remaining iPhone gates. The custom-domain API and both signed installers passed 13 live checks on 2026-09-08.
 
 - GitHub: https://github.com/oiahoon/shunshou
 - Vercel project: `shunshou-resolver`, root directory `services/resolver`, framework FastAPI.

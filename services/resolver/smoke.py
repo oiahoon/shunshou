@@ -8,6 +8,7 @@ import httpx
 
 base = os.getenv("RESOLVER_BASE_URL", "http://127.0.0.1:8021")
 token = os.environ["SMOKE_API_TOKEN"]
+failed = False
 if os.getenv("SMOKE_HEALTH") == "1":
     with httpx.Client(timeout=30, trust_env=False, proxy=os.getenv("SMOKE_PROXY")) as client:
         for authorized in (False, True):
@@ -20,6 +21,8 @@ for shortcode in ("DZsVvmmkqXA", "DZwITAaBfBE"):
         r = client.post(base + "/api/resolve", headers={"Authorization": f"Bearer {token}"},
                         json={"url": f"https://www.instagram.com/reel/{shortcode}/", "quality":"720p"})
     data = r.json()
+    if r.status_code != 200 or data.get("status") != "ok" or not data.get("items"):
+        failed = True
     summary = {"shortcode":shortcode, "httpStatus":r.status_code, "status":data.get("status"),
                "code":data.get("code"), "warnings":data.get("warnings")}
     summary["items"] = [{k:v for k,v in item.items() if k not in ("url","downloadHeaders")}
@@ -37,4 +40,8 @@ for shortcode in ("DZsVvmmkqXA", "DZwITAaBfBE"):
             summary["probe"] = json.loads(probe.stdout) if probe.returncode == 0 else {"status":"failed"}
         except (subprocess.TimeoutExpired, ValueError):
             summary["probe"] = {"status":"failed"}
+        if summary["probe"].get("status") == "failed":
+            failed = True
     print(json.dumps(summary, ensure_ascii=False), flush=True)
+if failed:
+    raise SystemExit(1)

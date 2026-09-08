@@ -1,16 +1,18 @@
 # Shunshou iPhone Shortcuts
 
-Production API: https://shunshou-resolver.vercel.app/api/resolve
+Production API: https://shunshou.miaowu.org/api/resolve
 
 ## Install on iPhone
 
-1. In Safari, download [Shunshou](https://shunshou-resolver.vercel.app/shunshou.shortcut) and [Connection Check](https://shunshou-resolver.vercel.app/shunshou-check.shortcut).
+1. In Safari, download [Shunshou](https://shunshou.miaowu.org/shunshou.shortcut) and [Connection Check](https://shunshou.miaowu.org/shunshou-check.shortcut).
 2. Open the downloaded `.shortcut` in Shortcuts. If Safari only downloads the file, open it from Files > Downloads.
 3. Add the shortcut and enter your private access code when prompted. The code is in the local, git-ignored `private-access-code.txt`; transfer it privately. Do not enter an Instagram password.
-4. Run Connection Check first. Permit the request to `shunshou-resolver.vercel.app` when iOS asks.
+4. Run Connection Check first. Permit the request to `shunshou.miaowu.org` when iOS asks.
 5. Copy an Instagram Reel URL, then run Shunshou. Alternatively, select it in the iOS share sheet. Allow clipboard/CDN network access when prompted. When the downloaded file's share sheet opens, choose WeChat and the intended recipient yourself.
 
 These workflows use native iOS actions, not JavaScript pasted into Safari. They contain no access code until configured at import. Never publicly share a configured copy; revoke and replace a leaked token on the server.
+
+The production [homepage](https://shunshou.miaowu.org/) now provides these download links and expanded Safari/Files instructions. Older installed copies targeting the Vercel alias do not update themselves; install the newly signed files and enter your code again to use the custom domain.
 
 The server currently returns video URLs, not photos. Quality is a preference, not a transcoding promise. The Shortcut does not save media to Photos or a persistent Files directory. iOS owns temporary download caches; immediate physical deletion is not guaranteed. Dismissing the share sheet does not prove WeChat sent the file.
 
