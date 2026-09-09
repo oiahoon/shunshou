@@ -3,6 +3,15 @@ from build import build, BASE, PLACEHOLDER
 
 
 class WorkflowTests(unittest.TestCase):
+    def test_match_text_binds_named_input_without_runtime_prompt(self):
+        actions = build()["WFWorkflowActions"]
+        match = next(a["WFWorkflowActionParameters"] for a in actions if a["WFWorkflowActionIdentifier"].endswith(".text.match"))
+        self.assertNotIn("WFInput", match)
+        self.assertEqual(match["text"]["WFSerializationType"], "WFTextTokenString")
+        ref = match["text"]["Value"]["attachmentsByRange"]["{0, 1}"]
+        self.assertEqual(ref, {"Type":"Variable", "VariableName":"Link input"})
+        self.assertFalse(any(a["WFWorkflowActionIdentifier"].endswith(".ask") for a in actions))
+
     def test_clipboard_experiment_preserves_media_and_share_fallback(self):
         actions = build()["WFWorkflowActions"]
         by_id = {a["WFWorkflowActionParameters"]["UUID"]: a for a in actions}

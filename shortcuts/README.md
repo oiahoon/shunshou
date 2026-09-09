@@ -4,7 +4,7 @@ Production API: https://shunshou.miaowu.org/api/resolve
 
 ## Install on iPhone
 
-1. In Safari, download the single [Shunshou 0.3 shortcut](https://shunshou.miaowu.org/shunshou.shortcut).
+1. In Safari, download the single [Shunshou 0.3.1 shortcut](https://shunshou.miaowu.org/shunshou.shortcut).
 2. Open the downloaded `.shortcut` in Shortcuts. If Safari only downloads the file, open it from Files > Downloads.
 3. Add the shortcut and enter your private access code when prompted. The code is in the local, git-ignored `private-access-code.txt`; transfer it privately. Do not enter an Instagram password.
 4. Connection checking is built in: running without an Instagram link in the input/clipboard checks the service. Permit the request to `shunshou.miaowu.org` when iOS asks. With a valid link, it goes directly to resolution without a separate health request.
@@ -37,6 +37,8 @@ cp shortcuts/build/shunshou.shortcut services/resolver/public/shunshou-check.sho
 Signing uses Apple's system tool and sends only the token-free workflow definition to Apple for validation. The signed binary, not the unsigned plist, is the installable artifact. Definitions include an import question pointing to the access-code text action.
 
 ## Validation Status
+
+- The user reported successful copy/paste on their iPhone with 0.3, but an unwanted Text input dialog from both share-sheet and direct launch. 0.3.1 fixes the Match Text parameter from `WFInput` to `text`; the input still prioritizes sharing and falls back to clipboard. Native verification of this fix is pending because test-shortcut import requires additional approval.
 
 - Version 0.1 was signed/importable but a real iPhone exposed a missing comparison parameter. Signing is not runtime acceptance.
 - Structural tests cover output references, token-string ranges, balanced control flow, import questions, typed string comparisons, the merged health branch and separation of API/CDN authorization headers.

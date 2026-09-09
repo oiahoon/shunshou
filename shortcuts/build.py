@@ -75,7 +75,7 @@ class Workflow:
 
 def build():
     w = Workflow()
-    w.action("comment", WFCommentActionText="顺手 0.3：新增复制视频到微信实验模式，保留系统分享。剪贴板仅本机、5 分钟后过期；微信是否接受视频需实测。没有 Instagram 链接时检查连接。仅向固定解析域名发送访问码；下载 CDN 视频时不发送访问码。不写入相册或文件目录，临时缓存由系统管理。")
+    w.action("comment", WFCommentActionText="顺手 0.3.1：修复匹配文本输入绑定，自动接收分享链接或读取剪贴板。保留复制视频到微信和系统分享。剪贴板仅本机、5 分钟后过期。没有 Instagram 链接时检查连接。仅向固定解析域名发送访问码；下载 CDN 视频时不发送访问码。不写入相册或文件目录，临时缓存由系统管理。")
     token_index = len(w.actions)
     token = w.action("gettext", "Access code", WFTextActionText=PLACEHOLDER)
     empty = w.condition(token, 4, PLACEHOLDER)
@@ -104,7 +104,7 @@ def build():
         clipboard = w.action("getclipboard", "Clipboard")
         w.action("setvariable", WFVariableName="Link input", WFInput=clipboard)
         w.end(no_input)
-        matches = w.action("text.match", "Instagram links", WFInput=text(input_var),
+        matches = w.action("text.match", "Instagram links", text=text(input_var),
             WFMatchTextPattern=r"https?://(?:(?:www|m)\.)?(?:instagram\.com|instagr\.am)/(?:reels?|p|tv)/[A-Za-z0-9_-]+/?",
             WFMatchTextCaseSensitive=False)
         missing = w.condition(matches, 101)
