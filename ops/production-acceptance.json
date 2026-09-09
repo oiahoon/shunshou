@@ -1,7 +1,7 @@
 {
-  "checkedAt": "2026-09-08T14:43:04.122Z",
+  "checkedAt": "2026-09-09T15:09:55.207Z",
   "base": "https://shunshou.miaowu.org",
-  "commit": "ec0a836d80f103201149133a933409253bd5f422",
+  "commit": "be7dbc32c4e0bea60fd723810fa46186c0ff00c5",
   "passed": true,
   "results": [
     {
@@ -69,13 +69,13 @@
     {
       "name": "signed shortcut shunshou",
       "status": 200,
-      "bytes": 27526,
+      "bytes": 29211,
       "passed": true
     },
     {
       "name": "signed shortcut shunshou-check",
       "status": 200,
-      "bytes": 27526,
+      "bytes": 29211,
       "passed": true
     }
   ],
