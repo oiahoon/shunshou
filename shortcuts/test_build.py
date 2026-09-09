@@ -3,6 +3,27 @@ from build import build, BASE, PLACEHOLDER
 
 
 class WorkflowTests(unittest.TestCase):
+    def test_empty_access_code_stops_before_network_or_clipboard(self):
+        actions = build()["WFWorkflowActions"]
+        condition = actions[2]["WFWorkflowActionParameters"]
+        self.assertEqual(condition["WFCondition"], 101)
+        self.assertEqual(condition["WFInput"]["Variable"]["Value"]["OutputUUID"],
+                         actions[1]["WFWorkflowActionParameters"]["UUID"])
+        self.assertEqual(actions[3]["WFWorkflowActionIdentifier"], "is.workflow.actions.alert")
+        self.assertEqual(actions[4]["WFWorkflowActionIdentifier"], "is.workflow.actions.exit")
+        self.assertEqual(actions[5]["WFWorkflowActionParameters"]["GroupingIdentifier"], condition["GroupingIdentifier"])
+
+    def test_shared_input_has_priority_and_clipboard_is_conditional(self):
+        actions = build()["WFWorkflowActions"]
+        index = next(i for i, a in enumerate(actions) if a["WFWorkflowActionIdentifier"].endswith(".setvariable"))
+        self.assertEqual(actions[index]["WFWorkflowActionParameters"]["WFInput"]["Value"]["Type"], "ExtensionInput")
+        self.assertEqual(actions[index+1]["WFWorkflowActionParameters"]["WFCondition"], 101)
+        self.assertEqual(actions[index+2]["WFWorkflowActionIdentifier"], "is.workflow.actions.getclipboard")
+        self.assertEqual(actions[index+3]["WFWorkflowActionParameters"]["WFVariableName"], "Link input")
+        self.assertEqual(actions[index+4]["WFWorkflowActionParameters"]["GroupingIdentifier"],
+                         actions[index+1]["WFWorkflowActionParameters"]["GroupingIdentifier"])
+        self.assertEqual(sum(a["WFWorkflowActionIdentifier"].endswith(".getclipboard") for a in actions), 1)
+
     def test_match_text_binds_named_input_without_runtime_prompt(self):
         actions = build()["WFWorkflowActions"]
         match = next(a["WFWorkflowActionParameters"] for a in actions if a["WFWorkflowActionIdentifier"].endswith(".text.match"))

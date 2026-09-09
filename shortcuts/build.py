@@ -75,9 +75,13 @@ class Workflow:
 
 def build():
     w = Workflow()
-    w.action("comment", WFCommentActionText="顺手 0.3.1：修复匹配文本输入绑定，自动接收分享链接或读取剪贴板。保留复制视频到微信和系统分享。剪贴板仅本机、5 分钟后过期。没有 Instagram 链接时检查连接。仅向固定解析域名发送访问码；下载 CDN 视频时不发送访问码。不写入相册或文件目录，临时缓存由系统管理。")
+    w.action("comment", WFCommentActionText="顺手 0.3.2：自动接收分享链接或读取剪贴板，补充空访问码检查与失败指引。保留匹配文本输入绑定修复、复制视频到微信和系统分享。剪贴板仅本机、5 分钟后过期。没有 Instagram 链接时检查连接。仅向固定解析域名发送访问码；下载 CDN 视频时不发送访问码。不写入相册或文件目录，临时缓存由系统管理。")
     token_index = len(w.actions)
     token = w.action("gettext", "Access code", WFTextActionText=PLACEHOLDER)
+    missing_token = w.condition(token, 101)
+    w.alert("访问码不能为空", "请编辑捷径，在顶部的 Access code 文本操作中填入个人访问码。不要填写 Instagram 密码。")
+    w.action("exit")
+    w.end(missing_token)
     empty = w.condition(token, 4, PLACEHOLDER)
     w.alert("尚未配置访问码", "请编辑捷径，在顶部的文本操作中填入你的个人访问码。")
     w.action("exit")
@@ -93,7 +97,7 @@ def build():
         w.action("exit")
         w.end(ok)
         message = w.get(data,"message")
-        w.alert("连接失败", text(message))
+        w.alert("连接失败", text(message, "\n请检查个人访问码和网络连接。请勿提供 Instagram 密码或 Cookie。"))
         w.action("exit")
 
     def share_video():
@@ -119,7 +123,7 @@ def build():
         failed = w.condition(status, 5, "ok")
         message = w.get(data, "message")
         code = w.get(data, "code")
-        w.alert("解析失败", text(code, "\n", message, "\n请稍后重试；无需重复安装捷径。"))
+        w.alert("解析失败", text(code, "\n", message, "\n无法解析不一定是捷径故障。请检查访问码和链接；浏览器能播放，也不代表服务端能解析。若同一链接持续失败，请保留错误码反馈，无需重复安装或连续重试。"))
         w.action("exit")
         w.end(failed)
         warnings = w.get(data, "warnings")
