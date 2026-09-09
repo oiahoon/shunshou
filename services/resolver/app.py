@@ -137,7 +137,7 @@ async def homepage():
 async def shortcut_download(request: Request):
     # These two fixed routes also support local installation checks.
     name = request.url.path.rsplit("/", 1)[-1]
-    return FileResponse(public_dir / name, media_type="application/octet-stream", filename=name)
+    return FileResponse(public_dir / name, media_type="application/octet-stream", filename="顺手.shortcut")
 
 
 @app.post("/api/resolve")

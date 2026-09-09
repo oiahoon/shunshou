@@ -75,7 +75,7 @@ class Workflow:
 
 def build():
     w = Workflow()
-    w.action("comment", WFCommentActionText="顺手 0.2：分享与连接检测合一。没有 Instagram 链接时检查连接。仅向固定解析域名发送访问码；下载 CDN 视频时不发送访问码。不写入相册或文件目录，临时缓存由系统管理。")
+    w.action("comment", WFCommentActionText="顺手 0.3：新增复制视频到微信实验模式，保留系统分享。剪贴板仅本机、5 分钟后过期；微信是否接受视频需实测。没有 Instagram 链接时检查连接。仅向固定解析域名发送访问码；下载 CDN 视频时不发送访问码。不写入相册或文件目录，临时缓存由系统管理。")
     token_index = len(w.actions)
     token = w.action("gettext", "Access code", WFTextActionText=PLACEHOLDER)
     empty = w.condition(token, 4, PLACEHOLDER)
@@ -142,7 +142,25 @@ def build():
                          WFHTTPHeaders=dictionary({"User-Agent":text(agent), "Referer":"https://www.instagram.com/"}), ShowHeaders=False)
         w.action("setitemname", "Named video", WFInput=media, WFName=text(filename))
         files = w.action("repeat.each", "Downloaded videos", WFControlFlowMode=2, GroupingIdentifier=group)
+        menu = uid()
+        choices = ["复制首个视频并打开微信（实验）", "系统分享全部视频"]
+        w.action("choosefrommenu", WFControlFlowMode=0, GroupingIdentifier=menu,
+                 WFMenuPrompt="选择发送方式", WFMenuItems=choices)
+        w.action("choosefrommenu", WFControlFlowMode=1, GroupingIdentifier=menu,
+                 WFMenuItemTitle=choices[0])
+        w.alert("微信粘贴实验", "将覆盖当前剪贴板，仅复制首个视频，5 分钟后过期。进入微信聊天后长按粘贴；若不能粘贴或显示为文件，请重新运行并选系统分享。不会自动发送，也不会保存到相册。")
+        first = w.action("getitemfromlist", "Clipboard video", WFInput=files, WFItemSpecifier="First Item")
+        now = w.action("date", "Now", WFDateActionMode="Current Date")
+        expiry = w.action("adjustdate", "Clipboard expiry", WFDate=text(now), WFAdjustOperation="Add",
+                          WFDuration={"Value":{"Magnitude":5,"Unit":"min"},
+                                      "WFSerializationType":"WFQuantityFieldValue"})
+        w.action("setclipboard", WFInput=first, WFLocalOnly=True, WFExpirationDate=text(expiry))
+        wechat = w.action("url", "WeChat", WFURLActionURL="weixin://")
+        w.action("openurl", WFInput=wechat)
+        w.action("choosefrommenu", WFControlFlowMode=1, GroupingIdentifier=menu,
+                 WFMenuItemTitle=choices[1])
         w.action("share", WFInput=files)
+        w.action("choosefrommenu", WFControlFlowMode=2, GroupingIdentifier=menu)
     share_video()
     workflow = {
         "WFWorkflowName":"顺手",

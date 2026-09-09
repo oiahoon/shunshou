@@ -3,6 +3,27 @@ from build import build, BASE, PLACEHOLDER
 
 
 class WorkflowTests(unittest.TestCase):
+    def test_clipboard_experiment_preserves_media_and_share_fallback(self):
+        actions = build()["WFWorkflowActions"]
+        by_id = {a["WFWorkflowActionParameters"]["UUID"]: a for a in actions}
+        copy = next(a["WFWorkflowActionParameters"] for a in actions if a["WFWorkflowActionIdentifier"].endswith(".setclipboard"))
+        self.assertTrue(copy["WFLocalOnly"])
+        source = by_id[copy["WFInput"]["Value"]["OutputUUID"]]
+        self.assertTrue(source["WFWorkflowActionIdentifier"].endswith(".getitemfromlist"))
+        self.assertEqual(source["WFWorkflowActionParameters"]["WFItemSpecifier"], "First Item")
+        expiry_ref = copy["WFExpirationDate"]["Value"]["attachmentsByRange"]["{0, 1}"]["OutputUUID"]
+        expiry = by_id[expiry_ref]["WFWorkflowActionParameters"]
+        now_ref = expiry["WFDate"]["Value"]["attachmentsByRange"]["{0, 1}"]["OutputUUID"]
+        self.assertEqual(by_id[now_ref]["WFWorkflowActionParameters"]["WFDateActionMode"], "Current Date")
+        self.assertEqual(expiry["WFDuration"]["Value"], {"Magnitude":5,"Unit":"min"})
+        self.assertEqual(expiry["WFAdjustOperation"], "Add")
+        menus = [a["WFWorkflowActionParameters"] for a in actions if a["WFWorkflowActionIdentifier"].endswith(".choosefrommenu")]
+        self.assertEqual([p["WFControlFlowMode"] for p in menus], [0,1,1,2])
+        self.assertEqual(menus[0]["WFMenuItems"], [p["WFMenuItemTitle"] for p in menus[1:3]])
+        self.assertEqual(sum(a["WFWorkflowActionIdentifier"].endswith(".share") for a in actions), 1)
+        self.assertEqual(next(a["WFWorkflowActionParameters"]["WFURLActionURL"] for a in actions if a["WFWorkflowActionIdentifier"].endswith(".url")), "weixin://")
+        self.assertEqual(sum(a["WFWorkflowActionIdentifier"].endswith(".openurl") for a in actions), 1)
+
     def test_production_domain(self):
         self.assertEqual(BASE, "https://shunshou.miaowu.org")
 

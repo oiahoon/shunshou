@@ -4,11 +4,17 @@ Production API: https://shunshou.miaowu.org/api/resolve
 
 ## Install on iPhone
 
-1. In Safari, download the single [Shunshou 0.2 shortcut](https://shunshou.miaowu.org/shunshou.shortcut).
+1. In Safari, download the single [Shunshou 0.3 shortcut](https://shunshou.miaowu.org/shunshou.shortcut).
 2. Open the downloaded `.shortcut` in Shortcuts. If Safari only downloads the file, open it from Files > Downloads.
 3. Add the shortcut and enter your private access code when prompted. The code is in the local, git-ignored `private-access-code.txt`; transfer it privately. Do not enter an Instagram password.
 4. Connection checking is built in: running without an Instagram link in the input/clipboard checks the service. Permit the request to `shunshou.miaowu.org` when iOS asks. With a valid link, it goes directly to resolution without a separate health request.
-5. Copy an Instagram Reel URL, then run Shunshou. Alternatively, select it in the iOS share sheet. Allow clipboard/CDN network access when prompted. When the downloaded file's share sheet opens, choose WeChat and the intended recipient yourself.
+5. From Instagram's system share sheet choose Shunshou, or copy a Reel link and run it. After downloading, choose the clipboard experiment or system sharing. Clipboard mode copies only the first downloaded video object, opens WeChat and requires you to select a chat, paste and send. It overwrites the clipboard, is local-only and expires after five minutes. WeChat video-message compatibility is not yet verified; use system sharing if pasting fails or produces an attachment. Multiple videos remain available via system sharing. No automatic sending or success detection is implemented.
+
+## Updating
+
+The download filename is always `顺手.shortcut`, with the version inside its comment rather than its name. Keep the installed name `顺手`; when iOS offers replacement during import, choose Replace instead of keeping both. If Safari adds a numeric suffix or your old copy has another name, matching/replacement may not be offered. Import UI behavior still needs iPhone validation. An import is not an in-place credential-preserving migration: keep your private access code available and enter it again if prompted.
+
+There is no silent self-update implemented. Backend-only fixes apply without reinstalling the shortcut; changes to native actions require a user-confirmed import. Future version notifications could point to this same installer, but cannot promise silent replacement. Do not publish personalized shortcuts or download and execute arbitrary remote code to simulate updates.
 
 This workflow uses native iOS actions, not JavaScript pasted into Safari. It contains no access code until configured at import. Never publicly share a configured copy; revoke and replace a leaked token on the server.
 
