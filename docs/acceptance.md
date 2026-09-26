@@ -144,3 +144,5 @@ See the 0.3 clipboard experiment section below for the latest delivery behavior.
 
 - Replaced the three simple detail illustrations and hub symbols with nine Codex-generated, optimized WebP assets: three hero artworks, three transparent product icons, and three workflow concept images. The guide keeps separately rendered HTML action labels and an explicit illustration disclaimer so generated imagery is not presented as an exact iOS screenshot.
 - Browser review of the homepage and all three detail pages at 320, 390 and 1440 px found no horizontal overflow or missing image assets. The signed Shortcut download routes and the three tutorial anchors remained present. The 320 px hero layout was checked after correcting a CSS override that initially forced a two-column composition.
+
+- Production deployment `dpl_2K3VFunhmdrctQKdRLwRjCxtRY2M` reached READY with `shunshou.miaowu.org` attached. Build logs identify application commit `7eb398c`; the live acceptance script passed all 20 checks. The generated images are illustrative, and exact iPhone dialogs remain a device acceptance gate.
