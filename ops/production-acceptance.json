@@ -1,8 +1,8 @@
 {
-  "checkedAt": "2026-09-26T13:31:21.353Z",
+  "checkedAt": "2026-09-26T13:48:17.090Z",
   "base": "https://shunshou.miaowu.org",
-  "commit": "a480a05d541d104f400d813eca61b3d932233955",
-  "passed": false,
+  "commit": "29fd42c07e6ac6f58972351a08b159ffed471f91",
+  "passed": true,
   "results": [
     {
       "name": "public homepage",
@@ -82,17 +82,15 @@
     },
     {
       "name": "Reel DZsVvmmkqXA",
-      "status": 502,
-      "code": "RESOLVE_FAILED",
-      "itemCount": 0,
-      "passed": false
+      "status": 200,
+      "itemCount": 1,
+      "passed": true
     },
     {
       "name": "Reel DZwITAaBfBE",
-      "status": 502,
-      "code": "RESOLVE_FAILED",
-      "itemCount": 0,
-      "passed": false
+      "status": 200,
+      "itemCount": 1,
+      "passed": true
     },
     {
       "name": "signed shortcut shunshou",
@@ -121,7 +119,7 @@
     {
       "name": "signed shortcut national avatar",
       "status": 200,
-      "bytes": 61492,
+      "bytes": 214768,
       "passed": true
     }
   ],
