@@ -275,10 +275,15 @@ def test_public_homepage_and_assets(client):
                   "product-icon-business-trip.webp"):
         assert client.get(f"/assets/{asset}").status_code == 200
     assert client.get("/assets/national-avatar-overlay.png").status_code == 200
+    assert client.get("/assets/national-avatar-gradient.png").status_code == 200
+    assert client.get("/assets/national-avatar-gradient-status.png").status_code == 200
     for page in (insta, dianping, trip):
         assert 'class="journey-visual"' in page.text
     assert 'id="install"' in avatar.text and 'id="update"' in avatar.text
     assert 'src="/assets/national-avatar-overlay.png"' in avatar.text
+    assert 'src="/assets/national-avatar-gradient.png"' in avatar.text
+    assert 'src="/assets/national-avatar-gradient-status.png"' in avatar.text
+    assert "版本 1.1.0" in avatar.text
     assert client.get("/shortcuts/unknown").status_code == 404
     assert client.get("/api/health").status_code == 401
 

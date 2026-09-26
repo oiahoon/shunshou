@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+<defs>
+  <radialGradient id="redFade" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="760" fx="0" fy="0">
+    <stop offset="0%" stop-color="#cf0017" stop-opacity="0.92"/>
+    <stop offset="34%" stop-color="#d9051b" stop-opacity="0.73"/>
+    <stop offset="67%" stop-color="#e00b20" stop-opacity="0.24"/>
+    <stop offset="100%" stop-color="#e00b20" stop-opacity="0"/>
+  </radialGradient>
+  <path id="star" d="M0,-1 .2245,-.309 .9511,-.309 .3633,.118 .5878,.809 0,.382 -.5878,.809 -.3633,.118 -.9511,-.309 -.2245,-.309Z"/>
+</defs>
+<rect width="1024" height="1024" fill="url(#redFade)"/>
+<g fill="#ffdf26"><use href="#star" transform="translate(148 178) scale(104)"/><use href="#star" transform="translate(344 83) rotate(-15) scale(32)"/><use href="#star" transform="translate(407 155) rotate(18) scale(32)"/><use href="#star" transform="translate(406 253) rotate(3) scale(32)"/><use href="#star" transform="translate(346 321) rotate(-16) scale(32)"/></g>
+<path d="M20 20H1004V1004H20Z" fill="none" stroke="#ffdf26" stroke-opacity=".38" stroke-width="6"/>
+<g aria-label="国庆在线装饰">
+  <rect x="640" y="852" width="340" height="100" rx="50" fill="#141414" fill-opacity=".82" stroke="#ffdf26" stroke-width="4"/>
+  <circle cx="700" cy="902" r="20" fill="#df1026" stroke="#ffdf26" stroke-width="5"/>
+  <text x="745" y="922" fill="#fff8e7" font-family="PingFang SC, Noto Sans CJK SC, sans-serif" font-size="51" font-weight="700">国庆在线</text>
+</g>
+</svg>

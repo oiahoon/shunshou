@@ -14,17 +14,22 @@ class NationalAvatarTests(unittest.TestCase):
         actions = workflow["WFWorkflowActions"]
         ids = [action["WFWorkflowActionIdentifier"].removeprefix("is.workflow.actions.")
                for action in actions]
-        self.assertEqual(ids, ["comment", "selectphoto", "properties.images", "properties.images",
-                               "list", "statistics", "image.crop", "image.resize", "gettext",
-                               "base64encode", "overlayimageonimage", "image.convert",
-                               "previewdocument", "savetocameraroll", "notification"])
+        self.assertEqual(ids[:8], ["comment", "selectphoto", "properties.images", "properties.images",
+                                   "list", "statistics", "image.crop", "image.resize"])
+        self.assertEqual(ids[-5:], ["overlayimageonimage", "image.convert",
+                                    "previewdocument", "savetocameraroll", "notification"])
+        self.assertEqual(ids.count("base64encode"), 3)
+        self.assertEqual(ids.count("setvariable"), 3)
+        self.assertEqual(actions[8]["WFWorkflowActionParameters"]["WFMenuItems"],
+                         [label for label, _ in builder.STYLES])
         self.assertEqual(actions[5]["WFWorkflowActionParameters"]["WFStatisticsOperation"], "Minimum")
-        self.assertEqual(actions[10]["WFWorkflowActionParameters"]["WFImagePosition"], "Center")
-        self.assertFalse(actions[10]["WFWorkflowActionParameters"]["WFShouldShowImageEditor"])
-        self.assertFalse(actions[11]["WFWorkflowActionParameters"]["WFImagePreserveMetadata"])
+        self.assertEqual(actions[-5]["WFWorkflowActionParameters"]["WFImagePosition"], "Center")
+        self.assertFalse(actions[-5]["WFWorkflowActionParameters"]["WFShouldShowImageEditor"])
+        self.assertFalse(actions[-4]["WFWorkflowActionParameters"]["WFImagePreserveMetadata"])
         self.assertNotIn("downloadurl", ids)
         self.assertNotIn("url", ids)
-        self.assertTrue((SOURCE.parent / "overlay.png").read_bytes().startswith(b"\x89PNG\r\n\x1a\n"))
+        for _, filename in builder.STYLES:
+            self.assertTrue((SOURCE.parent / filename).read_bytes().startswith(b"\x89PNG\r\n\x1a\n"))
         self.assertEqual((SOURCE.parent / "国庆头像.shortcut").read_bytes(),
                          (SOURCE.parents[2] / "services/resolver/public/national-avatar.shortcut").read_bytes())
 

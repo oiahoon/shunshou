@@ -1,8 +1,8 @@
 {
-  "checkedAt": "2026-09-26T12:57:40.916Z",
+  "checkedAt": "2026-09-26T13:31:21.353Z",
   "base": "https://shunshou.miaowu.org",
-  "commit": "2df6d41ca799b42ef9fb796a54bb421896b535d0",
-  "passed": true,
+  "commit": "a480a05d541d104f400d813eca61b3d932233955",
+  "passed": false,
   "results": [
     {
       "name": "public homepage",
@@ -21,6 +21,11 @@
     },
     {
       "name": "Business Trip page",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "National Avatar page",
       "status": 200,
       "passed": true
     },
@@ -77,15 +82,17 @@
     },
     {
       "name": "Reel DZsVvmmkqXA",
-      "status": 200,
-      "itemCount": 1,
-      "passed": true
+      "status": 502,
+      "code": "RESOLVE_FAILED",
+      "itemCount": 0,
+      "passed": false
     },
     {
       "name": "Reel DZwITAaBfBE",
-      "status": 200,
-      "itemCount": 1,
-      "passed": true
+      "status": 502,
+      "code": "RESOLVE_FAILED",
+      "itemCount": 0,
+      "passed": false
     },
     {
       "name": "signed shortcut shunshou",
@@ -110,7 +117,13 @@
       "status": 200,
       "bytes": 25460,
       "passed": true
+    },
+    {
+      "name": "signed shortcut national avatar",
+      "status": 200,
+      "bytes": 61492,
+      "passed": true
     }
   ],
-  "deviceAcceptance": "Pending actual iPhone installation, CDN download and WeChat playback"
+  "deviceAcceptance": "Pending actual iPhone installation, avatar image generation and saving, CDN download and WeChat playback"
 }
