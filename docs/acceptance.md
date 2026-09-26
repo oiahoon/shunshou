@@ -139,3 +139,8 @@ See the 0.3 clipboard experiment section below for the latest delivery behavior.
 - The visual guide does not establish actual iPhone import, permission prompts, CDN download, DeepSeek response, iCloud write, or WeChat delivery.
 
 - Production deployment `dpl_AMYQTZpxLXwkNVwsGfcGCqc1rv1Z` reached READY with `shunshou.miaowu.org` attached. Build logs confirm application commit `e8d742e`. The live acceptance script passed all 20 checks, including the three detail pages and signed installer hashes; the sanitized report is `ops/production-acceptance.json`.
+
+## Shortcut Artwork Refresh (2026-09-26)
+
+- Replaced the three simple detail illustrations and hub symbols with nine Codex-generated, optimized WebP assets: three hero artworks, three transparent product icons, and three workflow concept images. The guide keeps separately rendered HTML action labels and an explicit illustration disclaimer so generated imagery is not presented as an exact iOS screenshot.
+- Browser review of the homepage and all three detail pages at 320, 390 and 1440 px found no horizontal overflow or missing image assets. The signed Shortcut download routes and the three tutorial anchors remained present. The 320 px hero layout was checked after correcting a CSS override that initially forced a two-column composition.

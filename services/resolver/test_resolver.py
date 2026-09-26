@@ -264,9 +264,13 @@ def test_public_homepage_and_assets(client):
     for page in (insta, dianping, trip):
         assert 'id="tutorial"' in page.text
         assert "操作示意" in page.text
-    for asset in ("art-insta.svg", "art-dianping.svg", "art-business-trip.svg",
-                  "icon-video.svg", "icon-write.svg", "icon-receipt.svg"):
+    for asset in ("hero-insta.webp", "hero-dianping.webp", "hero-business-trip.webp",
+                  "flow-insta.webp", "flow-dianping.webp", "flow-business-trip.webp",
+                  "product-icon-insta.webp", "product-icon-dianping.webp",
+                  "product-icon-business-trip.webp"):
         assert client.get(f"/assets/{asset}").status_code == 200
+    for page in (insta, dianping, trip):
+        assert 'class="journey-visual"' in page.text
     assert client.get("/shortcuts/unknown").status_code == 404
     assert client.get("/api/health").status_code == 401
 
