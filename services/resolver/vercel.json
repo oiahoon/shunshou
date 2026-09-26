@@ -7,7 +7,8 @@
   "rewrites": [
     { "source": "/shortcuts/insta-share", "destination": "/insta-share.html" },
     { "source": "/shortcuts/dianping", "destination": "/dianping.html" },
-    { "source": "/shortcuts/business-trip", "destination": "/business-trip.html" }
+    { "source": "/shortcuts/business-trip", "destination": "/business-trip.html" },
+    { "source": "/shortcuts/national-avatar", "destination": "/national-avatar.html" }
   ],
   "headers": [
     {
@@ -39,6 +40,14 @@
       "headers": [
         { "key": "Content-Type", "value": "application/octet-stream" },
         { "key": "Content-Disposition", "value": "attachment; filename=BusinessTrip.shortcut; filename*=UTF-8''%E5%87%BA%E5%B7%AE%E5%BC%80%E9%94%80.shortcut" },
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+      ]
+    },
+    {
+      "source": "/national-avatar.shortcut",
+      "headers": [
+        { "key": "Content-Type", "value": "application/octet-stream" },
+        { "key": "Content-Disposition", "value": "attachment; filename=NationalAvatar.shortcut; filename*=UTF-8''%E5%9B%BD%E5%BA%86%E5%A4%B4%E5%83%8F.shortcut" },
         { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
       ]
     }

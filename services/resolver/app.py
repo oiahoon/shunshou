@@ -147,6 +147,11 @@ async def business_trip_page():
     return FileResponse(public_dir / "business-trip.html", media_type="text/html")
 
 
+@app.get("/shortcuts/national-avatar", include_in_schema=False)
+async def national_avatar_page():
+    return FileResponse(public_dir / "national-avatar.html", media_type="text/html")
+
+
 @app.get("/release.json", include_in_schema=False)
 async def shortcut_release():
     return FileResponse(public_dir / "release.json", media_type="application/json")
@@ -156,11 +161,13 @@ async def shortcut_release():
 @app.get("/shunshou-check.shortcut", include_in_schema=False)
 @app.get("/dianping.shortcut", include_in_schema=False)
 @app.get("/business-trip.shortcut", include_in_schema=False)
+@app.get("/national-avatar.shortcut", include_in_schema=False)
 async def shortcut_download(request: Request):
     # Fixed public routes also support local installation checks.
     name = request.url.path.rsplit("/", 1)[-1]
     filename = {"dianping.shortcut": "大众点评快写.shortcut",
-                "business-trip.shortcut": "出差开销.shortcut"}.get(name, "顺手.shortcut")
+                "business-trip.shortcut": "出差开销.shortcut",
+                "national-avatar.shortcut": "国庆头像.shortcut"}.get(name, "顺手.shortcut")
     return FileResponse(public_dir / name, media_type="application/octet-stream", filename=filename)
 
 

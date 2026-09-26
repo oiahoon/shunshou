@@ -27,12 +27,14 @@ check('public homepage', () => {
   return { status: r.status, passed: r.status === 200 && html.includes('顺手实验室') &&
     html.includes('href="/shortcuts/insta-share"') && html.includes('href="/shortcuts/dianping"') &&
     html.includes('href="/shortcuts/business-trip"') &&
+    html.includes('href="/shortcuts/national-avatar"') &&
     html.includes('id="update"') && !html.includes(token) };
 });
 for (const [name, path, installer] of [
   ['Insta Share page', '/shortcuts/insta-share', '/shunshou.shortcut'],
   ['Dianping page', '/shortcuts/dianping', '/dianping.shortcut'],
   ['Business Trip page', '/shortcuts/business-trip', '/business-trip.shortcut'],
+  ['National Avatar page', '/shortcuts/national-avatar', '/national-avatar.shortcut'],
 ]) check(name, () => {
   const r = request(path, { auth: false });
   const html = r.body.toString();
@@ -92,7 +94,15 @@ check('signed shortcut business trip', () => {
   return { status: r.status, bytes: r.body.length,
     passed: r.status === 200 && hash(r.body) === hash(local) && !unsigned.includes(Buffer.from(token)) };
 });
+check('signed shortcut national avatar', () => {
+  const r = request('/national-avatar.shortcut', { auth: false });
+  const local = readFileSync(new URL('../shortcuts/national-avatar/国庆头像.shortcut', import.meta.url));
+  const unsigned = readFileSync(new URL('../shortcuts/national-avatar/国庆头像-未签名.shortcut', import.meta.url));
+  const hash = value => createHash('sha256').update(value).digest('hex');
+  return { status: r.status, bytes: r.body.length,
+    passed: r.status === 200 && hash(r.body) === hash(local) && !unsigned.includes(Buffer.from(token)) };
+});
 const report = { checkedAt: new Date().toISOString(), base, commit: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
-  passed: results.every(r => r.passed), results, deviceAcceptance: 'Pending actual iPhone installation, CDN download and WeChat playback' };
+  passed: results.every(r => r.passed), results, deviceAcceptance: 'Pending actual iPhone installation, avatar image generation and saving, CDN download and WeChat playback' };
 writeFileSync(new URL('./production-acceptance.json', import.meta.url), JSON.stringify(report, null, 2) + '\n');
 if (!report.passed) process.exitCode = 1;
