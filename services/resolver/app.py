@@ -142,6 +142,11 @@ async def dianping_page():
     return FileResponse(public_dir / "dianping.html", media_type="text/html")
 
 
+@app.get("/shortcuts/business-trip", include_in_schema=False)
+async def business_trip_page():
+    return FileResponse(public_dir / "business-trip.html", media_type="text/html")
+
+
 @app.get("/release.json", include_in_schema=False)
 async def shortcut_release():
     return FileResponse(public_dir / "release.json", media_type="application/json")
@@ -150,10 +155,12 @@ async def shortcut_release():
 @app.get("/shunshou.shortcut", include_in_schema=False)
 @app.get("/shunshou-check.shortcut", include_in_schema=False)
 @app.get("/dianping.shortcut", include_in_schema=False)
+@app.get("/business-trip.shortcut", include_in_schema=False)
 async def shortcut_download(request: Request):
-    # These two fixed routes also support local installation checks.
+    # Fixed public routes also support local installation checks.
     name = request.url.path.rsplit("/", 1)[-1]
-    filename = "大众点评快写.shortcut" if name == "dianping.shortcut" else "顺手.shortcut"
+    filename = {"dianping.shortcut": "大众点评快写.shortcut",
+                "business-trip.shortcut": "出差开销.shortcut"}.get(name, "顺手.shortcut")
     return FileResponse(public_dir / name, media_type="application/octet-stream", filename=filename)
 
 

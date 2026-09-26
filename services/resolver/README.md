@@ -73,7 +73,7 @@ The extractor omitted codec/dimension metadata for these direct formats, so API 
 
 ## Production Deployment
 
-The Shortcut hub is served at `/` from `public/index.html`, with detail pages at `/shortcuts/insta-share` and `/shortcuts/dianping`. Shared styles and brand art are in `public/assets`. The pages contain installation links and guidance, not a public resolver form or token field. See [site structure](../../docs/site-structure.md). Local preview uses the same FastAPI routes. Static installers are available anonymously; both `/api` routes still require authorization.
+The Shortcut hub is served at `/` from `public/index.html`, with detail pages at `/shortcuts/insta-share`, `/shortcuts/dianping` and `/shortcuts/business-trip`. Shared styles and brand art are in `public/assets`. The pages contain installation links and guidance, not a public resolver form or token field. See [site structure](../../docs/site-structure.md). Local preview uses the same FastAPI routes. Static installers are available anonymously; both `/api` routes still require authorization.
 
 The public `/release.json` serves the current signed Shortcut version and fixed update-page URL without a token. Keep its version aligned with `shortcuts/build.py`, the homepage and the newly signed installer when publishing a Shortcut update. The Shortcut reads this manifest only when run without an Instagram link, after an authorized health check; normal link resolution does not call it. This endpoint does not deliver code or carry secrets.
 

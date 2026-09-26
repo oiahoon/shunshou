@@ -249,15 +249,18 @@ def test_public_homepage_and_assets(client):
     assert r.headers["content-type"].startswith("text/html")
     assert 'href="/shortcuts/insta-share"' in r.text
     assert 'href="/shortcuts/dianping"' in r.text
+    assert 'href="/shortcuts/business-trip"' in r.text
     assert 'id="update"' in r.text
     assert "https://shunshou.miaowu.org/" in r.text
     for path in ("/assets/hub.css", "/assets/hub-hero.jpg", "/assets/favicon.svg"):
         assert client.get(path).status_code == 200
     insta = client.get("/shortcuts/insta-share")
     dianping = client.get("/shortcuts/dianping")
-    assert insta.status_code == dianping.status_code == 200
+    trip = client.get("/shortcuts/business-trip")
+    assert insta.status_code == dianping.status_code == trip.status_code == 200
     assert 'href="/shunshou.shortcut"' in insta.text
     assert 'href="/dianping.shortcut"' in dianping.text
+    assert 'href="/business-trip.shortcut"' in trip.text
     assert client.get("/shortcuts/unknown").status_code == 404
     assert client.get("/api/health").status_code == 401
 
@@ -274,7 +277,7 @@ def test_public_release_manifest(client):
 
 def test_signed_shortcuts_are_public_not_secrets(client):
     client.headers.pop("Authorization")
-    for path in ("/shunshou.shortcut", "/shunshou-check.shortcut", "/dianping.shortcut"):
+    for path in ("/shunshou.shortcut", "/shunshou-check.shortcut", "/dianping.shortcut", "/business-trip.shortcut"):
         r = client.get(path)
         assert r.status_code == 200
         assert r.headers["content-type"] == "application/octet-stream"

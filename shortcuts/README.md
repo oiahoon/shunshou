@@ -59,3 +59,5 @@ Signing uses Apple's system tool and sends only the token-free workflow definiti
 ## Other Shortcut
 
 The 大众点评快写 source, signed artifact and release instructions are in [dianping/README.md](dianping/README.md). The public guide is at `/shortcuts/dianping`.
+
+The 出差开销 source, signed artifact, private iCloud CSV location and migration notes are in [business-trip/README.md](business-trip/README.md). Its public guide is at `/shortcuts/business-trip`.
