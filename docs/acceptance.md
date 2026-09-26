@@ -158,3 +158,5 @@ See the 0.3 clipboard experiment section below for the latest delivery behavior.
 
 - A desktop review found the same constrained-background issue in the tutorial section: its dark surface stopped at the `.wrap` edges, leaving visible vertical seams. The section now owns the full-width background, with an inner wrapper for text and steps. Workflow concept images span the viewport; nonfunctional outlines around hero artwork and concept captions were removed.
 - Local browser checks covered homepage and all three detail pages at 320, 390, and 1440 px. No horizontal overflow or failed image loads were found; installer links remained present. Resolver tests: 48 passed. Shortcut tests: 15 passed.
+
+- Production deployment `dpl_9hbw8AKdqLc3MiMzRGK92UXAvn1A` reached READY with `shunshou.miaowu.org` attached. Build logs confirm application commit `2df6d41`; all 20 live acceptance checks passed. The sanitized report is `ops/production-acceptance.json`.
