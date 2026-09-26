@@ -1,11 +1,21 @@
 {
-  "checkedAt": "2026-09-26T07:31:41.730Z",
+  "checkedAt": "2026-09-26T07:59:22.529Z",
   "base": "https://shunshou.miaowu.org",
-  "commit": "2b0175d178896980df3d3df7d6ee9435fe43c1ef",
+  "commit": "d76c156e3b35f2dd644cab19916c954870299863",
   "passed": true,
   "results": [
     {
       "name": "public homepage",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Insta Share page",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Dianping page",
       "status": 200,
       "passed": true
     },
@@ -82,6 +92,12 @@
       "name": "signed shortcut shunshou-check",
       "status": 200,
       "bytes": 29945,
+      "passed": true
+    },
+    {
+      "name": "signed shortcut dianping",
+      "status": 200,
+      "bytes": 25020,
       "passed": true
     }
   ],
