@@ -1,12 +1,18 @@
 {
-  "checkedAt": "2026-09-26T07:15:30.332Z",
+  "checkedAt": "2026-09-26T07:31:41.730Z",
   "base": "https://shunshou.miaowu.org",
-  "commit": "fc20d4f26ff2f92fe05ad89394d51dc4b0e1de5c",
+  "commit": "2b0175d178896980df3d3df7d6ee9435fe43c1ef",
   "passed": true,
   "results": [
     {
       "name": "public homepage",
       "status": 200,
+      "passed": true
+    },
+    {
+      "name": "public release manifest",
+      "status": 200,
+      "version": "0.4.0",
       "passed": true
     },
     {
@@ -69,13 +75,13 @@
     {
       "name": "signed shortcut shunshou",
       "status": 200,
-      "bytes": 29050,
+      "bytes": 29945,
       "passed": true
     },
     {
       "name": "signed shortcut shunshou-check",
       "status": 200,
-      "bytes": 29050,
+      "bytes": 29945,
       "passed": true
     }
   ],

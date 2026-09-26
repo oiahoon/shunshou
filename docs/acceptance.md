@@ -6,6 +6,7 @@
 - A public `/release.json` contains only version, release date and the fixed update-page URL. A no-link Shortcut run checks service health, compares the embedded version and offers to open the update page if different. Shared Instagram links do not make the extra request. Updates still require Safari download and user-confirmed import; credential retention or same-name replacement is not guaranteed.
 - Local tests: 12 Shortcut structural tests and 48 resolver tests passed. Five Playwright Chromium widths (320, 390, 768, 1440, 1920) passed install/update anchors, keyboard help disclosure, public version response, clipboard copy, reduced motion, real installer download, no horizontal overflow and no page errors. Geometry checks confirmed help text does not overlap the summary. The full-page screenshot's focus/scroll artifact is not a rendered element overlap.
 - The token-free 83-action Shortcut was Apple-signed. Native iPhone version comparison, import replacement, permission prompts and WeChat sending still need device acceptance; avoid treating structural tests and signing as proof of these outcomes.
+- Application commit `2b0175d178896980df3d3df7d6ee9435fe43c1ef` reached Vercel READY as `dpl_4738TkcCH9MMGWmG65weMcU94vUL` with `shunshou.miaowu.org` attached. All 15 production checks passed, including the 0.4.0 manifest, both baseline Reels and byte-identical 29,945-byte installers. A direct homepage read confirmed the visible version, update guide and single installer. This is cloud acceptance only.
 
 ## Shortcut 0.3.3 Flow Polish (2026-09-26)
 
