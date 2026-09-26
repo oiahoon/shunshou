@@ -46,3 +46,13 @@
 .detail-hero{width:100%;box-sizing:border-box}
 .detail-dianping .site-header{background:transparent;isolation:isolate}
 .detail-dianping .site-header:before{content:"";position:absolute;inset-block:0;left:50%;width:100vw;transform:translateX(-50%);background:#dcdad3;z-index:-1}
+/* Keep tutorial atmosphere full bleed and remove decorative image outlines. */
+.walkthrough{width:100%;background:#171717}
+.detail-art:after{display:none}
+.detail-dianping .detail-art{border:0}
+.journey-visual figcaption{border:0}
+/* The cinematic path image reaches both viewport edges; text remains aligned to the grid. */
+.journey-visual{width:100vw;max-width:none;left:50%;transform:translateX(-50%)}
+.journey-visual figcaption{left:max(20px,calc((100vw - 1328px)/2))}
+.journey-labels{padding-inline:max(20px,calc((100vw - 1328px)/2))}
+@media(max-width:700px){.journey-visual figcaption{left:10px}.journey-labels{padding-inline:10px}}

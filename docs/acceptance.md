@@ -153,3 +153,8 @@ See the 0.3 clipboard experiment section below for the latest delivery behavior.
 - Local browser screenshots at 320, 390 and 1440 px confirmed continuous Hero edges, no horizontal overflow, all assets loaded, and installer links present. Resolver tests: 48 passed; Shortcut structural tests: 15 passed.
 
 - Production deployment `dpl_5RVU85xnEn2P1pCeY994ij9WyPEo` reached READY with `shunshou.miaowu.org` attached. Build logs confirm application commit `f08f7ff`; all 20 live acceptance checks passed. The sanitized result is `ops/production-acceptance.json`.
+
+## Detail Page Edge Audit (2026-09-26)
+
+- A desktop review found the same constrained-background issue in the tutorial section: its dark surface stopped at the `.wrap` edges, leaving visible vertical seams. The section now owns the full-width background, with an inner wrapper for text and steps. Workflow concept images span the viewport; nonfunctional outlines around hero artwork and concept captions were removed.
+- Local browser checks covered homepage and all three detail pages at 320, 390, and 1440 px. No horizontal overflow or failed image loads were found; installer links remained present. Resolver tests: 48 passed. Shortcut tests: 15 passed.
