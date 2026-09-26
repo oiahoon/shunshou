@@ -50,5 +50,6 @@ When changing legacy Next.js code, also run `corepack pnpm test`, `corepack pnpm
 - Keep Hobby. No paid upgrades, add-ons, paid proxies or extra cloud instances without explicit authorization. Usage quotas still apply.
 - Production `API_TOKENS` stays sensitive in Vercel; `RESOLVER_PROXY` stays unset in production. Preview deployments do not automatically receive production tokens.
 - After shortcut changes, regenerate, test, sign using `shortcuts sign --mode anyone`, then copy the single signed `shunshou.shortcut` to `services/resolver/public`. Keep `shunshou-check.shortcut` as a byte-identical compatibility alias, not a second workflow.
+- For every Shortcut release, update `shortcuts/build.py` `VERSION`, `services/resolver/public/release.json`, and the homepage version/date together. Keep `/shunshou.shortcut` and `/#update` stable. The public manifest announces a version; iOS import and replacement remain user-confirmed.
 - Convert dictionary values to native Text before literal If comparisons. Plist validation/signing alone does not verify iOS input typing.
 - Update documentation and dated acceptance evidence. Separate automated, cloud, browser and actual iPhone/WeChat acceptance gates.

@@ -26,6 +26,14 @@ check('public homepage', () => {
   const html = r.body.toString();
   return { status: r.status, passed: r.status === 200 && html.includes('安装快捷指令') && html.includes('href="/shunshou.shortcut"') && !html.includes(token) };
 });
+check('public release manifest', () => {
+  const r = request('/release.json', { auth: false });
+  const data = JSON.parse(r.body);
+  const local = JSON.parse(readFileSync(new URL('../services/resolver/public/release.json', import.meta.url), 'utf8'));
+  return { status: r.status, version: data.version,
+    passed: r.status === 200 && data.version === local.version &&
+      data.installPage === base + '/#update' && JSON.stringify(data) === JSON.stringify(local) };
+});
 for (const [name, path, options, expected] of [
   ['health without token', '/api/health', { auth: false }, 401],
   ['health authorized', '/api/health', {}, 200],

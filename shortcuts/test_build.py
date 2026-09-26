@@ -1,5 +1,7 @@
 import unittest
-from build import build, BASE, PLACEHOLDER
+import json
+from pathlib import Path
+from build import build, BASE, PLACEHOLDER, VERSION
 
 
 class WorkflowTests(unittest.TestCase):
@@ -48,17 +50,18 @@ class WorkflowTests(unittest.TestCase):
         self.assertEqual(expiry["WFDuration"]["Value"], {"Magnitude":5,"Unit":"min"})
         self.assertEqual(expiry["WFAdjustOperation"], "Add")
         menus = [a["WFWorkflowActionParameters"] for a in actions if a["WFWorkflowActionIdentifier"].endswith(".choosefrommenu")]
-        self.assertEqual([p["WFControlFlowMode"] for p in menus], [0,1,1,2])
-        self.assertEqual(menus[0]["WFMenuItems"], [p["WFMenuItemTitle"] for p in menus[1:3]])
-        self.assertEqual(menus[0]["WFMenuItems"], ["复制首个视频并打开微信", "系统分享全部视频"])
-        self.assertIn("覆盖剪贴板", menus[0]["WFMenuPrompt"])
-        self.assertIn("5 分钟", menus[0]["WFMenuPrompt"])
-        copy_branch = actions.index(next(a for a in actions if a["WFWorkflowActionParameters"] is menus[1]))
-        share_branch = actions.index(next(a for a in actions if a["WFWorkflowActionParameters"] is menus[2]))
+        share_menu = next(i for i, p in enumerate(menus) if p.get("WFMenuPrompt", "").startswith("选择发送方式"))
+        self.assertEqual([p["WFControlFlowMode"] for p in menus[share_menu:]], [0,1,1,2])
+        self.assertEqual(menus[share_menu]["WFMenuItems"], [p["WFMenuItemTitle"] for p in menus[share_menu+1:share_menu+3]])
+        self.assertEqual(menus[share_menu]["WFMenuItems"], ["复制首个视频并打开微信", "系统分享全部视频"])
+        self.assertIn("覆盖剪贴板", menus[share_menu]["WFMenuPrompt"])
+        self.assertIn("5 分钟", menus[share_menu]["WFMenuPrompt"])
+        copy_branch = actions.index(next(a for a in actions if a["WFWorkflowActionParameters"] is menus[share_menu+1]))
+        share_branch = actions.index(next(a for a in actions if a["WFWorkflowActionParameters"] is menus[share_menu+2]))
         self.assertFalse(any(a["WFWorkflowActionIdentifier"].endswith(".alert") for a in actions[copy_branch:share_branch]))
         self.assertEqual(sum(a["WFWorkflowActionIdentifier"].endswith(".share") for a in actions), 1)
-        self.assertEqual(next(a["WFWorkflowActionParameters"]["WFURLActionURL"] for a in actions if a["WFWorkflowActionIdentifier"].endswith(".url")), "weixin://")
-        self.assertEqual(sum(a["WFWorkflowActionIdentifier"].endswith(".openurl") for a in actions), 1)
+        self.assertIn("weixin://", [a["WFWorkflowActionParameters"]["WFURLActionURL"] for a in actions if a["WFWorkflowActionIdentifier"].endswith(".url")])
+        self.assertEqual(sum(a["WFWorkflowActionIdentifier"].endswith(".openurl") for a in actions), 2)
 
     def test_production_domain(self):
         self.assertEqual(BASE, "https://shunshou.miaowu.org")
@@ -104,13 +107,15 @@ class WorkflowTests(unittest.TestCase):
     def test_authorization_never_sent_to_cdn(self):
         actions = build()["WFWorkflowActions"]
         requests = [a["WFWorkflowActionParameters"] for a in actions if a["WFWorkflowActionIdentifier"].endswith(".downloadurl")]
-        self.assertEqual(len(requests),3)
+        self.assertEqual(len(requests),4)
         self.assertEqual(requests[0]["WFURL"], BASE+"/api/health")
-        self.assertEqual(requests[1]["WFURL"], BASE+"/api/resolve")
-        for request in requests[:2]:
+        self.assertEqual(requests[1]["WFURL"], BASE+"/release.json")
+        self.assertEqual(requests[2]["WFURL"], BASE+"/api/resolve")
+        for request in (requests[0], requests[2]):
             self.assertIn("Authorization", str(request))
-        self.assertNotIn("Authorization",str(requests[2]))
-        self.assertEqual(requests[1]["WFHTTPBodyType"],"JSON")
+        self.assertNotIn("Authorization",str(requests[1]))
+        self.assertNotIn("Authorization",str(requests[3]))
+        self.assertEqual(requests[2]["WFHTTPBodyType"],"JSON")
         self.assertNotIn("savefile",str(actions))
         self.assertNotIn("delete",str(actions))
 
@@ -128,7 +133,7 @@ class WorkflowTests(unittest.TestCase):
             if p.get("WFCondition") in (100, 101):
                 self.assertNotIn("WFConditionalActionString", p)
             outputs[p["UUID"]] = action
-        self.assertEqual(literals, [(4, PLACEHOLDER), (4, "ok"), (5, "ok"), (99, "NO_AUDIO")])
+        self.assertEqual(literals, [(4, PLACEHOLDER), (4, "ok"), (5, VERSION), (5, "ok"), (99, "NO_AUDIO")])
 
     def test_health_only_runs_in_missing_link_branch(self):
         actions = build()["WFWorkflowActions"]
@@ -140,8 +145,19 @@ class WorkflowTests(unittest.TestCase):
         branch = actions[match_index + 2:end]
         self.assertEqual(branch[0]["WFWorkflowActionParameters"]["WFURL"], BASE + "/api/health")
         self.assertEqual(branch[-1]["WFWorkflowActionIdentifier"], "is.workflow.actions.exit")
-        self.assertEqual(sum(a["WFWorkflowActionIdentifier"].endswith(".exit") for a in branch), 2)
+        self.assertEqual(sum(a["WFWorkflowActionIdentifier"].endswith(".exit") for a in branch), 3)
         self.assertNotIn("/api/resolve", str(branch))
+
+    def test_release_version_matches_homepage_and_fixed_update_destination(self):
+        root = Path(__file__).resolve().parents[1]
+        release = json.loads((root / "services/resolver/public/release.json").read_text())
+        html = (root / "services/resolver/public/index.html").read_text()
+        self.assertEqual(release["version"], VERSION)
+        self.assertIn(f"当前版本 <strong>{VERSION}</strong>", html)
+        self.assertEqual(release["installPage"], BASE + "/#update")
+        urls = [a["WFWorkflowActionParameters"]["WFURLActionURL"] for a in build()["WFWorkflowActions"]
+                if a["WFWorkflowActionIdentifier"].endswith(".url")]
+        self.assertIn(release["installPage"], urls)
 
 
 if __name__ == "__main__": unittest.main()

@@ -5,6 +5,7 @@ import plistlib
 import uuid
 
 BASE = "https://shunshou.miaowu.org"
+VERSION = "0.4.0"
 PLACEHOLDER = "FILL_ACCESS_CODE"
 
 
@@ -75,7 +76,7 @@ class Workflow:
 
 def build():
     w = Workflow()
-    w.action("comment", WFCommentActionText="顺手 0.3.3：从 Instagram 分享菜单接收链接，或读取已复制的链接。下载后可复制首个视频并打开微信，或系统分享全部视频。复制会覆盖剪贴板，仅本机保存、5 分钟后过期。没有 Instagram 链接时检查连接。仅向固定解析域名发送访问码；下载 CDN 视频时不发送访问码。不写入相册或文件目录，临时缓存由系统管理。")
+    w.action("comment", WFCommentActionText=f"顺手 {VERSION}：从 Instagram 分享菜单接收链接，或读取已复制的链接。下载后可复制首个视频并打开微信，或系统分享全部视频。复制会覆盖剪贴板，仅本机保存、5 分钟后过期。没有 Instagram 链接时检查连接和版本。仅向固定解析域名发送访问码；下载 CDN 视频时不发送访问码。不写入相册或文件目录，临时缓存由系统管理。")
     token_index = len(w.actions)
     token = w.action("gettext", "Access code", WFTextActionText=PLACEHOLDER)
     missing_token = w.condition(token, 101)
@@ -93,7 +94,25 @@ def build():
         data = w.action("detect.dictionary", "Response", WFInput=response)
         status = w.get(data, "status")
         ok = w.condition(status, 4, "ok")
-        w.alert("服务连接正常", "未检测到 Instagram 链接。请复制帖子或 Reel 链接后再运行「顺手」，或从系统分享菜单调用。连接正常不代表视频一定能下载。")
+        release = w.action("downloadurl", "Release information", WFURL=BASE+"/release.json",
+                           WFHTTPMethod="GET", ShowHeaders=False)
+        release_data = w.action("detect.dictionary", "Release", WFInput=release)
+        latest = w.get(release_data, "version")
+        update = w.condition(latest, 5, VERSION)
+        menu = uid()
+        choices = ["打开更新页面", "稍后更新"]
+        w.action("choosefrommenu", WFControlFlowMode=0, GroupingIdentifier=menu,
+                 WFMenuPrompt="顺手有新版。请在 Safari 下载，并由你确认替换旧捷径。", WFMenuItems=choices)
+        w.action("choosefrommenu", WFControlFlowMode=1, GroupingIdentifier=menu,
+                 WFMenuItemTitle=choices[0])
+        page = w.action("url", "Update page", WFURLActionURL=BASE+"/#update")
+        w.action("openurl", WFInput=page)
+        w.action("choosefrommenu", WFControlFlowMode=1, GroupingIdentifier=menu,
+                 WFMenuItemTitle=choices[1])
+        w.action("choosefrommenu", WFControlFlowMode=2, GroupingIdentifier=menu)
+        w.action("exit")
+        w.end(update)
+        w.alert("顺手已是最新版", f"当前版本 {VERSION}，服务连接正常。复制 Instagram 链接后运行，或从分享菜单选择「顺手」。")
         w.action("exit")
         w.end(ok)
         message = w.get(data,"message")

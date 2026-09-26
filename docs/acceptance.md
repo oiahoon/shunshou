@@ -1,5 +1,12 @@
 # Production Acceptance
 
+## Shortcut 0.4.0 Install And Update (2026-09-26)
+
+- The homepage keeps the black/yellow/silver identity while presenting separate first-install and update paths. The long setup text is reduced to three short help disclosures. The same signed installer URL remains the sole download link.
+- A public `/release.json` contains only version, release date and the fixed update-page URL. A no-link Shortcut run checks service health, compares the embedded version and offers to open the update page if different. Shared Instagram links do not make the extra request. Updates still require Safari download and user-confirmed import; credential retention or same-name replacement is not guaranteed.
+- Local tests: 12 Shortcut structural tests and 48 resolver tests passed. Five Playwright Chromium widths (320, 390, 768, 1440, 1920) passed install/update anchors, keyboard help disclosure, public version response, clipboard copy, reduced motion, real installer download, no horizontal overflow and no page errors. Geometry checks confirmed help text does not overlap the summary. The full-page screenshot's focus/scroll artifact is not a rendered element overlap.
+- The token-free 83-action Shortcut was Apple-signed. Native iPhone version comparison, import replacement, permission prompts and WeChat sending still need device acceptance; avoid treating structural tests and signing as proof of these outcomes.
+
 ## Shortcut 0.3.3 Flow Polish (2026-09-26)
 
 - The user reports that the installed Shortcut has generally worked well over time, with occasional videos unavailable to the resolver. This is user-reported experience rather than a measured resolution rate.

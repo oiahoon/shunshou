@@ -4,17 +4,19 @@ Production API: https://shunshou.miaowu.org/api/resolve
 
 ## Install on iPhone
 
-1. In Safari, download the single [Shunshou 0.3.3 shortcut](https://shunshou.miaowu.org/shunshou.shortcut).
+1. In Safari, download the single [Shunshou 0.4.0 shortcut](https://shunshou.miaowu.org/shunshou.shortcut).
 2. Open the downloaded `.shortcut` in Shortcuts. If Safari only downloads the file, open it from Files > Downloads.
 3. Add the shortcut and enter your private access code when prompted. The code is in the local, git-ignored `private-access-code.txt`; transfer it privately. Do not enter an Instagram password.
-4. Connection checking is built in: running without an Instagram link in the input/clipboard checks the service. Permit the request to `shunshou.miaowu.org` when iOS asks. With a valid link, it goes directly to resolution without a separate health request.
+4. Running without an Instagram link in the input/clipboard checks the service and the public release version. Permit the request to `shunshou.miaowu.org` when iOS asks. With a valid link, it goes directly to resolution without either extra check.
 5. From Instagram's system share sheet choose Shunshou, or copy a Reel link and run it. After downloading, choose clipboard or system sharing. Clipboard mode copies only the first downloaded video object, opens WeChat and requires you to select a chat, paste and send. The menu explains that it overwrites the clipboard, which is local-only and expires after five minutes; there is no second explanation alert. Use system sharing if pasting fails or produces an attachment. Multiple videos remain available via system sharing. No automatic sending or success detection is implemented.
 
 ## Updating
 
-The download filename is always `顺手.shortcut`, with the version inside its comment rather than its name. Keep the installed name `顺手`; when iOS offers replacement during import, choose Replace instead of keeping both. If Safari adds a numeric suffix or your old copy has another name, matching/replacement may not be offered. Import UI behavior still needs iPhone validation. An import is not an in-place credential-preserving migration: keep your private access code available and enter it again if prompted.
+The download filename is always `顺手.shortcut`, with the version inside its comment rather than its name. The homepage has a dedicated [update guide](https://shunshou.miaowu.org/#update) and the current version. Keep the installed name `顺手`; when iOS offers replacement during import, choose Replace. If Safari adds a numeric suffix or your old copy has another name, matching/replacement may not be offered. In that case, keep the old shortcut until you have confirmed the new one works, then remove the old copy. Import UI behavior still needs iPhone validation. An import is not an in-place credential-preserving migration: keep your private access code available and enter it again if prompted.
 
-There is no silent self-update implemented. Backend-only fixes apply without reinstalling the shortcut; changes to native actions require a user-confirmed import. Future version notifications could point to this same installer, but cannot promise silent replacement. Do not publish personalized shortcuts or download and execute arbitrary remote code to simulate updates.
+Starting with 0.4.0, running Shunshou with no Instagram link checks authenticated service health and the public `/release.json` version. When a newer version is advertised, the user can choose to open the fixed update page in Safari. Existing 0.3.x installations cannot run this new check; update to 0.4.0 from the homepage once. The version check is absent from video-sharing runs and sends no access code to the public manifest. If the manifest is temporarily unavailable, the connection check may fail; normal video sharing does not depend on it.
+
+There is no silent self-update. Backend-only fixes apply without reinstalling the shortcut; changes to native actions require a user-confirmed import. Do not publish personalized shortcuts or download and execute arbitrary remote code to simulate updates.
 
 This workflow uses native iOS actions, not JavaScript pasted into Safari. It contains no access code until configured at import. Never publicly share a configured copy; revoke and replace a leaked token on the server.
 
@@ -25,6 +27,8 @@ Version 0.2 fixes the iPhone `If status is not` missing-parameter error by conve
 The server currently returns video URLs, not photos. Quality is a preference, not a transcoding promise. The Shortcut does not save media to Photos or a persistent Files directory. iOS owns temporary download caches; immediate physical deletion is not guaranteed. Dismissing the share sheet does not prove WeChat sent the file.
 
 ## Build and Sign
+
+For subsequent releases, bump `VERSION` in `shortcuts/build.py`, the public `release.json` version/date, and the homepage version/date together. The structural test checks these values and the fixed update URL. Keep the same installer filename and destination so installed 0.4.0+ copies can detect future releases.
 
 ```sh
 python3 shortcuts/build.py
@@ -37,6 +41,8 @@ cp shortcuts/build/shunshou.shortcut services/resolver/public/shunshou-check.sho
 Signing uses Apple's system tool and sends only the token-free workflow definition to Apple for validation. The signed binary, not the unsigned plist, is the installable artifact. Definitions include an import question pointing to the access-code text action.
 
 ## Validation Status
+
+- Version 0.4.0 adds a fixed public release manifest and a no-link update check; the normal Instagram link path retains its existing download behavior. The homepage separates first installation from update instructions, with one stable installer address. Structural/signing and browser checks are not proof that iOS offers replacement or that the update menu works on a physical iPhone.
 
 - Version 0.3.3 aligns the homepage with the actual Instagram Share to > Shunshou > WeChat paste flow. The Shortcut keeps its existing download and clipboard actions but presents the overwrite/expiry notice in the choice menu instead of a second alert. The user reports generally successful real-world use of the preceding version, with occasional restricted videos; this is not a measured success rate or proof of every path on 0.3.3.
 

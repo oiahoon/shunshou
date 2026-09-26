@@ -12,11 +12,11 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>2E30B6E8-DAB9-474D-B83B-DFF88B5A4201</string>
+				<string>3E3EC5A1-46CE-4FEB-AB09-53F9996F3463</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFCommentActionText</key>
-				<string>顺手 0.3.3：从 Instagram 分享菜单接收链接，或读取已复制的链接。下载后可复制首个视频并打开微信，或系统分享全部视频。复制会覆盖剪贴板，仅本机保存、5 分钟后过期。没有 Instagram 链接时检查连接。仅向固定解析域名发送访问码；下载 CDN 视频时不发送访问码。不写入相册或文件目录，临时缓存由系统管理。</string>
+				<string>顺手 0.4.0：从 Instagram 分享菜单接收链接，或读取已复制的链接。下载后可复制首个视频并打开微信，或系统分享全部视频。复制会覆盖剪贴板，仅本机保存、5 分钟后过期。没有 Instagram 链接时检查连接和版本。仅向固定解析域名发送访问码；下载 CDN 视频时不发送访问码。不写入相册或文件目录，临时缓存由系统管理。</string>
 			</dict>
 		</dict>
 		<dict>
@@ -25,7 +25,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>FFDAE55C-A93A-4AC9-A79C-0E5000F7CC67</string>
+				<string>5AD7BC17-FB01-466C-8F30-245C6D730AA3</string>
 				<key>CustomOutputName</key>
 				<string>Access code</string>
 				<key>WFTextActionText</key>
@@ -38,7 +38,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>06E41ECC-40CF-4914-9277-183224FC61DA</string>
+				<string>2F2355FB-AA0D-4551-8A83-555796A220EB</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFInput</key>
@@ -52,7 +52,7 @@
 							<key>Type</key>
 							<string>ActionOutput</string>
 							<key>OutputUUID</key>
-							<string>FFDAE55C-A93A-4AC9-A79C-0E5000F7CC67</string>
+							<string>5AD7BC17-FB01-466C-8F30-245C6D730AA3</string>
 							<key>OutputName</key>
 							<string>Access code</string>
 						</dict>
@@ -65,7 +65,7 @@
 				<key>WFControlFlowMode</key>
 				<integer>0</integer>
 				<key>GroupingIdentifier</key>
-				<string>21FD1420-FDF8-474A-BCD0-D3C4FBF79A32</string>
+				<string>7D651653-5FDA-4B90-AF22-F7D078A76F44</string>
 			</dict>
 		</dict>
 		<dict>
@@ -74,7 +74,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>1C77699F-B7AF-425C-81AD-134237A67D27</string>
+				<string>92360B6F-1BDE-4ECD-B70C-25645BBF9B94</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFAlertActionTitle</key>
@@ -91,7 +91,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>B89F6D38-42B2-4C60-988E-E228FE029DDC</string>
+				<string>AAE559BA-9780-4B73-812C-D8D42DBDFB77</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 			</dict>
@@ -102,13 +102,13 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>9E7B1B60-F6E7-4C6B-BFDA-80EBA5B42B53</string>
+				<string>342A13E3-4333-47A6-A918-5B2CA0A5ECCE</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFControlFlowMode</key>
 				<integer>2</integer>
 				<key>GroupingIdentifier</key>
-				<string>21FD1420-FDF8-474A-BCD0-D3C4FBF79A32</string>
+				<string>7D651653-5FDA-4B90-AF22-F7D078A76F44</string>
 			</dict>
 		</dict>
 		<dict>
@@ -117,7 +117,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>E65D18FC-CA4B-4BCE-BF4D-22BA6909AB46</string>
+				<string>0588781C-56B8-4A51-B271-0326B6506635</string>
 				<key>CustomOutputName</key>
 				<string>Comparison text</string>
 				<key>WFTextActionText</key>
@@ -133,7 +133,7 @@
 								<key>Type</key>
 								<string>ActionOutput</string>
 								<key>OutputUUID</key>
-								<string>FFDAE55C-A93A-4AC9-A79C-0E5000F7CC67</string>
+								<string>5AD7BC17-FB01-466C-8F30-245C6D730AA3</string>
 								<key>OutputName</key>
 								<string>Access code</string>
 							</dict>
@@ -150,7 +150,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>7B4F5453-0278-47BD-BB3E-D1B7D08B93D3</string>
+				<string>270F3B53-A32D-476D-A4D1-E89E05A5508D</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFInput</key>
@@ -164,7 +164,7 @@
 							<key>Type</key>
 							<string>ActionOutput</string>
 							<key>OutputUUID</key>
-							<string>E65D18FC-CA4B-4BCE-BF4D-22BA6909AB46</string>
+							<string>0588781C-56B8-4A51-B271-0326B6506635</string>
 							<key>OutputName</key>
 							<string>Comparison text</string>
 						</dict>
@@ -177,7 +177,7 @@
 				<key>WFControlFlowMode</key>
 				<integer>0</integer>
 				<key>GroupingIdentifier</key>
-				<string>D0C13992-0D89-4B00-AA66-6F60D13D1244</string>
+				<string>3D5B4424-258F-43B8-937D-F32DA996DB56</string>
 				<key>WFConditionalActionString</key>
 				<string>FILL_ACCESS_CODE</string>
 			</dict>
@@ -188,7 +188,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>74F139A0-F7CC-46B3-976E-9550954ED09D</string>
+				<string>5A0209A7-6C5E-4FAD-8CFB-A6BEFB6C6EEF</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFAlertActionTitle</key>
@@ -205,7 +205,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>25F5866E-63EE-4C2A-A22E-C5747CC1FF8A</string>
+				<string>5FFE241F-4280-4B37-9C6A-37BD07B6A4C4</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 			</dict>
@@ -216,13 +216,13 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>4EB03831-B7FD-42B9-A2CB-D00C8ED40174</string>
+				<string>A8CEAE66-9797-4DAE-8119-750247EF081C</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFControlFlowMode</key>
 				<integer>2</integer>
 				<key>GroupingIdentifier</key>
-				<string>D0C13992-0D89-4B00-AA66-6F60D13D1244</string>
+				<string>3D5B4424-258F-43B8-937D-F32DA996DB56</string>
 			</dict>
 		</dict>
 		<dict>
@@ -231,7 +231,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>AB66B8EF-FBA0-45E6-9C4F-C02C8CCD91DF</string>
+				<string>BA726C78-F30D-4A91-869E-779B042B26A8</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFVariableName</key>
@@ -254,7 +254,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>B73B9ED8-7FA4-4BE9-B83F-6209290F4702</string>
+				<string>679BD09B-7312-4478-A654-345F4E6FB0FA</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFInput</key>
@@ -279,7 +279,7 @@
 				<key>WFControlFlowMode</key>
 				<integer>0</integer>
 				<key>GroupingIdentifier</key>
-				<string>A26B70B5-8B55-42C2-8F91-39125AA5A074</string>
+				<string>B0AB0699-B0A6-41C1-BF68-06A83CF2CD27</string>
 			</dict>
 		</dict>
 		<dict>
@@ -288,7 +288,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>D3AC3FC6-DDC8-4BD2-9D6E-6DBDC8CEAD86</string>
+				<string>50F278FC-A2D2-4276-91D6-0CA2A972FAEC</string>
 				<key>CustomOutputName</key>
 				<string>Clipboard</string>
 			</dict>
@@ -299,7 +299,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>753EA60C-5F81-4B5D-A1EA-F8EA560947C8</string>
+				<string>B62CF3D2-C365-43C7-A5F6-9FDCC88103AA</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFVariableName</key>
@@ -311,7 +311,7 @@
 						<key>Type</key>
 						<string>ActionOutput</string>
 						<key>OutputUUID</key>
-						<string>D3AC3FC6-DDC8-4BD2-9D6E-6DBDC8CEAD86</string>
+						<string>50F278FC-A2D2-4276-91D6-0CA2A972FAEC</string>
 						<key>OutputName</key>
 						<string>Clipboard</string>
 					</dict>
@@ -326,13 +326,13 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>B7153EDC-325B-4910-A0D7-5A5470DCA01B</string>
+				<string>EF3784E0-E734-4466-A4C0-B44F14C0F4C3</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFControlFlowMode</key>
 				<integer>2</integer>
 				<key>GroupingIdentifier</key>
-				<string>A26B70B5-8B55-42C2-8F91-39125AA5A074</string>
+				<string>B0AB0699-B0A6-41C1-BF68-06A83CF2CD27</string>
 			</dict>
 		</dict>
 		<dict>
@@ -341,7 +341,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>F00FC0DE-7FFC-4820-9390-2A142EF37B40</string>
+				<string>7E71B95D-6F56-41ED-ACB7-31EC2E08DCE0</string>
 				<key>CustomOutputName</key>
 				<string>Instagram links</string>
 				<key>text</key>
@@ -376,7 +376,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>07C19A86-2A3A-4AE0-BE39-DCC8352F72A2</string>
+				<string>62CB8E78-2A50-469A-961A-759BC5255FDC</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFInput</key>
@@ -390,7 +390,7 @@
 							<key>Type</key>
 							<string>ActionOutput</string>
 							<key>OutputUUID</key>
-							<string>F00FC0DE-7FFC-4820-9390-2A142EF37B40</string>
+							<string>7E71B95D-6F56-41ED-ACB7-31EC2E08DCE0</string>
 							<key>OutputName</key>
 							<string>Instagram links</string>
 						</dict>
@@ -403,7 +403,7 @@
 				<key>WFControlFlowMode</key>
 				<integer>0</integer>
 				<key>GroupingIdentifier</key>
-				<string>DF5A1332-0170-40B3-AADA-E293D7C89A1B</string>
+				<string>E3B82F32-2853-4F2A-A718-F805C3C5AAA4</string>
 			</dict>
 		</dict>
 		<dict>
@@ -412,7 +412,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>392EAF99-8287-4833-B725-143ACA35D7ED</string>
+				<string>BBE4EBF0-9A44-434F-8CCF-D288C459C097</string>
 				<key>CustomOutputName</key>
 				<string>Health response</string>
 				<key>WFURL</key>
@@ -451,7 +451,7 @@
 												<key>Type</key>
 												<string>ActionOutput</string>
 												<key>OutputUUID</key>
-												<string>FFDAE55C-A93A-4AC9-A79C-0E5000F7CC67</string>
+												<string>5AD7BC17-FB01-466C-8F30-245C6D730AA3</string>
 												<key>OutputName</key>
 												<string>Access code</string>
 											</dict>
@@ -500,7 +500,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>5DA04A0E-DCEE-4064-A47A-1893C3B529A6</string>
+				<string>EEB0FE4E-BBF8-4A14-A8BA-42DFEE6800F0</string>
 				<key>CustomOutputName</key>
 				<string>Response</string>
 				<key>WFInput</key>
@@ -510,7 +510,7 @@
 						<key>Type</key>
 						<string>ActionOutput</string>
 						<key>OutputUUID</key>
-						<string>392EAF99-8287-4833-B725-143ACA35D7ED</string>
+						<string>BBE4EBF0-9A44-434F-8CCF-D288C459C097</string>
 						<key>OutputName</key>
 						<string>Health response</string>
 					</dict>
@@ -525,7 +525,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>38D357A7-96D9-4F9E-B45F-7FB8A00A486E</string>
+				<string>80871565-5122-4F87-930E-E059664BA0D0</string>
 				<key>CustomOutputName</key>
 				<string>status</string>
 				<key>WFInput</key>
@@ -535,7 +535,7 @@
 						<key>Type</key>
 						<string>ActionOutput</string>
 						<key>OutputUUID</key>
-						<string>5DA04A0E-DCEE-4064-A47A-1893C3B529A6</string>
+						<string>EEB0FE4E-BBF8-4A14-A8BA-42DFEE6800F0</string>
 						<key>OutputName</key>
 						<string>Response</string>
 					</dict>
@@ -554,7 +554,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>B59338AE-36A7-4B28-9A07-850F33DA0F0F</string>
+				<string>B1C891D8-C8B6-4EE5-9426-766AC1318235</string>
 				<key>CustomOutputName</key>
 				<string>Comparison text</string>
 				<key>WFTextActionText</key>
@@ -570,7 +570,7 @@
 								<key>Type</key>
 								<string>ActionOutput</string>
 								<key>OutputUUID</key>
-								<string>38D357A7-96D9-4F9E-B45F-7FB8A00A486E</string>
+								<string>80871565-5122-4F87-930E-E059664BA0D0</string>
 								<key>OutputName</key>
 								<string>status</string>
 							</dict>
@@ -587,7 +587,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>A48A81C3-23D4-4725-B187-E4BCB0324A5C</string>
+				<string>90D36347-830F-4ACF-B6CB-06BA57B0448D</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFInput</key>
@@ -601,7 +601,7 @@
 							<key>Type</key>
 							<string>ActionOutput</string>
 							<key>OutputUUID</key>
-							<string>B59338AE-36A7-4B28-9A07-850F33DA0F0F</string>
+							<string>B1C891D8-C8B6-4EE5-9426-766AC1318235</string>
 							<key>OutputName</key>
 							<string>Comparison text</string>
 						</dict>
@@ -614,26 +614,260 @@
 				<key>WFControlFlowMode</key>
 				<integer>0</integer>
 				<key>GroupingIdentifier</key>
-				<string>555BD0D7-8D25-4046-A26B-25B3A7247BD5</string>
+				<string>C153446E-51B3-407E-A24C-20745030B516</string>
 				<key>WFConditionalActionString</key>
 				<string>ok</string>
 			</dict>
 		</dict>
 		<dict>
 			<key>WFWorkflowActionIdentifier</key>
-			<string>is.workflow.actions.alert</string>
+			<string>is.workflow.actions.downloadurl</string>
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>FB887158-5BDB-442F-8E8B-E343FCF7ADB2</string>
+				<string>A3B2F17D-EDCA-4241-BB6F-D34EC05C3AF4</string>
+				<key>CustomOutputName</key>
+				<string>Release information</string>
+				<key>WFURL</key>
+				<string>https://shunshou.miaowu.org/release.json</string>
+				<key>WFHTTPMethod</key>
+				<string>GET</string>
+				<key>ShowHeaders</key>
+				<false/>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.detect.dictionary</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>UUID</key>
+				<string>560E9980-6A63-40EF-B8FE-DFD8FE30C36B</string>
+				<key>CustomOutputName</key>
+				<string>Release</string>
+				<key>WFInput</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>Type</key>
+						<string>ActionOutput</string>
+						<key>OutputUUID</key>
+						<string>A3B2F17D-EDCA-4241-BB6F-D34EC05C3AF4</string>
+						<key>OutputName</key>
+						<string>Release information</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenAttachment</string>
+				</dict>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.getvalueforkey</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>UUID</key>
+				<string>5EFDA414-C3DA-4B29-9B6A-A2829477B9EA</string>
+				<key>CustomOutputName</key>
+				<string>version</string>
+				<key>WFInput</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>Type</key>
+						<string>ActionOutput</string>
+						<key>OutputUUID</key>
+						<string>560E9980-6A63-40EF-B8FE-DFD8FE30C36B</string>
+						<key>OutputName</key>
+						<string>Release</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenAttachment</string>
+				</dict>
+				<key>WFDictionaryKey</key>
+				<string>version</string>
+				<key>WFGetDictionaryValueType</key>
+				<string>Value</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.gettext</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>UUID</key>
+				<string>42639FEB-5768-4719-BF19-D0A1D218989A</string>
+				<key>CustomOutputName</key>
+				<string>Comparison text</string>
+				<key>WFTextActionText</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>string</key>
+						<string>￼</string>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{0, 1}</key>
+							<dict>
+								<key>Type</key>
+								<string>ActionOutput</string>
+								<key>OutputUUID</key>
+								<string>5EFDA414-C3DA-4B29-9B6A-A2829477B9EA</string>
+								<key>OutputName</key>
+								<string>version</string>
+							</dict>
+						</dict>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.conditional</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>UUID</key>
+				<string>BE044220-2ECA-4587-94A0-85819AA38AE6</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
-				<key>WFAlertActionTitle</key>
-				<string>服务连接正常</string>
-				<key>WFAlertActionMessage</key>
-				<string>未检测到 Instagram 链接。请复制帖子或 Reel 链接后再运行「顺手」，或从系统分享菜单调用。连接正常不代表视频一定能下载。</string>
-				<key>WFAlertActionCancelButtonShown</key>
-				<false/>
+				<key>WFInput</key>
+				<dict>
+					<key>Type</key>
+					<string>Variable</string>
+					<key>Variable</key>
+					<dict>
+						<key>Value</key>
+						<dict>
+							<key>Type</key>
+							<string>ActionOutput</string>
+							<key>OutputUUID</key>
+							<string>42639FEB-5768-4719-BF19-D0A1D218989A</string>
+							<key>OutputName</key>
+							<string>Comparison text</string>
+						</dict>
+						<key>WFSerializationType</key>
+						<string>WFTextTokenAttachment</string>
+					</dict>
+				</dict>
+				<key>WFCondition</key>
+				<integer>5</integer>
+				<key>WFControlFlowMode</key>
+				<integer>0</integer>
+				<key>GroupingIdentifier</key>
+				<string>F5593908-B848-4885-953C-7E0832744EE1</string>
+				<key>WFConditionalActionString</key>
+				<string>0.4.0</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.choosefrommenu</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>UUID</key>
+				<string>1F79838C-78EA-4901-8197-AEC1DA7FDB4B</string>
+				<key>CustomOutputName</key>
+				<string>Result</string>
+				<key>WFControlFlowMode</key>
+				<integer>0</integer>
+				<key>GroupingIdentifier</key>
+				<string>A37C3383-2C73-4CFB-8BC4-ACD459A0591F</string>
+				<key>WFMenuPrompt</key>
+				<string>顺手有新版。请在 Safari 下载，并由你确认替换旧捷径。</string>
+				<key>WFMenuItems</key>
+				<array>
+					<string>打开更新页面</string>
+					<string>稍后更新</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.choosefrommenu</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>UUID</key>
+				<string>B241049A-F63B-41C3-8F17-C7F11660E49A</string>
+				<key>CustomOutputName</key>
+				<string>Result</string>
+				<key>WFControlFlowMode</key>
+				<integer>1</integer>
+				<key>GroupingIdentifier</key>
+				<string>A37C3383-2C73-4CFB-8BC4-ACD459A0591F</string>
+				<key>WFMenuItemTitle</key>
+				<string>打开更新页面</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.url</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>UUID</key>
+				<string>C1DBDC4F-DAC0-4F56-A818-71021F099E8E</string>
+				<key>CustomOutputName</key>
+				<string>Update page</string>
+				<key>WFURLActionURL</key>
+				<string>https://shunshou.miaowu.org/#update</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.openurl</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>UUID</key>
+				<string>335B92C2-2A57-4054-B412-CC5427421CA8</string>
+				<key>CustomOutputName</key>
+				<string>Result</string>
+				<key>WFInput</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>Type</key>
+						<string>ActionOutput</string>
+						<key>OutputUUID</key>
+						<string>C1DBDC4F-DAC0-4F56-A818-71021F099E8E</string>
+						<key>OutputName</key>
+						<string>Update page</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenAttachment</string>
+				</dict>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.choosefrommenu</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>UUID</key>
+				<string>1DC2C288-012F-465C-A6B2-57DAB6B5C715</string>
+				<key>CustomOutputName</key>
+				<string>Result</string>
+				<key>WFControlFlowMode</key>
+				<integer>1</integer>
+				<key>GroupingIdentifier</key>
+				<string>A37C3383-2C73-4CFB-8BC4-ACD459A0591F</string>
+				<key>WFMenuItemTitle</key>
+				<string>稍后更新</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.choosefrommenu</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>UUID</key>
+				<string>7215C952-54AB-4A9A-8A09-F7CAD2B620F3</string>
+				<key>CustomOutputName</key>
+				<string>Result</string>
+				<key>WFControlFlowMode</key>
+				<integer>2</integer>
+				<key>GroupingIdentifier</key>
+				<string>A37C3383-2C73-4CFB-8BC4-ACD459A0591F</string>
 			</dict>
 		</dict>
 		<dict>
@@ -642,7 +876,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>0D31D7C0-F6B6-465D-A52D-139D1B549480</string>
+				<string>F7F2800C-3D58-438D-972A-69A0E04C14EF</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 			</dict>
@@ -653,13 +887,56 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>493D9F50-17CD-4BD9-BCBF-8AD459D87B9E</string>
+				<string>2CE46937-5842-4A8B-AE9A-EE23337D3436</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFControlFlowMode</key>
 				<integer>2</integer>
 				<key>GroupingIdentifier</key>
-				<string>555BD0D7-8D25-4046-A26B-25B3A7247BD5</string>
+				<string>F5593908-B848-4885-953C-7E0832744EE1</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.alert</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>UUID</key>
+				<string>1A56FFAB-F5CA-45A6-9972-54A5346D9096</string>
+				<key>CustomOutputName</key>
+				<string>Result</string>
+				<key>WFAlertActionTitle</key>
+				<string>顺手已是最新版</string>
+				<key>WFAlertActionMessage</key>
+				<string>当前版本 0.4.0，服务连接正常。复制 Instagram 链接后运行，或从分享菜单选择「顺手」。</string>
+				<key>WFAlertActionCancelButtonShown</key>
+				<false/>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.exit</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>UUID</key>
+				<string>408D9C25-A2C4-4619-8275-89FFC62E64C0</string>
+				<key>CustomOutputName</key>
+				<string>Result</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.conditional</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>UUID</key>
+				<string>397F7878-84AE-413E-AB8C-CB35D65D3B87</string>
+				<key>CustomOutputName</key>
+				<string>Result</string>
+				<key>WFControlFlowMode</key>
+				<integer>2</integer>
+				<key>GroupingIdentifier</key>
+				<string>C153446E-51B3-407E-A24C-20745030B516</string>
 			</dict>
 		</dict>
 		<dict>
@@ -668,7 +945,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>DEB8D4AD-245B-4CC1-8DC5-BC2383056AB8</string>
+				<string>CBB04E1B-0E2F-4644-B41B-FCB1B235D3EB</string>
 				<key>CustomOutputName</key>
 				<string>message</string>
 				<key>WFInput</key>
@@ -678,7 +955,7 @@
 						<key>Type</key>
 						<string>ActionOutput</string>
 						<key>OutputUUID</key>
-						<string>5DA04A0E-DCEE-4064-A47A-1893C3B529A6</string>
+						<string>EEB0FE4E-BBF8-4A14-A8BA-42DFEE6800F0</string>
 						<key>OutputName</key>
 						<string>Response</string>
 					</dict>
@@ -697,7 +974,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>EAD20121-12E4-4F17-A9F4-C96546D0AC4C</string>
+				<string>4F1806FF-2768-4F0B-8671-8AE89C6744C7</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFAlertActionTitle</key>
@@ -716,7 +993,7 @@
 								<key>Type</key>
 								<string>ActionOutput</string>
 								<key>OutputUUID</key>
-								<string>DEB8D4AD-245B-4CC1-8DC5-BC2383056AB8</string>
+								<string>CBB04E1B-0E2F-4644-B41B-FCB1B235D3EB</string>
 								<key>OutputName</key>
 								<string>message</string>
 							</dict>
@@ -735,7 +1012,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>5A004207-6898-4838-9094-FCDCBDF225B9</string>
+				<string>9E11A444-486E-475E-8F65-FE18F9D5E8E0</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 			</dict>
@@ -746,13 +1023,13 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>33519DB3-4192-4ECB-87F4-D94236CAE310</string>
+				<string>E6BB902D-7A10-434C-B3FE-13601E30AA6D</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFControlFlowMode</key>
 				<integer>2</integer>
 				<key>GroupingIdentifier</key>
-				<string>DF5A1332-0170-40B3-AADA-E293D7C89A1B</string>
+				<string>E3B82F32-2853-4F2A-A718-F805C3C5AAA4</string>
 			</dict>
 		</dict>
 		<dict>
@@ -761,7 +1038,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>6C0D61FF-4460-403F-92C8-0791CF2EC78E</string>
+				<string>799DC9F7-A4CC-441F-8831-D08FC6E46B2E</string>
 				<key>CustomOutputName</key>
 				<string>Instagram URL</string>
 				<key>WFInput</key>
@@ -771,7 +1048,7 @@
 						<key>Type</key>
 						<string>ActionOutput</string>
 						<key>OutputUUID</key>
-						<string>F00FC0DE-7FFC-4820-9390-2A142EF37B40</string>
+						<string>7E71B95D-6F56-41ED-ACB7-31EC2E08DCE0</string>
 						<key>OutputName</key>
 						<string>Instagram links</string>
 					</dict>
@@ -788,7 +1065,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>84714DB7-44DE-4E24-95B6-3D8237E74550</string>
+				<string>922A1191-3175-42BF-BD7D-7B84EFE14CA6</string>
 				<key>CustomOutputName</key>
 				<string>Resolve response</string>
 				<key>WFURL</key>
@@ -827,7 +1104,7 @@
 												<key>Type</key>
 												<string>ActionOutput</string>
 												<key>OutputUUID</key>
-												<string>FFDAE55C-A93A-4AC9-A79C-0E5000F7CC67</string>
+												<string>5AD7BC17-FB01-466C-8F30-245C6D730AA3</string>
 												<key>OutputName</key>
 												<string>Access code</string>
 											</dict>
@@ -900,7 +1177,7 @@
 												<key>Type</key>
 												<string>ActionOutput</string>
 												<key>OutputUUID</key>
-												<string>6C0D61FF-4460-403F-92C8-0791CF2EC78E</string>
+												<string>799DC9F7-A4CC-441F-8831-D08FC6E46B2E</string>
 												<key>OutputName</key>
 												<string>Instagram URL</string>
 											</dict>
@@ -949,7 +1226,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>F7EBCCC4-0B73-48BC-BEB9-C02D00EF771D</string>
+				<string>BE532017-C743-47E6-89DF-2F23C28D31F9</string>
 				<key>CustomOutputName</key>
 				<string>Response</string>
 				<key>WFInput</key>
@@ -959,7 +1236,7 @@
 						<key>Type</key>
 						<string>ActionOutput</string>
 						<key>OutputUUID</key>
-						<string>84714DB7-44DE-4E24-95B6-3D8237E74550</string>
+						<string>922A1191-3175-42BF-BD7D-7B84EFE14CA6</string>
 						<key>OutputName</key>
 						<string>Resolve response</string>
 					</dict>
@@ -974,7 +1251,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>05CC514A-38AC-4898-8795-71C50248C094</string>
+				<string>ADABE8A2-5CF3-404F-BA7A-6E1CDD0B78DB</string>
 				<key>CustomOutputName</key>
 				<string>status</string>
 				<key>WFInput</key>
@@ -984,7 +1261,7 @@
 						<key>Type</key>
 						<string>ActionOutput</string>
 						<key>OutputUUID</key>
-						<string>F7EBCCC4-0B73-48BC-BEB9-C02D00EF771D</string>
+						<string>BE532017-C743-47E6-89DF-2F23C28D31F9</string>
 						<key>OutputName</key>
 						<string>Response</string>
 					</dict>
@@ -1003,7 +1280,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>F59C167E-C61E-42F4-9E0B-5344F413C985</string>
+				<string>90778651-7EFC-48EA-9EB9-21415A68A739</string>
 				<key>CustomOutputName</key>
 				<string>Comparison text</string>
 				<key>WFTextActionText</key>
@@ -1019,7 +1296,7 @@
 								<key>Type</key>
 								<string>ActionOutput</string>
 								<key>OutputUUID</key>
-								<string>05CC514A-38AC-4898-8795-71C50248C094</string>
+								<string>ADABE8A2-5CF3-404F-BA7A-6E1CDD0B78DB</string>
 								<key>OutputName</key>
 								<string>status</string>
 							</dict>
@@ -1036,7 +1313,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>44D902DC-D152-4C29-A09A-172327639AFE</string>
+				<string>5490DC76-BBC4-4800-B612-183F22BE708B</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFInput</key>
@@ -1050,7 +1327,7 @@
 							<key>Type</key>
 							<string>ActionOutput</string>
 							<key>OutputUUID</key>
-							<string>F59C167E-C61E-42F4-9E0B-5344F413C985</string>
+							<string>90778651-7EFC-48EA-9EB9-21415A68A739</string>
 							<key>OutputName</key>
 							<string>Comparison text</string>
 						</dict>
@@ -1063,7 +1340,7 @@
 				<key>WFControlFlowMode</key>
 				<integer>0</integer>
 				<key>GroupingIdentifier</key>
-				<string>B53A7F08-B590-4CCB-9DE1-FE4914C00A70</string>
+				<string>22C913AF-763E-4233-ADC6-1FF72D5551DE</string>
 				<key>WFConditionalActionString</key>
 				<string>ok</string>
 			</dict>
@@ -1074,7 +1351,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>E4E30353-1916-423F-B975-1017C421D270</string>
+				<string>8713ED37-D039-4237-A202-87D85AD488E1</string>
 				<key>CustomOutputName</key>
 				<string>message</string>
 				<key>WFInput</key>
@@ -1084,7 +1361,7 @@
 						<key>Type</key>
 						<string>ActionOutput</string>
 						<key>OutputUUID</key>
-						<string>F7EBCCC4-0B73-48BC-BEB9-C02D00EF771D</string>
+						<string>BE532017-C743-47E6-89DF-2F23C28D31F9</string>
 						<key>OutputName</key>
 						<string>Response</string>
 					</dict>
@@ -1103,7 +1380,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>22F612F7-0818-4DD4-815C-248DD7997046</string>
+				<string>55B11A7B-7F5E-4EAD-A1A8-09BC75D3E12B</string>
 				<key>CustomOutputName</key>
 				<string>code</string>
 				<key>WFInput</key>
@@ -1113,7 +1390,7 @@
 						<key>Type</key>
 						<string>ActionOutput</string>
 						<key>OutputUUID</key>
-						<string>F7EBCCC4-0B73-48BC-BEB9-C02D00EF771D</string>
+						<string>BE532017-C743-47E6-89DF-2F23C28D31F9</string>
 						<key>OutputName</key>
 						<string>Response</string>
 					</dict>
@@ -1132,7 +1409,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>22A64408-56D1-48BC-BBB7-F30548A679F4</string>
+				<string>897C4ED6-9368-42FF-8BBC-3FD9F5FC5B40</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFAlertActionTitle</key>
@@ -1152,7 +1429,7 @@
 								<key>Type</key>
 								<string>ActionOutput</string>
 								<key>OutputUUID</key>
-								<string>22F612F7-0818-4DD4-815C-248DD7997046</string>
+								<string>55B11A7B-7F5E-4EAD-A1A8-09BC75D3E12B</string>
 								<key>OutputName</key>
 								<string>code</string>
 							</dict>
@@ -1161,7 +1438,7 @@
 								<key>Type</key>
 								<string>ActionOutput</string>
 								<key>OutputUUID</key>
-								<string>E4E30353-1916-423F-B975-1017C421D270</string>
+								<string>8713ED37-D039-4237-A202-87D85AD488E1</string>
 								<key>OutputName</key>
 								<string>message</string>
 							</dict>
@@ -1180,7 +1457,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>02B899C3-6028-4CBD-9421-051EDD9A5A14</string>
+				<string>46BC463A-8FBC-4C0E-8E50-3D7369C9616A</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 			</dict>
@@ -1191,13 +1468,13 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>2FB7E41D-BCFE-45B5-943B-C7F019F16CFF</string>
+				<string>734758DB-4124-4675-B44B-7EACBE9B37F6</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFControlFlowMode</key>
 				<integer>2</integer>
 				<key>GroupingIdentifier</key>
-				<string>B53A7F08-B590-4CCB-9DE1-FE4914C00A70</string>
+				<string>22C913AF-763E-4233-ADC6-1FF72D5551DE</string>
 			</dict>
 		</dict>
 		<dict>
@@ -1206,7 +1483,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>AD8F8965-4F71-4A42-8E3A-2984BFDE57A4</string>
+				<string>12A99690-FE3F-4302-B78C-7CDA1C57C540</string>
 				<key>CustomOutputName</key>
 				<string>warnings</string>
 				<key>WFInput</key>
@@ -1216,7 +1493,7 @@
 						<key>Type</key>
 						<string>ActionOutput</string>
 						<key>OutputUUID</key>
-						<string>F7EBCCC4-0B73-48BC-BEB9-C02D00EF771D</string>
+						<string>BE532017-C743-47E6-89DF-2F23C28D31F9</string>
 						<key>OutputName</key>
 						<string>Response</string>
 					</dict>
@@ -1235,7 +1512,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>1A874179-27E8-46EB-BED8-3EC6CA5E3F51</string>
+				<string>680F29A8-0359-41FA-AF83-F1337B293FE9</string>
 				<key>CustomOutputName</key>
 				<string>Warnings</string>
 				<key>WFTextActionText</key>
@@ -1251,7 +1528,7 @@
 								<key>Type</key>
 								<string>ActionOutput</string>
 								<key>OutputUUID</key>
-								<string>AD8F8965-4F71-4A42-8E3A-2984BFDE57A4</string>
+								<string>12A99690-FE3F-4302-B78C-7CDA1C57C540</string>
 								<key>OutputName</key>
 								<string>warnings</string>
 							</dict>
@@ -1268,7 +1545,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>0B636E76-E2AC-4839-B67D-0CC8E6092B05</string>
+				<string>6B2C73CE-3FA3-4572-BF2A-EA397BE24644</string>
 				<key>CustomOutputName</key>
 				<string>Comparison text</string>
 				<key>WFTextActionText</key>
@@ -1284,7 +1561,7 @@
 								<key>Type</key>
 								<string>ActionOutput</string>
 								<key>OutputUUID</key>
-								<string>1A874179-27E8-46EB-BED8-3EC6CA5E3F51</string>
+								<string>680F29A8-0359-41FA-AF83-F1337B293FE9</string>
 								<key>OutputName</key>
 								<string>Warnings</string>
 							</dict>
@@ -1301,7 +1578,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>AFFD8F00-1275-49B8-956D-17891D133A82</string>
+				<string>606B499D-9B41-4FE3-88A7-AE88B0CF77D2</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFInput</key>
@@ -1315,7 +1592,7 @@
 							<key>Type</key>
 							<string>ActionOutput</string>
 							<key>OutputUUID</key>
-							<string>0B636E76-E2AC-4839-B67D-0CC8E6092B05</string>
+							<string>6B2C73CE-3FA3-4572-BF2A-EA397BE24644</string>
 							<key>OutputName</key>
 							<string>Comparison text</string>
 						</dict>
@@ -1328,7 +1605,7 @@
 				<key>WFControlFlowMode</key>
 				<integer>0</integer>
 				<key>GroupingIdentifier</key>
-				<string>21627113-F936-4CD2-968A-38509B351A5E</string>
+				<string>9FA80671-7CED-424F-AF93-BE0E70FCA04C</string>
 				<key>WFConditionalActionString</key>
 				<string>NO_AUDIO</string>
 			</dict>
@@ -1339,7 +1616,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>D78CC3CB-0622-4CBA-A1D1-E3EBD9FA24C0</string>
+				<string>0CB04EB6-94A6-4380-92D0-A753353CA14D</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFAlertActionTitle</key>
@@ -1356,13 +1633,13 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>B390D846-4E34-4D68-AA19-1E6D1BC7A490</string>
+				<string>E1F2527A-7900-4716-A134-E7ADB3807CF6</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFControlFlowMode</key>
 				<integer>2</integer>
 				<key>GroupingIdentifier</key>
-				<string>21627113-F936-4CD2-968A-38509B351A5E</string>
+				<string>9FA80671-7CED-424F-AF93-BE0E70FCA04C</string>
 			</dict>
 		</dict>
 		<dict>
@@ -1371,7 +1648,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>9A5DB1A3-04EA-4283-BBCA-F8570E884831</string>
+				<string>50A89E4F-0C72-47AF-AE47-F82074BC209F</string>
 				<key>CustomOutputName</key>
 				<string>items</string>
 				<key>WFInput</key>
@@ -1381,7 +1658,7 @@
 						<key>Type</key>
 						<string>ActionOutput</string>
 						<key>OutputUUID</key>
-						<string>F7EBCCC4-0B73-48BC-BEB9-C02D00EF771D</string>
+						<string>BE532017-C743-47E6-89DF-2F23C28D31F9</string>
 						<key>OutputName</key>
 						<string>Response</string>
 					</dict>
@@ -1400,7 +1677,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>88D33FF9-B8DB-4928-B038-AD6CE078F5F9</string>
+				<string>A6F0F045-9A48-46CE-8F69-7DBFC4DE98B4</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFInput</key>
@@ -1414,7 +1691,7 @@
 							<key>Type</key>
 							<string>ActionOutput</string>
 							<key>OutputUUID</key>
-							<string>9A5DB1A3-04EA-4283-BBCA-F8570E884831</string>
+							<string>50A89E4F-0C72-47AF-AE47-F82074BC209F</string>
 							<key>OutputName</key>
 							<string>items</string>
 						</dict>
@@ -1427,7 +1704,7 @@
 				<key>WFControlFlowMode</key>
 				<integer>0</integer>
 				<key>GroupingIdentifier</key>
-				<string>B1DBEF6D-FC00-4CD0-AD00-C2EAEE6ADBFA</string>
+				<string>1B1DB16C-4EF6-44B1-8437-53FD70A0E888</string>
 			</dict>
 		</dict>
 		<dict>
@@ -1436,7 +1713,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>A647D05B-71AD-4045-8F3E-6A6566C6AE83</string>
+				<string>680D83BE-9648-4ABB-B819-F20DBFDE198C</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFAlertActionTitle</key>
@@ -1453,7 +1730,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>E22C2778-C255-4567-A631-D4FDE70B82C5</string>
+				<string>83CBF86C-A76A-4AB4-901B-BABA24C833FA</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 			</dict>
@@ -1464,13 +1741,13 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>9CE56660-13AC-477A-B362-3F909929E787</string>
+				<string>78911836-D96F-4261-80AD-ED9D2ABC3B1A</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFControlFlowMode</key>
 				<integer>2</integer>
 				<key>GroupingIdentifier</key>
-				<string>B1DBEF6D-FC00-4CD0-AD00-C2EAEE6ADBFA</string>
+				<string>1B1DB16C-4EF6-44B1-8437-53FD70A0E888</string>
 			</dict>
 		</dict>
 		<dict>
@@ -1479,13 +1756,13 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>E6380B95-B169-4ECC-929C-47EA9AA7FE32</string>
+				<string>9E33F065-A041-48A9-9341-863DFD09F816</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFControlFlowMode</key>
 				<integer>0</integer>
 				<key>GroupingIdentifier</key>
-				<string>D9E51978-1BD7-4449-AB18-5F47DBCD8511</string>
+				<string>83BA8207-CF55-4CF2-A2B8-1CC86A71CF79</string>
 				<key>WFInput</key>
 				<dict>
 					<key>Value</key>
@@ -1493,7 +1770,7 @@
 						<key>Type</key>
 						<string>ActionOutput</string>
 						<key>OutputUUID</key>
-						<string>9A5DB1A3-04EA-4283-BBCA-F8570E884831</string>
+						<string>50A89E4F-0C72-47AF-AE47-F82074BC209F</string>
 						<key>OutputName</key>
 						<string>items</string>
 					</dict>
@@ -1508,7 +1785,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>B0A3A4D4-AA08-45B6-A045-1678520CB3ED</string>
+				<string>AB63D4B8-6BA8-44DB-BC40-5FEBA29C8191</string>
 				<key>CustomOutputName</key>
 				<string>url</string>
 				<key>WFInput</key>
@@ -1535,7 +1812,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>DFC9A190-C5A9-4A1E-806D-BC4A23A81D69</string>
+				<string>4BC12229-CE26-4B5B-A2BB-B7BCA9C99898</string>
 				<key>CustomOutputName</key>
 				<string>filename</string>
 				<key>WFInput</key>
@@ -1562,7 +1839,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>087311D6-B6F1-4663-B7B6-0EF5070A9B0D</string>
+				<string>C1E670E5-0DEC-4860-9679-6831A3ED0261</string>
 				<key>CustomOutputName</key>
 				<string>downloadHeaders.User-Agent</string>
 				<key>WFInput</key>
@@ -1589,7 +1866,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>7D5B6A3C-4812-4B6B-9497-6EF51E3389A3</string>
+				<string>A4E1A887-D084-4266-83AD-9BEC45301D6A</string>
 				<key>CustomOutputName</key>
 				<string>Video file</string>
 				<key>WFURL</key>
@@ -1605,7 +1882,7 @@
 								<key>Type</key>
 								<string>ActionOutput</string>
 								<key>OutputUUID</key>
-								<string>B0A3A4D4-AA08-45B6-A045-1678520CB3ED</string>
+								<string>AB63D4B8-6BA8-44DB-BC40-5FEBA29C8191</string>
 								<key>OutputName</key>
 								<string>url</string>
 							</dict>
@@ -1648,7 +1925,7 @@
 												<key>Type</key>
 												<string>ActionOutput</string>
 												<key>OutputUUID</key>
-												<string>087311D6-B6F1-4663-B7B6-0EF5070A9B0D</string>
+												<string>C1E670E5-0DEC-4860-9679-6831A3ED0261</string>
 												<key>OutputName</key>
 												<string>downloadHeaders.User-Agent</string>
 											</dict>
@@ -1697,7 +1974,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>B0B2B4B7-DDB4-4FBA-AD52-19B8816EA56B</string>
+				<string>4D64D7BA-7A98-4C20-9CC6-8E4996F9860F</string>
 				<key>CustomOutputName</key>
 				<string>Named video</string>
 				<key>WFInput</key>
@@ -1707,7 +1984,7 @@
 						<key>Type</key>
 						<string>ActionOutput</string>
 						<key>OutputUUID</key>
-						<string>7D5B6A3C-4812-4B6B-9497-6EF51E3389A3</string>
+						<string>A4E1A887-D084-4266-83AD-9BEC45301D6A</string>
 						<key>OutputName</key>
 						<string>Video file</string>
 					</dict>
@@ -1727,7 +2004,7 @@
 								<key>Type</key>
 								<string>ActionOutput</string>
 								<key>OutputUUID</key>
-								<string>DFC9A190-C5A9-4A1E-806D-BC4A23A81D69</string>
+								<string>4BC12229-CE26-4B5B-A2BB-B7BCA9C99898</string>
 								<key>OutputName</key>
 								<string>filename</string>
 							</dict>
@@ -1744,13 +2021,13 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>53C66C35-EEED-4DF7-805E-934D9CC556D6</string>
+				<string>014AC6A7-9D53-4356-9F5A-90A4E1D50DAC</string>
 				<key>CustomOutputName</key>
 				<string>Downloaded videos</string>
 				<key>WFControlFlowMode</key>
 				<integer>2</integer>
 				<key>GroupingIdentifier</key>
-				<string>D9E51978-1BD7-4449-AB18-5F47DBCD8511</string>
+				<string>83BA8207-CF55-4CF2-A2B8-1CC86A71CF79</string>
 			</dict>
 		</dict>
 		<dict>
@@ -1759,13 +2036,13 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>7A9AF609-E1A0-49E7-B04A-0506CF13FB20</string>
+				<string>269A9E2F-1E01-483A-A167-818C86E4B4BE</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFControlFlowMode</key>
 				<integer>0</integer>
 				<key>GroupingIdentifier</key>
-				<string>742EA76D-B1DA-4FF9-9563-48B3CB3137E0</string>
+				<string>4EAE60D0-5911-40A6-99C0-4666FEDB0A96</string>
 				<key>WFMenuPrompt</key>
 				<string>选择发送方式。复制会覆盖剪贴板，5 分钟后过期；进入微信后仍需手动粘贴发送。</string>
 				<key>WFMenuItems</key>
@@ -1781,13 +2058,13 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>99E0CE8C-A2B1-487E-8DC7-4027D8AEF132</string>
+				<string>E023B0AD-EE97-4555-BAF4-857A3D323DC0</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFControlFlowMode</key>
 				<integer>1</integer>
 				<key>GroupingIdentifier</key>
-				<string>742EA76D-B1DA-4FF9-9563-48B3CB3137E0</string>
+				<string>4EAE60D0-5911-40A6-99C0-4666FEDB0A96</string>
 				<key>WFMenuItemTitle</key>
 				<string>复制首个视频并打开微信</string>
 			</dict>
@@ -1798,7 +2075,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>493C8E61-68CB-48DC-9E15-405FEF7E919A</string>
+				<string>F2F85AC9-26D3-4C49-AB25-C7209929BCA3</string>
 				<key>CustomOutputName</key>
 				<string>Clipboard video</string>
 				<key>WFInput</key>
@@ -1808,7 +2085,7 @@
 						<key>Type</key>
 						<string>ActionOutput</string>
 						<key>OutputUUID</key>
-						<string>53C66C35-EEED-4DF7-805E-934D9CC556D6</string>
+						<string>014AC6A7-9D53-4356-9F5A-90A4E1D50DAC</string>
 						<key>OutputName</key>
 						<string>Downloaded videos</string>
 					</dict>
@@ -1825,7 +2102,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>0F322C7D-04CF-4B48-B7A1-DAC8C1697FFF</string>
+				<string>3649BF2F-5954-4F9D-9748-AB65C7181038</string>
 				<key>CustomOutputName</key>
 				<string>Now</string>
 				<key>WFDateActionMode</key>
@@ -1838,7 +2115,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>AFF77BB3-1252-4A7E-ABBA-99F3E75DF578</string>
+				<string>67191336-E9E3-48A8-B7A7-7D11208F821F</string>
 				<key>CustomOutputName</key>
 				<string>Clipboard expiry</string>
 				<key>WFDate</key>
@@ -1854,7 +2131,7 @@
 								<key>Type</key>
 								<string>ActionOutput</string>
 								<key>OutputUUID</key>
-								<string>0F322C7D-04CF-4B48-B7A1-DAC8C1697FFF</string>
+								<string>3649BF2F-5954-4F9D-9748-AB65C7181038</string>
 								<key>OutputName</key>
 								<string>Now</string>
 							</dict>
@@ -1885,7 +2162,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>9BB52171-93BA-4736-B748-7303AE2FCC03</string>
+				<string>FD7781BF-0BBD-4D0C-804A-945CFE6F19C4</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFInput</key>
@@ -1895,7 +2172,7 @@
 						<key>Type</key>
 						<string>ActionOutput</string>
 						<key>OutputUUID</key>
-						<string>493C8E61-68CB-48DC-9E15-405FEF7E919A</string>
+						<string>F2F85AC9-26D3-4C49-AB25-C7209929BCA3</string>
 						<key>OutputName</key>
 						<string>Clipboard video</string>
 					</dict>
@@ -1917,7 +2194,7 @@
 								<key>Type</key>
 								<string>ActionOutput</string>
 								<key>OutputUUID</key>
-								<string>AFF77BB3-1252-4A7E-ABBA-99F3E75DF578</string>
+								<string>67191336-E9E3-48A8-B7A7-7D11208F821F</string>
 								<key>OutputName</key>
 								<string>Clipboard expiry</string>
 							</dict>
@@ -1934,7 +2211,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>D1570544-27D5-4AA2-84C0-958D32B3503E</string>
+				<string>961BCB9C-FCE0-4963-885E-71B0CFA1B1FA</string>
 				<key>CustomOutputName</key>
 				<string>WeChat</string>
 				<key>WFURLActionURL</key>
@@ -1947,7 +2224,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>C36683C6-78ED-4B4A-9D86-13233D8894E1</string>
+				<string>82C02876-ED75-4476-9AE7-ACA0A4B969C2</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFInput</key>
@@ -1957,7 +2234,7 @@
 						<key>Type</key>
 						<string>ActionOutput</string>
 						<key>OutputUUID</key>
-						<string>D1570544-27D5-4AA2-84C0-958D32B3503E</string>
+						<string>961BCB9C-FCE0-4963-885E-71B0CFA1B1FA</string>
 						<key>OutputName</key>
 						<string>WeChat</string>
 					</dict>
@@ -1972,13 +2249,13 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>DD155636-A717-40DA-92AA-6A98767E5816</string>
+				<string>4938951C-056A-4F24-BB96-CCAF5ECA3A54</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFControlFlowMode</key>
 				<integer>1</integer>
 				<key>GroupingIdentifier</key>
-				<string>742EA76D-B1DA-4FF9-9563-48B3CB3137E0</string>
+				<string>4EAE60D0-5911-40A6-99C0-4666FEDB0A96</string>
 				<key>WFMenuItemTitle</key>
 				<string>系统分享全部视频</string>
 			</dict>
@@ -1989,7 +2266,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>CB9759BB-538F-4DD8-B82E-58C34139BE0A</string>
+				<string>010CF2DB-3164-4485-92D9-BF4F2F6B5381</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFInput</key>
@@ -1999,7 +2276,7 @@
 						<key>Type</key>
 						<string>ActionOutput</string>
 						<key>OutputUUID</key>
-						<string>53C66C35-EEED-4DF7-805E-934D9CC556D6</string>
+						<string>014AC6A7-9D53-4356-9F5A-90A4E1D50DAC</string>
 						<key>OutputName</key>
 						<string>Downloaded videos</string>
 					</dict>
@@ -2014,13 +2291,13 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>B03F0354-E7F6-4400-87A7-F51B2A707FAD</string>
+				<string>63FDD439-8E64-4A00-ABD8-79C79CCE7310</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFControlFlowMode</key>
 				<integer>2</integer>
 				<key>GroupingIdentifier</key>
-				<string>742EA76D-B1DA-4FF9-9563-48B3CB3137E0</string>
+				<string>4EAE60D0-5911-40A6-99C0-4666FEDB0A96</string>
 			</dict>
 		</dict>
 	</array>

@@ -132,6 +132,11 @@ async def homepage():
     return FileResponse(public_dir / "index.html", media_type="text/html")
 
 
+@app.get("/release.json", include_in_schema=False)
+async def shortcut_release():
+    return FileResponse(public_dir / "release.json", media_type="application/json")
+
+
 @app.get("/shunshou.shortcut", include_in_schema=False)
 @app.get("/shunshou-check.shortcut", include_in_schema=False)
 async def shortcut_download(request: Request):

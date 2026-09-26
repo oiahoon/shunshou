@@ -254,6 +254,16 @@ def test_public_homepage_and_assets(client):
     assert client.get("/api/health").status_code == 401
 
 
+def test_public_release_manifest(client):
+    client.headers.pop("Authorization")
+    r = client.get("/release.json")
+    assert r.status_code == 200
+    assert r.headers["content-type"].startswith("application/json")
+    assert r.headers["cache-control"] == "private, no-store"
+    assert r.json() == {"version": "0.4.0", "releasedAt": "2026-09-26",
+                        "installPage": "https://shunshou.miaowu.org/#update"}
+
+
 def test_signed_shortcuts_are_public_not_secrets(client):
     client.headers.pop("Authorization")
     for path in ("/shunshou.shortcut", "/shunshou-check.shortcut"):
