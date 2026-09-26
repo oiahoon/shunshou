@@ -5,6 +5,7 @@
 - 从本机原版 Business Trip 的 31 个动作检查出个人 iCloud 文件引用、直接拼接 CSV 和两次取时间等问题。优化版是 28 个动作，使用每位使用者自己的 iCloud Drive／Shortcuts／BusinessTripExpenses.csv、单次取时间、金额大于零校验、CSV 引号转义、创建或追加分支。旧版 Documents／BusinessExpenses.csv 不自动迁移。
 - 通过 Apple `shortcuts sign --mode anyone` 生成无账号、无访问码的签名文件；发布副本与签名文件 SHA-256 一致。原生 macOS 捷径编辑器确认导入问题、金额数字比较、默认 Shortcuts 目录、CSV 文件名、首次创建和追加动作均正确呈现。签名与编辑器展示不证明 iPhone 写入结果。
 - 本地自动化：15 项捷径结构测试、48 项 FastAPI 测试通过。Playwright Chromium 在 320、390、768、1440 px 验证首页和详情页无横向溢出、安装锚点和实际下载文件名；三个公开下载路径均在本地返回 200。键盘首个焦点为“跳转到正文”，减少动态效果时滚动为 `auto`。移动和桌面完整截图经视觉检查，并修复了长文件名在步骤列表中的布局。
+- Git 应用提交 `7fb6c3ec9bd07ab3ba6cff6df9c43dd1dbe01020` 自动部署为 `dpl_3rQDLx3TEP1VR2QNSFWU4bciNhiz`。Vercel 构建日志确认来源提交 `7fb6c3e`，状态 READY，别名包含 `shunshou.miaowu.org`。`node ops/accept-production.mjs` 的 20 项线上检查全部通过；报告在 `ops/production-acceptance.json`。生产页面在 390、1440 px 的 Chromium 渲染无横向溢出或页面脚本错误，下载入口存在。
 - 待实机验收：iPhone 导入、iCloud Drive 权限、首次创建、重复追加、Numbers 对含逗号及引号内容的解析、旧记录手动迁移。尚未声称这些环节已经完成。
 
 ## Shortcut 0.4.0 Install And Update (2026-09-26)

@@ -1,7 +1,7 @@
 {
-  "checkedAt": "2026-09-26T07:59:22.529Z",
+  "checkedAt": "2026-09-26T08:26:12.717Z",
   "base": "https://shunshou.miaowu.org",
-  "commit": "d76c156e3b35f2dd644cab19916c954870299863",
+  "commit": "7fb6c3ec9bd07ab3ba6cff6df9c43dd1dbe01020",
   "passed": true,
   "results": [
     {
@@ -16,6 +16,11 @@
     },
     {
       "name": "Dianping page",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Business Trip page",
       "status": 200,
       "passed": true
     },
@@ -98,6 +103,12 @@
       "name": "signed shortcut dianping",
       "status": 200,
       "bytes": 25020,
+      "passed": true
+    },
+    {
+      "name": "signed shortcut business trip",
+      "status": 200,
+      "bytes": 25460,
       "passed": true
     }
   ],
