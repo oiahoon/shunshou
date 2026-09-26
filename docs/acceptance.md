@@ -129,3 +129,11 @@ See the 0.3 clipboard experiment section below for the latest delivery behavior.
 - First cloud deployment (`7ef1152`) served the homepage and installers, but both detail paths returned 500 because Vercel published the HTML as static output outside the FastAPI function bundle. Static rewrites in `d76c156` fixed both routes.
 - Production deployment `dpl_3bvrWH9DpASffzE9SGPhJZgxXv2C` reached READY with `shunshou.miaowu.org` attached; Vercel build logs confirmed source commit `d76c156`. `node ops/accept-production.mjs` passed all 18 live checks on 2026-09-26, including both detail pages, three byte-checked installers, API authorization and two baseline Reel resolutions. The sanitized machine-readable result is `ops/production-acceptance.json`.
 - Actual iPhone import, DeepSeek response quality, Instagram CDN access and WeChat delivery remain separate device gates.
+
+## Shortcut Detail Visual Guides (2026-09-26)
+
+- The three public detail pages now use separate visual treatments and vector hero artwork for video sharing, review writing, and trip expenses. The hub and shared controls use fixed SVG icons, avoiding platform-dependent emoji rendering.
+- Each page includes a three-step, annotated phone-style concept guide. The pages explicitly label these as illustrations rather than device screenshots; exact system wording varies by iOS version.
+- Local FastAPI tests: 48 passed. Shortcut structure tests: 15 passed. Asset and tutorial routes are covered by the public-page test.
+- Playwright Chromium checked homepage and all three detail pages at 390 px and 1440 px using local route fulfillment because loopback server binding was unavailable in the sandbox. All images loaded, no horizontal overflow was reported, and all detail pages retained their signed installer links.
+- The visual guide does not establish actual iPhone import, permission prompts, CDN download, DeepSeek response, iCloud write, or WeChat delivery.

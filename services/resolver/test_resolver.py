@@ -261,6 +261,12 @@ def test_public_homepage_and_assets(client):
     assert 'href="/shunshou.shortcut"' in insta.text
     assert 'href="/dianping.shortcut"' in dianping.text
     assert 'href="/business-trip.shortcut"' in trip.text
+    for page in (insta, dianping, trip):
+        assert 'id="tutorial"' in page.text
+        assert "操作示意" in page.text
+    for asset in ("art-insta.svg", "art-dianping.svg", "art-business-trip.svg",
+                  "icon-video.svg", "icon-write.svg", "icon-receipt.svg"):
+        assert client.get(f"/assets/{asset}").status_code == 200
     assert client.get("/shortcuts/unknown").status_code == 404
     assert client.get("/api/health").status_code == 401
 
