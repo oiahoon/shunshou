@@ -153,7 +153,9 @@ class WorkflowTests(unittest.TestCase):
         release = json.loads((root / "services/resolver/public/release.json").read_text())
         html = (root / "services/resolver/public/index.html").read_text()
         self.assertEqual(release["version"], VERSION)
-        self.assertIn(f"当前版本 <strong>{VERSION}</strong>", html)
+        detail = (root / "services/resolver/public/insta-share.html").read_text()
+        self.assertIn(f"当前版本 {VERSION}", html)
+        self.assertIn(f"版本 {VERSION}", detail)
         self.assertEqual(release["installPage"], BASE + "/#update")
         urls = [a["WFWorkflowActionParameters"]["WFURLActionURL"] for a in build()["WFWorkflowActions"]
                 if a["WFWorkflowActionIdentifier"].endswith(".url")]

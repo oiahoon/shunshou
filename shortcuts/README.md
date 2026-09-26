@@ -12,7 +12,7 @@ Production API: https://shunshou.miaowu.org/api/resolve
 
 ## Updating
 
-The download filename is always `顺手.shortcut`, with the version inside its comment rather than its name. The homepage has a dedicated [update guide](https://shunshou.miaowu.org/#update) and the current version. Keep the installed name `顺手`; when iOS offers replacement during import, choose Replace. If Safari adds a numeric suffix or your old copy has another name, matching/replacement may not be offered. In that case, keep the old shortcut until you have confirmed the new one works, then remove the old copy. Import UI behavior still needs iPhone validation. An import is not an in-place credential-preserving migration: keep your private access code available and enter it again if prompted.
+The download filename is always `顺手.shortcut`, with the version inside its comment rather than its name. The hub has an [update center](https://shunshou.miaowu.org/#update) and the [Shunshou detail guide](https://shunshou.miaowu.org/shortcuts/insta-share#update) with the current version. Keep the installed name `顺手`; when iOS offers replacement during import, choose Replace. If Safari adds a numeric suffix or your old copy has another name, matching/replacement may not be offered. In that case, keep the old shortcut until you have confirmed the new one works, then remove the old copy. Import UI behavior still needs iPhone validation. An import is not an in-place credential-preserving migration: keep your private access code available and enter it again if prompted.
 
 Starting with 0.4.0, running Shunshou with no Instagram link checks authenticated service health and the public `/release.json` version. When a newer version is advertised, the user can choose to open the fixed update page in Safari. Existing 0.3.x installations cannot run this new check; update to 0.4.0 from the homepage once. The version check is absent from video-sharing runs and sends no access code to the public manifest. If the manifest is temporarily unavailable, the connection check may fail; normal video sharing does not depend on it.
 
@@ -55,3 +55,7 @@ Signing uses Apple's system tool and sends only the token-free workflow definiti
 - Production auth: no token returns 401; valid token returns 200.
 - Both supplied Reels resolve with HTTP 200 from Vercel, and an independent client probed H.264 720 x 1280 plus AAC for both returned files on 2026-09-08. The second Reel's audio differs from the earlier local extraction; future results may depend on upstream response and region.
 - Full iPhone execution, iOS permissions and WeChat receipt still require device validation. A signed/importable package is not a claim of end-to-end phone success.
+
+## Other Shortcut
+
+The 大众点评快写 source, signed artifact and release instructions are in [dianping/README.md](dianping/README.md). The public guide is at `/shortcuts/dianping`.

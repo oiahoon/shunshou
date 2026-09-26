@@ -24,7 +24,18 @@ function check(name, run) {
 check('public homepage', () => {
   const r = request('/', { auth: false });
   const html = r.body.toString();
-  return { status: r.status, passed: r.status === 200 && html.includes('安装快捷指令') && html.includes('href="/shunshou.shortcut"') && !html.includes(token) };
+  return { status: r.status, passed: r.status === 200 && html.includes('顺手实验室') &&
+    html.includes('href="/shortcuts/insta-share"') && html.includes('href="/shortcuts/dianping"') &&
+    html.includes('id="update"') && !html.includes(token) };
+});
+for (const [name, path, installer] of [
+  ['Insta Share page', '/shortcuts/insta-share', '/shunshou.shortcut'],
+  ['Dianping page', '/shortcuts/dianping', '/dianping.shortcut'],
+]) check(name, () => {
+  const r = request(path, { auth: false });
+  const html = r.body.toString();
+  return { status: r.status, passed: r.status === 200 && html.includes(`href="${installer}"`) &&
+    html.includes('id="install"') && html.includes('id="update"') && !html.includes(token) };
 });
 check('public release manifest', () => {
   const r = request('/release.json', { auth: false });
@@ -62,6 +73,14 @@ for (const name of ['shunshou', 'shunshou-check']) check(`signed shortcut ${name
   const unsigned = readFileSync(new URL('../shortcuts/build/shunshou.unsigned.shortcut', import.meta.url), 'utf8');
   const hash = value => createHash('sha256').update(value).digest('hex');
   return { status: r.status, bytes: r.body.length, passed: r.status === 200 && hash(r.body) === hash(local) && unsigned.includes(base) && !unsigned.includes(token) };
+});
+check('signed shortcut dianping', () => {
+  const r = request('/dianping.shortcut', { auth: false });
+  const local = readFileSync(new URL('../shortcuts/dianping/大众点评快写-优化版.shortcut', import.meta.url));
+  const unsigned = readFileSync(new URL('../shortcuts/dianping/大众点评快写-优化版-未签名.shortcut', import.meta.url));
+  const hash = value => createHash('sha256').update(value).digest('hex');
+  return { status: r.status, bytes: r.body.length, passed: r.status === 200 && hash(r.body) === hash(local) &&
+    !unsigned.includes(Buffer.from(token)) };
 });
 const report = { checkedAt: new Date().toISOString(), base, commit: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
   passed: results.every(r => r.passed), results, deviceAcceptance: 'Pending actual iPhone installation, CDN download and WeChat playback' };

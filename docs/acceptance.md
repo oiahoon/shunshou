@@ -111,3 +111,11 @@ See the 0.3 clipboard experiment section below for the latest delivery behavior.
 - The generated Match Text action incorrectly used `WFInput`; its text parameter is named `text`. Corrected that binding while preserving the named share-input/clipboard fallback and all download/clipboard behavior.
 - Added regression coverage for the exact native parameter and named-variable binding; nine shortcut structure tests pass. The earlier tests validated references, not action-specific parameter names.
 - A no-network native test fixture was generated and signed, but importing it was blocked by approval policy. No native runtime or iPhone fix acceptance is claimed until the import is authorized or the user retests the new artifact.
+
+## Shortcut Hub Redesign (2026-09-26)
+
+- Replaced the single Shortcut homepage with a two-item collection and separate Insta Share and 大众点评快写 detail/install/update pages. The existing Shunshou installer, release manifest and `/#update` entry remain stable.
+- Moved the local 大众点评 source, build script, unsigned output and signed installer into `shortcuts/dianping/`, with a public signed copy at `/dianping.shortcut`. The workflow uses the user's own DeepSeek API Key and sends the submitted merchant information and experience to DeepSeek from the iPhone. It copies a draft; it does not publish the review.
+- Local checks: 48 resolver tests and 12 Shortcut tests passed. The new routes, assets and download links returned HTTP 200 in FastAPI tests. The signed 大众点评 public copy is byte-identical to the archived signed file.
+- Browser checks: the Codex in-app browser opened both detail pages at 390 px, downloaded both installers, and showed no horizontal overflow. The browser became unresponsive during repeated viewport changes, so Playwright Chromium checked all three pages at 320, 390, 768 and 1440 px with reduced motion, one H1, loaded imagery and no horizontal overflow. The desktop and mobile screenshots were reviewed against the generated visual concept; an initially visible skip link was fixed.
+- Cloud checks will be added after the production Git deployment. Actual iPhone import, DeepSeek response quality, Instagram CDN access and WeChat delivery remain separate device gates.

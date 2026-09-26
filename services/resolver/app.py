@@ -132,6 +132,14 @@ async def homepage():
     return FileResponse(public_dir / "index.html", media_type="text/html")
 
 
+@app.get("/shortcuts/{slug}", include_in_schema=False)
+async def shortcut_page(slug: str):
+    pages = {"insta-share": "insta-share.html", "dianping": "dianping.html"}
+    if slug not in pages:
+        return JSONResponse(status_code=404, content={"detail": "Not found"})
+    return FileResponse(public_dir / pages[slug], media_type="text/html")
+
+
 @app.get("/release.json", include_in_schema=False)
 async def shortcut_release():
     return FileResponse(public_dir / "release.json", media_type="application/json")
@@ -139,10 +147,12 @@ async def shortcut_release():
 
 @app.get("/shunshou.shortcut", include_in_schema=False)
 @app.get("/shunshou-check.shortcut", include_in_schema=False)
+@app.get("/dianping.shortcut", include_in_schema=False)
 async def shortcut_download(request: Request):
     # These two fixed routes also support local installation checks.
     name = request.url.path.rsplit("/", 1)[-1]
-    return FileResponse(public_dir / name, media_type="application/octet-stream", filename="顺手.shortcut")
+    filename = "大众点评快写.shortcut" if name == "dianping.shortcut" else "顺手.shortcut"
+    return FileResponse(public_dir / name, media_type="application/octet-stream", filename=filename)
 
 
 @app.post("/api/resolve")
