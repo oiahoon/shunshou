@@ -4,6 +4,10 @@
   "functions": {
     "app.py": { "maxDuration": 60 }
   },
+  "rewrites": [
+    { "source": "/shortcuts/insta-share", "destination": "/insta-share.html" },
+    { "source": "/shortcuts/dianping", "destination": "/dianping.html" }
+  ],
   "headers": [
     {
       "source": "/shunshou.shortcut",
@@ -18,6 +22,14 @@
       "headers": [
         { "key": "Content-Type", "value": "application/octet-stream" },
         { "key": "Content-Disposition", "value": "attachment; filename=Shunshou.shortcut; filename*=UTF-8''%E9%A1%BA%E6%89%8B.shortcut" },
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+      ]
+    },
+    {
+      "source": "/dianping.shortcut",
+      "headers": [
+        { "key": "Content-Type", "value": "application/octet-stream" },
+        { "key": "Content-Disposition", "value": "attachment; filename=Dianping.shortcut; filename*=UTF-8''%E5%A4%A7%E4%BC%97%E7%82%B9%E8%AF%84%E5%BF%AB%E5%86%99.shortcut" },
         { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
       ]
     }

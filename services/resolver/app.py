@@ -132,12 +132,14 @@ async def homepage():
     return FileResponse(public_dir / "index.html", media_type="text/html")
 
 
-@app.get("/shortcuts/{slug}", include_in_schema=False)
-async def shortcut_page(slug: str):
-    pages = {"insta-share": "insta-share.html", "dianping": "dianping.html"}
-    if slug not in pages:
-        return JSONResponse(status_code=404, content={"detail": "Not found"})
-    return FileResponse(public_dir / pages[slug], media_type="text/html")
+@app.get("/shortcuts/insta-share", include_in_schema=False)
+async def insta_share_page():
+    return FileResponse(public_dir / "insta-share.html", media_type="text/html")
+
+
+@app.get("/shortcuts/dianping", include_in_schema=False)
+async def dianping_page():
+    return FileResponse(public_dir / "dianping.html", media_type="text/html")
 
 
 @app.get("/release.json", include_in_schema=False)
