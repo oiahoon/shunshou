@@ -4,11 +4,11 @@ Production API: https://shunshou.miaowu.org/api/resolve
 
 ## Install on iPhone
 
-1. In Safari, download the single [Shunshou 0.3.2 shortcut](https://shunshou.miaowu.org/shunshou.shortcut).
+1. In Safari, download the single [Shunshou 0.3.3 shortcut](https://shunshou.miaowu.org/shunshou.shortcut).
 2. Open the downloaded `.shortcut` in Shortcuts. If Safari only downloads the file, open it from Files > Downloads.
 3. Add the shortcut and enter your private access code when prompted. The code is in the local, git-ignored `private-access-code.txt`; transfer it privately. Do not enter an Instagram password.
 4. Connection checking is built in: running without an Instagram link in the input/clipboard checks the service. Permit the request to `shunshou.miaowu.org` when iOS asks. With a valid link, it goes directly to resolution without a separate health request.
-5. From Instagram's system share sheet choose Shunshou, or copy a Reel link and run it. After downloading, choose the clipboard experiment or system sharing. Clipboard mode copies only the first downloaded video object, opens WeChat and requires you to select a chat, paste and send. It overwrites the clipboard, is local-only and expires after five minutes. WeChat video-message compatibility is not yet verified; use system sharing if pasting fails or produces an attachment. Multiple videos remain available via system sharing. No automatic sending or success detection is implemented.
+5. From Instagram's system share sheet choose Shunshou, or copy a Reel link and run it. After downloading, choose clipboard or system sharing. Clipboard mode copies only the first downloaded video object, opens WeChat and requires you to select a chat, paste and send. The menu explains that it overwrites the clipboard, which is local-only and expires after five minutes; there is no second explanation alert. Use system sharing if pasting fails or produces an attachment. Multiple videos remain available via system sharing. No automatic sending or success detection is implemented.
 
 ## Updating
 
@@ -37,6 +37,8 @@ cp shortcuts/build/shunshou.shortcut services/resolver/public/shunshou-check.sho
 Signing uses Apple's system tool and sends only the token-free workflow definition to Apple for validation. The signed binary, not the unsigned plist, is the installable artifact. Definitions include an import question pointing to the access-code text action.
 
 ## Validation Status
+
+- Version 0.3.3 aligns the homepage with the actual Instagram Share to > Shunshou > WeChat paste flow. The Shortcut keeps its existing download and clipboard actions but presents the overwrite/expiry notice in the choice menu instead of a second alert. The user reports generally successful real-world use of the preceding version, with occasional restricted videos; this is not a measured success rate or proof of every path on 0.3.3.
 
 - Version 0.3.2 retains the 0.3.1 input binding repair and adds an empty-access-code guard before clipboard/network access. Failure guidance no longer suggests that repeated retries will necessarily fix extraction. Snapinsta is not integrated; the production resolver remains yt-dlp without Instagram login credentials. The prior failed Reels remain known extraction limitations, not claimed fixes. Share-input priority and clipboard fallback have structural regression coverage; iPhone input-dialog and update-replacement acceptance remain pending.
 

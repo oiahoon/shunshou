@@ -75,7 +75,7 @@ class Workflow:
 
 def build():
     w = Workflow()
-    w.action("comment", WFCommentActionText="顺手 0.3.2：自动接收分享链接或读取剪贴板，补充空访问码检查与失败指引。保留匹配文本输入绑定修复、复制视频到微信和系统分享。剪贴板仅本机、5 分钟后过期。没有 Instagram 链接时检查连接。仅向固定解析域名发送访问码；下载 CDN 视频时不发送访问码。不写入相册或文件目录，临时缓存由系统管理。")
+    w.action("comment", WFCommentActionText="顺手 0.3.3：从 Instagram 分享菜单接收链接，或读取已复制的链接。下载后可复制首个视频并打开微信，或系统分享全部视频。复制会覆盖剪贴板，仅本机保存、5 分钟后过期。没有 Instagram 链接时检查连接。仅向固定解析域名发送访问码；下载 CDN 视频时不发送访问码。不写入相册或文件目录，临时缓存由系统管理。")
     token_index = len(w.actions)
     token = w.action("gettext", "Access code", WFTextActionText=PLACEHOLDER)
     missing_token = w.condition(token, 101)
@@ -147,12 +147,11 @@ def build():
         w.action("setitemname", "Named video", WFInput=media, WFName=text(filename))
         files = w.action("repeat.each", "Downloaded videos", WFControlFlowMode=2, GroupingIdentifier=group)
         menu = uid()
-        choices = ["复制首个视频并打开微信（实验）", "系统分享全部视频"]
+        choices = ["复制首个视频并打开微信", "系统分享全部视频"]
         w.action("choosefrommenu", WFControlFlowMode=0, GroupingIdentifier=menu,
-                 WFMenuPrompt="选择发送方式", WFMenuItems=choices)
+                 WFMenuPrompt="选择发送方式。复制会覆盖剪贴板，5 分钟后过期；进入微信后仍需手动粘贴发送。", WFMenuItems=choices)
         w.action("choosefrommenu", WFControlFlowMode=1, GroupingIdentifier=menu,
                  WFMenuItemTitle=choices[0])
-        w.alert("微信粘贴实验", "将覆盖当前剪贴板，仅复制首个视频，5 分钟后过期。进入微信聊天后长按粘贴；若不能粘贴或显示为文件，请重新运行并选系统分享。不会自动发送，也不会保存到相册。")
         first = w.action("getitemfromlist", "Clipboard video", WFInput=files, WFItemSpecifier="First Item")
         now = w.action("date", "Now", WFDateActionMode="Current Date")
         expiry = w.action("adjustdate", "Clipboard expiry", WFDate=text(now), WFAdjustOperation="Add",

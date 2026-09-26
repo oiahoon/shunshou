@@ -1,5 +1,14 @@
 # Production Acceptance
 
+## Shortcut 0.3.3 Flow Polish (2026-09-26)
+
+- The user reports that the installed Shortcut has generally worked well over time, with occasional videos unavailable to the resolver. This is user-reported experience rather than a measured resolution rate.
+- Homepage instructions now lead with Instagram's share sheet and describe clipboard/WeChat paste and system sharing accurately. The Shortcut menu includes the clipboard overwrite and five-minute expiry notice, and the redundant post-selection alert is removed. The download, server request and clipboard actions remain unchanged.
+- Snapinsta is not part of this release. Preserve separate cloud and device acceptance for the signed 0.3.3 package.
+- Local checks: 11 shortcut tests and 47 resolver tests passed. Apple signed the token-free 70-action installer; both public download filenames match the signed 29,050-byte artifact by SHA-256.
+- Playwright Chromium checked the homepage at widths 320, 390, 768 and 1440. Each viewport showed the revised flow and 0.3.3 installer, opened the install instructions, downloaded `顺手.shortcut`, and had no horizontal overflow or page errors. Visual review of mobile and desktop screenshots showed no overlapping text or controls. The Playwright CLI wrapper stalled on initial npm startup, so the already-installed repository Playwright runtime was used.
+- Removing a duplicate menu alert has not yet been verified on the user's iPhone. The preceding version's positive usage report is not evidence of 0.3.3 installation or WeChat delivery.
+
 ## Shortcut 0.3.2 Polish (2026-09-09)
 
 - Snapinsta remains a local research experiment only; no third-party fallback, cookies, new dependencies or resolver behavior changes are included in this release.

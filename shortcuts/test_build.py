@@ -50,6 +50,12 @@ class WorkflowTests(unittest.TestCase):
         menus = [a["WFWorkflowActionParameters"] for a in actions if a["WFWorkflowActionIdentifier"].endswith(".choosefrommenu")]
         self.assertEqual([p["WFControlFlowMode"] for p in menus], [0,1,1,2])
         self.assertEqual(menus[0]["WFMenuItems"], [p["WFMenuItemTitle"] for p in menus[1:3]])
+        self.assertEqual(menus[0]["WFMenuItems"], ["复制首个视频并打开微信", "系统分享全部视频"])
+        self.assertIn("覆盖剪贴板", menus[0]["WFMenuPrompt"])
+        self.assertIn("5 分钟", menus[0]["WFMenuPrompt"])
+        copy_branch = actions.index(next(a for a in actions if a["WFWorkflowActionParameters"] is menus[1]))
+        share_branch = actions.index(next(a for a in actions if a["WFWorkflowActionParameters"] is menus[2]))
+        self.assertFalse(any(a["WFWorkflowActionIdentifier"].endswith(".alert") for a in actions[copy_branch:share_branch]))
         self.assertEqual(sum(a["WFWorkflowActionIdentifier"].endswith(".share") for a in actions), 1)
         self.assertEqual(next(a["WFWorkflowActionParameters"]["WFURLActionURL"] for a in actions if a["WFWorkflowActionIdentifier"].endswith(".url")), "weixin://")
         self.assertEqual(sum(a["WFWorkflowActionIdentifier"].endswith(".openurl") for a in actions), 1)
