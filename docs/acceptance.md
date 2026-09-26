@@ -137,3 +137,5 @@ See the 0.3 clipboard experiment section below for the latest delivery behavior.
 - Local FastAPI tests: 48 passed. Shortcut structure tests: 15 passed. Asset and tutorial routes are covered by the public-page test.
 - Playwright Chromium checked homepage and all three detail pages at 390 px and 1440 px using local route fulfillment because loopback server binding was unavailable in the sandbox. All images loaded, no horizontal overflow was reported, and all detail pages retained their signed installer links.
 - The visual guide does not establish actual iPhone import, permission prompts, CDN download, DeepSeek response, iCloud write, or WeChat delivery.
+
+- Production deployment `dpl_AMYQTZpxLXwkNVwsGfcGCqc1rv1Z` reached READY with `shunshou.miaowu.org` attached. Build logs confirm application commit `e8d742e`. The live acceptance script passed all 20 checks, including the three detail pages and signed installer hashes; the sanitized report is `ops/production-acceptance.json`.
