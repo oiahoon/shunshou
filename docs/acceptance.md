@@ -151,3 +151,5 @@ See the 0.3 clipboard experiment section below for the latest delivery behavior.
 
 - Moved each detail Hero background from the constrained content wrapper to a full-width section, while retaining the text and artwork in an inner wrapper. The light Dianping header now also paints across the viewport.
 - Local browser screenshots at 320, 390 and 1440 px confirmed continuous Hero edges, no horizontal overflow, all assets loaded, and installer links present. Resolver tests: 48 passed; Shortcut structural tests: 15 passed.
+
+- Production deployment `dpl_5RVU85xnEn2P1pCeY994ij9WyPEo` reached READY with `shunshou.miaowu.org` attached. Build logs confirm application commit `f08f7ff`; all 20 live acceptance checks passed. The sanitized result is `ops/production-acceptance.json`.
