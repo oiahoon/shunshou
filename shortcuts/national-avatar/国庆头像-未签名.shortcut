@@ -12,11 +12,11 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>8937548F-BA64-4414-87DA-72834F4FEEB9</string>
+				<string>3D797620-0A4A-4806-8433-ECE9171DA7B1</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFCommentActionText</key>
-				<string>国庆头像 1.1.1。选择一张照片和三种样式之一，在本机居中裁成方形并叠加五星红旗主题装饰。预览后保存到照片。原图不会修改；照片不会上传到本站或第三方。请在预览里检查裁切是否合适；如人物不在中央，先用照片 App 调整原图。</string>
+				<string>国庆头像 1.1.2。请先在照片 App 中把头像裁成正方形，再选择照片和三种样式之一。捷径在本机缩放并叠加五星红旗主题装饰。预览后保存到照片。原图不会修改；照片不会上传到本站或第三方。非正方形照片会被拉伸，请先裁好再运行。</string>
 			</dict>
 		</dict>
 		<dict>
@@ -25,7 +25,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>D9DE857B-5D9B-4112-8190-4CF5F9D10DA1</string>
+				<string>4D0B550B-F175-4021-B553-AF18940FCF5C</string>
 				<key>CustomOutputName</key>
 				<string>Selected photo</string>
 				<key>WFSelectMultiplePhotos</key>
@@ -34,213 +34,11 @@
 		</dict>
 		<dict>
 			<key>WFWorkflowActionIdentifier</key>
-			<string>is.workflow.actions.properties.images</string>
-			<key>WFWorkflowActionParameters</key>
-			<dict>
-				<key>UUID</key>
-				<string>E31448B6-F985-4407-A982-2328B6EE7DBA</string>
-				<key>CustomOutputName</key>
-				<string>Photo width</string>
-				<key>WFInput</key>
-				<dict>
-					<key>Value</key>
-					<dict>
-						<key>Type</key>
-						<string>ActionOutput</string>
-						<key>OutputUUID</key>
-						<string>D9DE857B-5D9B-4112-8190-4CF5F9D10DA1</string>
-						<key>OutputName</key>
-						<string>Selected photo</string>
-					</dict>
-					<key>WFSerializationType</key>
-					<string>WFTextTokenAttachment</string>
-				</dict>
-				<key>WFContentItemPropertyName</key>
-				<string>Width</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>WFWorkflowActionIdentifier</key>
-			<string>is.workflow.actions.properties.images</string>
-			<key>WFWorkflowActionParameters</key>
-			<dict>
-				<key>UUID</key>
-				<string>B955E420-0EB3-4DC6-BD37-8C7BE287F5DA</string>
-				<key>CustomOutputName</key>
-				<string>Photo height</string>
-				<key>WFInput</key>
-				<dict>
-					<key>Value</key>
-					<dict>
-						<key>Type</key>
-						<string>ActionOutput</string>
-						<key>OutputUUID</key>
-						<string>D9DE857B-5D9B-4112-8190-4CF5F9D10DA1</string>
-						<key>OutputName</key>
-						<string>Selected photo</string>
-					</dict>
-					<key>WFSerializationType</key>
-					<string>WFTextTokenAttachment</string>
-				</dict>
-				<key>WFContentItemPropertyName</key>
-				<string>Height</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>WFWorkflowActionIdentifier</key>
-			<string>is.workflow.actions.list</string>
-			<key>WFWorkflowActionParameters</key>
-			<dict>
-				<key>UUID</key>
-				<string>DD7AEDFD-6B83-491A-B1BA-1A43A91E4BD7</string>
-				<key>CustomOutputName</key>
-				<string>Dimensions</string>
-				<key>WFItems</key>
-				<array>
-					<dict>
-						<key>WFItemType</key>
-						<integer>0</integer>
-						<key>WFValue</key>
-						<dict>
-							<key>Value</key>
-							<dict>
-								<key>string</key>
-								<string>￼</string>
-								<key>attachmentsByRange</key>
-								<dict>
-									<key>{0, 1}</key>
-									<dict>
-										<key>Type</key>
-										<string>ActionOutput</string>
-										<key>OutputUUID</key>
-										<string>E31448B6-F985-4407-A982-2328B6EE7DBA</string>
-										<key>OutputName</key>
-										<string>Photo width</string>
-									</dict>
-								</dict>
-							</dict>
-							<key>WFSerializationType</key>
-							<string>WFTextTokenString</string>
-						</dict>
-					</dict>
-					<dict>
-						<key>WFItemType</key>
-						<integer>0</integer>
-						<key>WFValue</key>
-						<dict>
-							<key>Value</key>
-							<dict>
-								<key>string</key>
-								<string>￼</string>
-								<key>attachmentsByRange</key>
-								<dict>
-									<key>{0, 1}</key>
-									<dict>
-										<key>Type</key>
-										<string>ActionOutput</string>
-										<key>OutputUUID</key>
-										<string>B955E420-0EB3-4DC6-BD37-8C7BE287F5DA</string>
-										<key>OutputName</key>
-										<string>Photo height</string>
-									</dict>
-								</dict>
-							</dict>
-							<key>WFSerializationType</key>
-							<string>WFTextTokenString</string>
-						</dict>
-					</dict>
-				</array>
-			</dict>
-		</dict>
-		<dict>
-			<key>WFWorkflowActionIdentifier</key>
-			<string>is.workflow.actions.statistics</string>
-			<key>WFWorkflowActionParameters</key>
-			<dict>
-				<key>UUID</key>
-				<string>446609F8-C61D-49A0-850B-CD2EDE30AD20</string>
-				<key>CustomOutputName</key>
-				<string>Shorter side</string>
-				<key>WFInput</key>
-				<dict>
-					<key>Value</key>
-					<dict>
-						<key>Type</key>
-						<string>ActionOutput</string>
-						<key>OutputUUID</key>
-						<string>DD7AEDFD-6B83-491A-B1BA-1A43A91E4BD7</string>
-						<key>OutputName</key>
-						<string>Dimensions</string>
-					</dict>
-					<key>WFSerializationType</key>
-					<string>WFTextTokenAttachment</string>
-				</dict>
-				<key>WFStatisticsOperation</key>
-				<string>Minimum</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>WFWorkflowActionIdentifier</key>
-			<string>is.workflow.actions.image.crop</string>
-			<key>WFWorkflowActionParameters</key>
-			<dict>
-				<key>UUID</key>
-				<string>B395BCCF-999F-456E-A657-42533CCD1884</string>
-				<key>CustomOutputName</key>
-				<string>Square photo</string>
-				<key>WFInput</key>
-				<dict>
-					<key>Value</key>
-					<dict>
-						<key>Type</key>
-						<string>ActionOutput</string>
-						<key>OutputUUID</key>
-						<string>D9DE857B-5D9B-4112-8190-4CF5F9D10DA1</string>
-						<key>OutputName</key>
-						<string>Selected photo</string>
-					</dict>
-					<key>WFSerializationType</key>
-					<string>WFTextTokenAttachment</string>
-				</dict>
-				<key>WFImageCropPosition</key>
-				<string>Center</string>
-				<key>WFImageCropWidth</key>
-				<dict>
-					<key>Value</key>
-					<dict>
-						<key>Type</key>
-						<string>ActionOutput</string>
-						<key>OutputUUID</key>
-						<string>446609F8-C61D-49A0-850B-CD2EDE30AD20</string>
-						<key>OutputName</key>
-						<string>Shorter side</string>
-					</dict>
-					<key>WFSerializationType</key>
-					<string>WFTextTokenAttachment</string>
-				</dict>
-				<key>WFImageCropHeight</key>
-				<dict>
-					<key>Value</key>
-					<dict>
-						<key>Type</key>
-						<string>ActionOutput</string>
-						<key>OutputUUID</key>
-						<string>446609F8-C61D-49A0-850B-CD2EDE30AD20</string>
-						<key>OutputName</key>
-						<string>Shorter side</string>
-					</dict>
-					<key>WFSerializationType</key>
-					<string>WFTextTokenAttachment</string>
-				</dict>
-			</dict>
-		</dict>
-		<dict>
-			<key>WFWorkflowActionIdentifier</key>
 			<string>is.workflow.actions.image.resize</string>
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>60620086-E83E-46D0-A783-15CC06F71574</string>
+				<string>1FD8DE12-3553-4352-A62D-01E6CE102A56</string>
 				<key>CustomOutputName</key>
 				<string>Avatar base</string>
 				<key>WFImage</key>
@@ -250,9 +48,9 @@
 						<key>Type</key>
 						<string>ActionOutput</string>
 						<key>OutputUUID</key>
-						<string>B395BCCF-999F-456E-A657-42533CCD1884</string>
+						<string>4D0B550B-F175-4021-B553-AF18940FCF5C</string>
 						<key>OutputName</key>
-						<string>Square photo</string>
+						<string>Selected photo</string>
 					</dict>
 					<key>WFSerializationType</key>
 					<string>WFTextTokenAttachment</string>
@@ -269,13 +67,13 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>F3503586-0CC4-428D-B11E-C1BBA362708F</string>
+				<string>F333DB82-D3A9-43ED-866F-9F1AC9E51372</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFControlFlowMode</key>
 				<integer>0</integer>
 				<key>GroupingIdentifier</key>
-				<string>182CB264-5091-47A5-926A-98650C8C6EFF</string>
+				<string>8C703668-9172-41DD-915C-BC7033D17A25</string>
 				<key>WFMenuPrompt</key>
 				<string>选择头像样式。渐变款会向照片中央自然淡出；「国庆在线」另加右下角状态标记。</string>
 				<key>WFMenuItems</key>
@@ -292,13 +90,13 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>D9462891-C41E-4F13-9AA7-88CFDA0CB933</string>
+				<string>BB0803E1-E12D-4687-BEA3-76DAE07BCE2F</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFControlFlowMode</key>
 				<integer>1</integer>
 				<key>GroupingIdentifier</key>
-				<string>182CB264-5091-47A5-926A-98650C8C6EFF</string>
+				<string>8C703668-9172-41DD-915C-BC7033D17A25</string>
 				<key>WFMenuItemTitle</key>
 				<string>经典旗帜</string>
 			</dict>
@@ -309,7 +107,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>9877C326-2A41-436B-B7EC-2A5CE0F1E1C2</string>
+				<string>5D88D71C-2078-4B5F-B2EC-AEF4E5B9DF45</string>
 				<key>CustomOutputName</key>
 				<string>经典旗帜 data</string>
 				<key>WFTextActionText</key>
@@ -322,7 +120,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>CC31032C-4DF5-489F-B18C-31EF1D6B2ECB</string>
+				<string>609A223B-587D-4367-BC5E-ED005B1BE0C8</string>
 				<key>CustomOutputName</key>
 				<string>经典旗帜 overlay</string>
 				<key>WFInput</key>
@@ -332,7 +130,7 @@
 						<key>Type</key>
 						<string>ActionOutput</string>
 						<key>OutputUUID</key>
-						<string>9877C326-2A41-436B-B7EC-2A5CE0F1E1C2</string>
+						<string>5D88D71C-2078-4B5F-B2EC-AEF4E5B9DF45</string>
 						<key>OutputName</key>
 						<string>经典旗帜 data</string>
 					</dict>
@@ -349,7 +147,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>B71D62AF-63C5-4EC5-8E25-5DB15A3CE2DF</string>
+				<string>545DE326-6690-410B-8A32-D5632CDB5378</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFVariableName</key>
@@ -361,7 +159,7 @@
 						<key>Type</key>
 						<string>ActionOutput</string>
 						<key>OutputUUID</key>
-						<string>CC31032C-4DF5-489F-B18C-31EF1D6B2ECB</string>
+						<string>609A223B-587D-4367-BC5E-ED005B1BE0C8</string>
 						<key>OutputName</key>
 						<string>经典旗帜 overlay</string>
 					</dict>
@@ -376,13 +174,13 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>683E657E-D7E7-416C-87C7-D23A7BA08BF3</string>
+				<string>CEB05444-7C01-4FA5-9EB3-B3C58C6F97C0</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFControlFlowMode</key>
 				<integer>1</integer>
 				<key>GroupingIdentifier</key>
-				<string>182CB264-5091-47A5-926A-98650C8C6EFF</string>
+				<string>8C703668-9172-41DD-915C-BC7033D17A25</string>
 				<key>WFMenuItemTitle</key>
 				<string>柔和渐变</string>
 			</dict>
@@ -393,7 +191,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>3540238A-52A0-4188-98D3-0074E6CD33B9</string>
+				<string>B4773139-A62D-4867-80BD-84587FA73644</string>
 				<key>CustomOutputName</key>
 				<string>柔和渐变 data</string>
 				<key>WFTextActionText</key>
@@ -406,7 +204,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>9B5F4753-86BB-4FEB-8E3D-599F1D49B5C4</string>
+				<string>C87E5BF4-F38D-4789-ACF6-B198B06AA167</string>
 				<key>CustomOutputName</key>
 				<string>柔和渐变 overlay</string>
 				<key>WFInput</key>
@@ -416,7 +214,7 @@
 						<key>Type</key>
 						<string>ActionOutput</string>
 						<key>OutputUUID</key>
-						<string>3540238A-52A0-4188-98D3-0074E6CD33B9</string>
+						<string>B4773139-A62D-4867-80BD-84587FA73644</string>
 						<key>OutputName</key>
 						<string>柔和渐变 data</string>
 					</dict>
@@ -433,7 +231,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>55AEBBAD-8B71-4A21-8D37-24EF84497301</string>
+				<string>AB981014-66FE-4BF1-B705-4CB63DDB503F</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFVariableName</key>
@@ -445,7 +243,7 @@
 						<key>Type</key>
 						<string>ActionOutput</string>
 						<key>OutputUUID</key>
-						<string>9B5F4753-86BB-4FEB-8E3D-599F1D49B5C4</string>
+						<string>C87E5BF4-F38D-4789-ACF6-B198B06AA167</string>
 						<key>OutputName</key>
 						<string>柔和渐变 overlay</string>
 					</dict>
@@ -460,13 +258,13 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>9987A54E-3A1A-41B6-A95F-54B77EBD3447</string>
+				<string>7E6A8672-312D-444B-A880-6ECFDCF78BA2</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFControlFlowMode</key>
 				<integer>1</integer>
 				<key>GroupingIdentifier</key>
-				<string>182CB264-5091-47A5-926A-98650C8C6EFF</string>
+				<string>8C703668-9172-41DD-915C-BC7033D17A25</string>
 				<key>WFMenuItemTitle</key>
 				<string>渐变 · 国庆在线</string>
 			</dict>
@@ -477,7 +275,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>96469310-BBFE-4EB2-9403-E9ADFBD29CB9</string>
+				<string>57E60438-6B64-414C-9447-AD838D16E6E0</string>
 				<key>CustomOutputName</key>
 				<string>渐变 · 国庆在线 data</string>
 				<key>WFTextActionText</key>
@@ -490,7 +288,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>69421010-3CE0-40A9-9F78-8C6A7F76B21B</string>
+				<string>5DCD2BAE-B662-43F1-A601-30268A6AB66C</string>
 				<key>CustomOutputName</key>
 				<string>渐变 · 国庆在线 overlay</string>
 				<key>WFInput</key>
@@ -500,7 +298,7 @@
 						<key>Type</key>
 						<string>ActionOutput</string>
 						<key>OutputUUID</key>
-						<string>96469310-BBFE-4EB2-9403-E9ADFBD29CB9</string>
+						<string>57E60438-6B64-414C-9447-AD838D16E6E0</string>
 						<key>OutputName</key>
 						<string>渐变 · 国庆在线 data</string>
 					</dict>
@@ -517,7 +315,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>37147763-FBA9-40CA-B657-6B94F243C152</string>
+				<string>84C1DB39-00BF-4B50-9E17-AC01DB0B2B93</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFVariableName</key>
@@ -529,7 +327,7 @@
 						<key>Type</key>
 						<string>ActionOutput</string>
 						<key>OutputUUID</key>
-						<string>69421010-3CE0-40A9-9F78-8C6A7F76B21B</string>
+						<string>5DCD2BAE-B662-43F1-A601-30268A6AB66C</string>
 						<key>OutputName</key>
 						<string>渐变 · 国庆在线 overlay</string>
 					</dict>
@@ -544,13 +342,13 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>C9CD7A66-7A4A-47B1-8646-6F5795046677</string>
+				<string>87205F5D-F525-413F-86CB-1E494E7A7A0F</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFControlFlowMode</key>
 				<integer>2</integer>
 				<key>GroupingIdentifier</key>
-				<string>182CB264-5091-47A5-926A-98650C8C6EFF</string>
+				<string>8C703668-9172-41DD-915C-BC7033D17A25</string>
 			</dict>
 		</dict>
 		<dict>
@@ -559,7 +357,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>4AE1EFDF-C8DC-4D6D-9F53-070D66F534F1</string>
+				<string>67880E17-3F78-425D-A4BD-F56830CE644E</string>
 				<key>CustomOutputName</key>
 				<string>National Day avatar</string>
 				<key>WFInput</key>
@@ -569,7 +367,7 @@
 						<key>Type</key>
 						<string>ActionOutput</string>
 						<key>OutputUUID</key>
-						<string>60620086-E83E-46D0-A783-15CC06F71574</string>
+						<string>1FD8DE12-3553-4352-A62D-01E6CE102A56</string>
 						<key>OutputName</key>
 						<string>Avatar base</string>
 					</dict>
@@ -602,40 +400,11 @@
 		</dict>
 		<dict>
 			<key>WFWorkflowActionIdentifier</key>
-			<string>is.workflow.actions.image.convert</string>
-			<key>WFWorkflowActionParameters</key>
-			<dict>
-				<key>UUID</key>
-				<string>C2505303-E9C7-447F-89DC-754ED1F8F97B</string>
-				<key>CustomOutputName</key>
-				<string>Final PNG</string>
-				<key>WFInput</key>
-				<dict>
-					<key>Value</key>
-					<dict>
-						<key>Type</key>
-						<string>ActionOutput</string>
-						<key>OutputUUID</key>
-						<string>4AE1EFDF-C8DC-4D6D-9F53-070D66F534F1</string>
-						<key>OutputName</key>
-						<string>National Day avatar</string>
-					</dict>
-					<key>WFSerializationType</key>
-					<string>WFTextTokenAttachment</string>
-				</dict>
-				<key>WFImageFormat</key>
-				<string>PNG</string>
-				<key>WFImagePreserveMetadata</key>
-				<false/>
-			</dict>
-		</dict>
-		<dict>
-			<key>WFWorkflowActionIdentifier</key>
 			<string>is.workflow.actions.previewdocument</string>
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>51788108-5AEE-4BB7-8F5E-F8FAB7E4A2EB</string>
+				<string>75303DE5-5278-44AF-8466-6A8C1A99DED7</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFInput</key>
@@ -645,9 +414,9 @@
 						<key>Type</key>
 						<string>ActionOutput</string>
 						<key>OutputUUID</key>
-						<string>C2505303-E9C7-447F-89DC-754ED1F8F97B</string>
+						<string>67880E17-3F78-425D-A4BD-F56830CE644E</string>
 						<key>OutputName</key>
-						<string>Final PNG</string>
+						<string>National Day avatar</string>
 					</dict>
 					<key>WFSerializationType</key>
 					<string>WFTextTokenAttachment</string>
@@ -660,7 +429,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>81EC7515-B931-4BD6-8D4C-037ABBA3C84E</string>
+				<string>840B13A3-8E1B-4F76-90BD-5C0EA036DD62</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFInput</key>
@@ -670,9 +439,9 @@
 						<key>Type</key>
 						<string>ActionOutput</string>
 						<key>OutputUUID</key>
-						<string>C2505303-E9C7-447F-89DC-754ED1F8F97B</string>
+						<string>67880E17-3F78-425D-A4BD-F56830CE644E</string>
 						<key>OutputName</key>
-						<string>Final PNG</string>
+						<string>National Day avatar</string>
 					</dict>
 					<key>WFSerializationType</key>
 					<string>WFTextTokenAttachment</string>
@@ -685,7 +454,7 @@
 			<key>WFWorkflowActionParameters</key>
 			<dict>
 				<key>UUID</key>
-				<string>2C8C54A3-3CAD-40F1-A245-8757DCCEB4FA</string>
+				<string>2D585DF3-2F10-4105-B4F2-B5C4DC41A7B7</string>
 				<key>CustomOutputName</key>
 				<string>Result</string>
 				<key>WFNotificationActionTitle</key>

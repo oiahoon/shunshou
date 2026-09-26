@@ -5,10 +5,10 @@ import plistlib
 import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from build import Workflow, attachment, text, uid  # noqa: E402
+from build import Workflow, attachment, uid  # noqa: E402
 
 BASE = Path(__file__).resolve().parent
-VERSION = "1.1.1"
+VERSION = "1.1.2"
 
 STYLES = [
     ("经典旗帜", "overlay.png"),
@@ -20,25 +20,13 @@ STYLES = [
 def build():
     w = Workflow()
     w.action("comment", WFCommentActionText=(
-        f"国庆头像 {VERSION}。选择一张照片和三种样式之一，在本机居中裁成方形并叠加五星红旗主题装饰。"
+        f"国庆头像 {VERSION}。请先在照片 App 中把头像裁成正方形，再选择照片和三种样式之一。"
+        "捷径在本机缩放并叠加五星红旗主题装饰。"
         "预览后保存到照片。原图不会修改；照片不会上传到本站或第三方。"
-        "请在预览里检查裁切是否合适；如人物不在中央，先用照片 App 调整原图。"
+        "非正方形照片会被拉伸，请先裁好再运行。"
     ))
     photo = w.action("selectphoto", "Selected photo", WFSelectMultiplePhotos=False)
-    width = w.action("properties.images", "Photo width", WFInput=photo,
-                     WFContentItemPropertyName="Width")
-    height = w.action("properties.images", "Photo height", WFInput=photo,
-                      WFContentItemPropertyName="Height")
-    dimensions = w.action("list", "Dimensions", WFItems=[
-        {"WFItemType": 0, "WFValue": text(width)},
-        {"WFItemType": 0, "WFValue": text(height)},
-    ])
-    side = w.action("statistics", "Shorter side", WFInput=dimensions,
-                    WFStatisticsOperation="Minimum")
-    square = w.action("image.crop", "Square photo", WFInput=photo,
-                      WFImageCropPosition="Center", WFImageCropWidth=side,
-                      WFImageCropHeight=side)
-    sized = w.action("image.resize", "Avatar base", WFImage=square,
+    sized = w.action("image.resize", "Avatar base", WFImage=photo,
                      WFImageResizeWidth=1024, WFImageResizeHeight=1024)
     menu = uid()
     w.action("choosefrommenu", WFControlFlowMode=0, GroupingIdentifier=menu,
@@ -59,10 +47,8 @@ def build():
                          WFShouldShowImageEditor=False, WFImagePosition="Center",
                          WFImageWidth=1024, WFImageHeight=1024,
                          WFOverlayImageOpacity=100)
-    png = w.action("image.convert", "Final PNG", WFInput=composite,
-                   WFImageFormat="PNG", WFImagePreserveMetadata=False)
-    w.action("previewdocument", WFInput=png)
-    w.action("savetocameraroll", WFInput=png)
+    w.action("previewdocument", WFInput=composite)
+    w.action("savetocameraroll", WFInput=composite)
     w.action("notification", WFNotificationActionTitle="国庆头像已保存",
              WFNotificationActionBody="打开照片 App 查看并设为微信头像。",
              WFNotificationActionSound=False)

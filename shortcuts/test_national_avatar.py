@@ -14,29 +14,22 @@ class NationalAvatarTests(unittest.TestCase):
         actions = workflow["WFWorkflowActions"]
         ids = [action["WFWorkflowActionIdentifier"].removeprefix("is.workflow.actions.")
                for action in actions]
-        self.assertEqual(ids[:8], ["comment", "selectphoto", "properties.images", "properties.images",
-                                   "list", "statistics", "image.crop", "image.resize"])
-        self.assertEqual(ids[-5:], ["overlayimageonimage", "image.convert",
-                                    "previewdocument", "savetocameraroll", "notification"])
+        self.assertEqual(ids[:3], ["comment", "selectphoto", "image.resize"])
+        self.assertEqual(ids[-4:], ["overlayimageonimage", "previewdocument",
+                                    "savetocameraroll", "notification"])
         self.assertEqual(ids.count("base64encode"), 3)
         self.assertEqual(ids.count("setvariable"), 3)
-        self.assertEqual(actions[8]["WFWorkflowActionParameters"]["WFMenuItems"],
+        self.assertEqual(actions[3]["WFWorkflowActionParameters"]["WFMenuItems"],
                          [label for label, _ in builder.STYLES])
-        self.assertEqual(actions[5]["WFWorkflowActionParameters"]["WFStatisticsOperation"], "Minimum")
-        dimensions = actions[4]["WFWorkflowActionParameters"]["WFItems"]
-        self.assertEqual(len(dimensions), 2)
-        for index, item in enumerate(dimensions, start=2):
-            self.assertEqual(item["WFItemType"], 0)
-            self.assertEqual(item["WFValue"]["Value"]["attachmentsByRange"]["{0, 1}"]["OutputUUID"],
-                             actions[index]["WFWorkflowActionParameters"]["UUID"])
-        self.assertEqual(actions[7]["WFWorkflowActionParameters"]["WFImage"],
+        self.assertEqual(actions[2]["WFWorkflowActionParameters"]["WFImage"],
                          builder.attachment({"Type": "ActionOutput",
-                                             "OutputUUID": actions[6]["WFWorkflowActionParameters"]["UUID"],
-                                             "OutputName": "Square photo"}))
-        self.assertNotIn("WFInput", actions[7]["WFWorkflowActionParameters"])
-        self.assertEqual(actions[-5]["WFWorkflowActionParameters"]["WFImagePosition"], "Center")
-        self.assertFalse(actions[-5]["WFWorkflowActionParameters"]["WFShouldShowImageEditor"])
-        self.assertFalse(actions[-4]["WFWorkflowActionParameters"]["WFImagePreserveMetadata"])
+                                             "OutputUUID": actions[1]["WFWorkflowActionParameters"]["UUID"],
+                                             "OutputName": "Selected photo"}))
+        self.assertNotIn("WFInput", actions[2]["WFWorkflowActionParameters"])
+        self.assertEqual(actions[-4]["WFWorkflowActionParameters"]["WFImagePosition"], "Center")
+        self.assertFalse(actions[-4]["WFWorkflowActionParameters"]["WFShouldShowImageEditor"])
+        self.assertNotIn("statistics", ids)
+        self.assertNotIn("image.crop", ids)
         self.assertNotIn("downloadurl", ids)
         self.assertNotIn("url", ids)
         for _, filename in builder.STYLES:

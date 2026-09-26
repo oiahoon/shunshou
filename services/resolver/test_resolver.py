@@ -285,7 +285,7 @@ def test_public_homepage_and_assets(client):
     assert 'src="/assets/national-avatar-gradient.png"' in avatar.text
     assert 'src="/assets/national-avatar-gradient-status.png"' in avatar.text
     assert 'src="/assets/national-avatar-sample.jpg"' in avatar.text
-    assert "版本 1.1.1" in avatar.text
+    assert "版本 1.1.2" in avatar.text
     assert client.get("/shortcuts/unknown").status_code == 404
     assert client.get("/api/health").status_code == 401
 
