@@ -5,10 +5,10 @@ import plistlib
 import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from build import Workflow, attachment, uid  # noqa: E402
+from build import Workflow, attachment, text, uid  # noqa: E402
 
 BASE = Path(__file__).resolve().parent
-VERSION = "1.1.0"
+VERSION = "1.1.1"
 
 STYLES = [
     ("经典旗帜", "overlay.png"),
@@ -29,13 +29,16 @@ def build():
                      WFContentItemPropertyName="Width")
     height = w.action("properties.images", "Photo height", WFInput=photo,
                       WFContentItemPropertyName="Height")
-    dimensions = w.action("list", "Dimensions", WFItems=[width, height])
+    dimensions = w.action("list", "Dimensions", WFItems=[
+        {"WFItemType": 0, "WFValue": text(width)},
+        {"WFItemType": 0, "WFValue": text(height)},
+    ])
     side = w.action("statistics", "Shorter side", WFInput=dimensions,
                     WFStatisticsOperation="Minimum")
     square = w.action("image.crop", "Square photo", WFInput=photo,
                       WFImageCropPosition="Center", WFImageCropWidth=side,
                       WFImageCropHeight=side)
-    sized = w.action("image.resize", "Avatar base", WFInput=square,
+    sized = w.action("image.resize", "Avatar base", WFImage=square,
                      WFImageResizeWidth=1024, WFImageResizeHeight=1024)
     menu = uid()
     w.action("choosefrommenu", WFControlFlowMode=0, GroupingIdentifier=menu,

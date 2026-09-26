@@ -23,6 +23,17 @@ class NationalAvatarTests(unittest.TestCase):
         self.assertEqual(actions[8]["WFWorkflowActionParameters"]["WFMenuItems"],
                          [label for label, _ in builder.STYLES])
         self.assertEqual(actions[5]["WFWorkflowActionParameters"]["WFStatisticsOperation"], "Minimum")
+        dimensions = actions[4]["WFWorkflowActionParameters"]["WFItems"]
+        self.assertEqual(len(dimensions), 2)
+        for index, item in enumerate(dimensions, start=2):
+            self.assertEqual(item["WFItemType"], 0)
+            self.assertEqual(item["WFValue"]["Value"]["attachmentsByRange"]["{0, 1}"]["OutputUUID"],
+                             actions[index]["WFWorkflowActionParameters"]["UUID"])
+        self.assertEqual(actions[7]["WFWorkflowActionParameters"]["WFImage"],
+                         builder.attachment({"Type": "ActionOutput",
+                                             "OutputUUID": actions[6]["WFWorkflowActionParameters"]["UUID"],
+                                             "OutputName": "Square photo"}))
+        self.assertNotIn("WFInput", actions[7]["WFWorkflowActionParameters"])
         self.assertEqual(actions[-5]["WFWorkflowActionParameters"]["WFImagePosition"], "Center")
         self.assertFalse(actions[-5]["WFWorkflowActionParameters"]["WFShouldShowImageEditor"])
         self.assertFalse(actions[-4]["WFWorkflowActionParameters"]["WFImagePreserveMetadata"])
