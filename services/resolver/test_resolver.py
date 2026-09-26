@@ -264,6 +264,7 @@ def test_public_homepage_and_assets(client):
     for page in (insta, dianping, trip):
         assert 'id="tutorial"' in page.text
         assert "操作示意" in page.text
+        assert '<section class="detail-hero"><div class="wrap">' in page.text
     for asset in ("hero-insta.webp", "hero-dianping.webp", "hero-business-trip.webp",
                   "flow-insta.webp", "flow-dianping.webp", "flow-business-trip.webp",
                   "product-icon-insta.webp", "product-icon-dianping.webp",

@@ -146,3 +146,8 @@ See the 0.3 clipboard experiment section below for the latest delivery behavior.
 - Browser review of the homepage and all three detail pages at 320, 390 and 1440 px found no horizontal overflow or missing image assets. The signed Shortcut download routes and the three tutorial anchors remained present. The 320 px hero layout was checked after correcting a CSS override that initially forced a two-column composition.
 
 - Production deployment `dpl_2K3VFunhmdrctQKdRLwRjCxtRY2M` reached READY with `shunshou.miaowu.org` attached. Build logs identify application commit `7eb398c`; the live acceptance script passed all 20 checks. The generated images are illustrative, and exact iPhone dialogs remain a device acceptance gate.
+
+## Detail Hero Edge Fix (2026-09-26)
+
+- Moved each detail Hero background from the constrained content wrapper to a full-width section, while retaining the text and artwork in an inner wrapper. The light Dianping header now also paints across the viewport.
+- Local browser screenshots at 320, 390 and 1440 px confirmed continuous Hero edges, no horizontal overflow, all assets loaded, and installer links present. Resolver tests: 48 passed; Shortcut structural tests: 15 passed.
