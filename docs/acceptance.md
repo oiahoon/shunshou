@@ -8,6 +8,7 @@
 - Local checks: 11 shortcut tests and 47 resolver tests passed. Apple signed the token-free 70-action installer; both public download filenames match the signed 29,050-byte artifact by SHA-256.
 - Playwright Chromium checked the homepage at widths 320, 390, 768 and 1440. Each viewport showed the revised flow and 0.3.3 installer, opened the install instructions, downloaded `顺手.shortcut`, and had no horizontal overflow or page errors. Visual review of mobile and desktop screenshots showed no overlapping text or controls. The Playwright CLI wrapper stalled on initial npm startup, so the already-installed repository Playwright runtime was used.
 - Removing a duplicate menu alert has not yet been verified on the user's iPhone. The preceding version's positive usage report is not evidence of 0.3.3 installation or WeChat delivery.
+- Git commit `fc20d4f26ff2f92fe05ad89394d51dc4b0e1de5c` reached Vercel READY as `dpl_7u4QZNBY4dQHKkJ3dDFJ1iLqfst7` with `shunshou.miaowu.org` attached. All 14 production checks passed: auth and validation guards, two baseline Reel resolutions, and both 29,050-byte installer downloads matching the signed local artifact. A direct homepage read confirmed the 0.3.3 label and revised share/WeChat flow. This is cloud acceptance, not physical iPhone acceptance.
 
 ## Shortcut 0.3.2 Polish (2026-09-09)
 
