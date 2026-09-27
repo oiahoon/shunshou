@@ -272,7 +272,7 @@ def test_public_homepage_and_assets(client):
     for asset in ("hero-insta.webp", "hero-dianping.webp", "hero-business-trip.webp",
                   "flow-insta.webp", "flow-dianping.webp", "flow-business-trip.webp",
                   "product-icon-insta.webp", "product-icon-dianping.webp",
-                  "product-icon-business-trip.webp"):
+                  "product-icon-business-trip.webp", "product-icon-avatar.webp"):
         assert client.get(f"/assets/{asset}").status_code == 200
     assert client.get("/assets/national-avatar-overlay.png").status_code == 200
     assert client.get("/assets/national-avatar-gradient.png").status_code == 200

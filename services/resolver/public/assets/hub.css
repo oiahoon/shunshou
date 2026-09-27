@@ -79,3 +79,7 @@
 .avatar-grid-status figcaption strong{font-size:17px}.avatar-grid-status figcaption span{font-size:12px}
 @media(max-width:900px){.avatar-grid-status{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:700px){.avatar-grid-two{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.avatar-grid-status{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.avatar-category{font-size:21px}.avatar-grid-two figcaption strong,.avatar-grid-status figcaption strong{font-size:16px}}
+
+/* Avatar Studio collection artwork. */
+.tile-avatar{background:#1b1b1b;color:#ffdf35}
+.tile-avatar .tile-icon{width:125%;height:125%}
