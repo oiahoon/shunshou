@@ -17,8 +17,8 @@ class NationalAvatarTests(unittest.TestCase):
         self.assertEqual(ids[:3], ["comment", "selectphoto", "image.resize"])
         self.assertEqual(ids[-4:], ["overlayimageonimage", "previewdocument",
                                     "savetocameraroll", "notification"])
-        self.assertEqual(ids.count("base64encode"), 3)
-        self.assertEqual(ids.count("setvariable"), 3)
+        self.assertEqual(ids.count("base64encode"), len(builder.STYLES))
+        self.assertEqual(ids.count("setvariable"), len(builder.STYLES))
         self.assertEqual(actions[3]["WFWorkflowActionParameters"]["WFMenuItems"],
                          [label for label, _ in builder.STYLES])
         self.assertEqual(actions[2]["WFWorkflowActionParameters"]["WFImage"],
@@ -34,7 +34,7 @@ class NationalAvatarTests(unittest.TestCase):
         self.assertNotIn("url", ids)
         for _, filename in builder.STYLES:
             self.assertTrue((SOURCE.parent / filename).read_bytes().startswith(b"\x89PNG\r\n\x1a\n"))
-        self.assertEqual((SOURCE.parent / "国庆头像.shortcut").read_bytes(),
+        self.assertEqual((SOURCE.parent / "头像装扮.shortcut").read_bytes(),
                          (SOURCE.parents[2] / "services/resolver/public/national-avatar.shortcut").read_bytes())
 
 

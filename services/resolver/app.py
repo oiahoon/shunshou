@@ -9,7 +9,7 @@ import sys
 import time
 
 from fastapi import FastAPI, Request
-from fastapi.responses import FileResponse, JSONResponse
+from fastapi.responses import FileResponse, JSONResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 
 from core import ResolveError, normalize_url
@@ -149,7 +149,12 @@ async def business_trip_page():
 
 @app.get("/shortcuts/national-avatar", include_in_schema=False)
 async def national_avatar_page():
-    return FileResponse(public_dir / "national-avatar.html", media_type="text/html")
+    return RedirectResponse("/shortcuts/avatar-studio", status_code=308)
+
+
+@app.get("/shortcuts/avatar-studio", include_in_schema=False)
+async def avatar_studio_page():
+    return FileResponse(public_dir / "avatar-studio.html", media_type="text/html")
 
 
 @app.get("/release.json", include_in_schema=False)
@@ -162,12 +167,14 @@ async def shortcut_release():
 @app.get("/dianping.shortcut", include_in_schema=False)
 @app.get("/business-trip.shortcut", include_in_schema=False)
 @app.get("/national-avatar.shortcut", include_in_schema=False)
+@app.get("/avatar-studio.shortcut", include_in_schema=False)
 async def shortcut_download(request: Request):
     # Fixed public routes also support local installation checks.
     name = request.url.path.rsplit("/", 1)[-1]
     filename = {"dianping.shortcut": "大众点评快写.shortcut",
                 "business-trip.shortcut": "出差开销.shortcut",
-                "national-avatar.shortcut": "国庆头像.shortcut"}.get(name, "顺手.shortcut")
+                "national-avatar.shortcut": "头像装扮.shortcut",
+                "avatar-studio.shortcut": "头像装扮.shortcut"}.get(name, "顺手.shortcut")
     return FileResponse(public_dir / name, media_type="application/octet-stream", filename=filename)
 
 

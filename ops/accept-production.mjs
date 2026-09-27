@@ -27,19 +27,23 @@ check('public homepage', () => {
   return { status: r.status, passed: r.status === 200 && html.includes('顺手实验室') &&
     html.includes('href="/shortcuts/insta-share"') && html.includes('href="/shortcuts/dianping"') &&
     html.includes('href="/shortcuts/business-trip"') &&
-    html.includes('href="/shortcuts/national-avatar"') &&
+    html.includes('href="/shortcuts/avatar-studio"') &&
     html.includes('id="update"') && !html.includes(token) };
 });
 for (const [name, path, installer] of [
   ['Insta Share page', '/shortcuts/insta-share', '/shunshou.shortcut'],
   ['Dianping page', '/shortcuts/dianping', '/dianping.shortcut'],
   ['Business Trip page', '/shortcuts/business-trip', '/business-trip.shortcut'],
-  ['National Avatar page', '/shortcuts/national-avatar', '/national-avatar.shortcut'],
+  ['Avatar Studio page', '/shortcuts/avatar-studio', '/avatar-studio.shortcut'],
 ]) check(name, () => {
   const r = request(path, { auth: false });
   const html = r.body.toString();
   return { status: r.status, passed: r.status === 200 && html.includes(`href="${installer}"`) &&
     html.includes('id="install"') && html.includes('id="update"') && !html.includes(token) };
+});
+check('avatar legacy detail redirect', () => {
+  const r = request('/shortcuts/national-avatar', { auth: false });
+  return { status: r.status, passed: r.status === 308 };
 });
 check('public release manifest', () => {
   const r = request('/release.json', { auth: false });
@@ -95,12 +99,19 @@ check('signed shortcut business trip', () => {
     passed: r.status === 200 && hash(r.body) === hash(local) && !unsigned.includes(Buffer.from(token)) };
 });
 check('signed shortcut national avatar', () => {
-  const r = request('/national-avatar.shortcut', { auth: false });
-  const local = readFileSync(new URL('../shortcuts/national-avatar/国庆头像.shortcut', import.meta.url));
-  const unsigned = readFileSync(new URL('../shortcuts/national-avatar/国庆头像-未签名.shortcut', import.meta.url));
+  const r = request('/avatar-studio.shortcut', { auth: false });
+  const local = readFileSync(new URL('../shortcuts/national-avatar/头像装扮.shortcut', import.meta.url));
+  const unsigned = readFileSync(new URL('../shortcuts/national-avatar/头像装扮-未签名.shortcut', import.meta.url));
   const hash = value => createHash('sha256').update(value).digest('hex');
   return { status: r.status, bytes: r.body.length,
     passed: r.status === 200 && hash(r.body) === hash(local) && !unsigned.includes(Buffer.from(token)) };
+});
+check('avatar legacy installer alias', () => {
+  const current = request('/avatar-studio.shortcut', { auth: false });
+  const legacy = request('/national-avatar.shortcut', { auth: false });
+  const hash = value => createHash('sha256').update(value).digest('hex');
+  return { status: legacy.status, bytes: legacy.body.length,
+    passed: legacy.status === 200 && current.status === 200 && hash(legacy.body) === hash(current.body) };
 });
 const report = { checkedAt: new Date().toISOString(), base, commit: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
   passed: results.every(r => r.passed), results, deviceAcceptance: 'Pending actual iPhone installation, avatar image generation and saving, CDN download and WeChat playback' };

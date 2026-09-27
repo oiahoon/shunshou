@@ -1,27 +1,24 @@
-# 国庆头像 1.1.2
+# 头像装扮 2.0.0
 
-先在“照片”中把头像裁成正方形，再从照片图库选图。捷径在 iPhone 上缩放为 1024 × 1024，从经典旗帜、柔和渐变、渐变加「国庆在线」三款内置透明装饰图中选一款叠加，预览后保存到“照片”。它不会上传原图或合成图，也不会自动修改微信头像。非正方形照片会被拉伸。
+原「国庆头像」升级为通用的微信头像装扮捷径。先在“照片”中把头像裁成正方形，再选择一张照片和七种装扮之一：经典旗帜、柔和渐变、在线、忙碌、离开、请勿打扰、隐身。捷径在 iPhone 本机将照片缩放到 1024 × 1024，叠加内置透明 PNG，预览后保存到“照片”。它不会上传照片，也不会读取或改变微信真实的在线状态、自动更换微信头像。非方形照片会被拉伸。
 
-`overlay.svg`、`overlay-gradient.svg` 和 `overlay-gradient-status.svg` 是可编辑的图形源；对应 PNG 是捷径与网站使用的 1024 × 1024 透明图片。渐变款左上角红色不透明度约 91%，中心约 3.5%，右下角完全透明。第三款在右下角加入固定的「国庆在线」状态标记。旧捷径“微信在线状态”只作为模板选择、叠图和保存流程参考；没有复制它的远程链接、联系人卡片或网络动作。参考图只用于理解用户想要的视觉效果，没有放入安装包或网站。
+五款状态边框的 SVG 是新绘制的可编辑源文件，PNG 是捷径和页面共同使用的素材。旧「微信在线状态」仅作为功能参考，没有复制远程链接、联系人卡片或网络动作。公开页面使用用户提供的头像作示例，示例头像不进入安装包。
 
-1.1.1 修复两个图片处理参数：原版“列表”的宽高变量在原生导入后变成空文本，调整图像大小动作也误用 `WFInput`，导致后续“快速查看”可能提示 No Items。新版使用原生列表字段保存变量，并通过 `WFImage` 将裁切结果送入缩放动作。网站三款预览使用用户本次提供的方形头像作为底图；该照片只用于公开预览，不打包进捷径。
-
-1.1.2 移除实机仍失败的自动边长计算与裁切链。macOS 原生分段运行确认：内置 PNG 解码、直接缩放、固定裁切和渐变叠图各能输出非空图片；自动边长计算后裁切的测试则输出 0 KB。当前公开流程采用已验证的直接缩放与叠图，要求预先选择方形图片。
+2.0.0 保留了 1.1.2 经过 macOS 分段验证的直接缩放、内置 Base64 解码与叠图动作链。此前自动计算尺寸及裁切会生成 0 KB 图片，故不再使用。签名和单元测试不能代替完整 iPhone 实机验收。
 
 ## 构建与签名
 
 ```sh
-magick -background none shortcuts/national-avatar/overlay.svg -depth 8 shortcuts/national-avatar/overlay.png
-rsvg-convert -o shortcuts/national-avatar/overlay-gradient.png shortcuts/national-avatar/overlay-gradient.svg
-rsvg-convert -o shortcuts/national-avatar/overlay-gradient-status.png shortcuts/national-avatar/overlay-gradient-status.svg
+for name in online busy away dnd invisible; do rsvg-convert -o "shortcuts/national-avatar/status-$name.png" "shortcuts/national-avatar/status-$name.svg"; done
 python3 shortcuts/national-avatar/build_avatar.py
 python3 -m unittest discover -s shortcuts -p 'test_*.py'
-shortcuts sign --mode anyone --input shortcuts/national-avatar/国庆头像-未签名.shortcut --output shortcuts/national-avatar/国庆头像.shortcut
-cp shortcuts/national-avatar/国庆头像.shortcut services/resolver/public/national-avatar.shortcut
+shortcuts sign --mode anyone --input shortcuts/national-avatar/头像装扮-未签名.shortcut --output shortcuts/national-avatar/头像装扮.shortcut
+cp shortcuts/national-avatar/头像装扮.shortcut services/resolver/public/avatar-studio.shortcut
+cp shortcuts/national-avatar/头像装扮.shortcut services/resolver/public/national-avatar.shortcut
 ```
 
-若 `shortcuts sign` 在沙盒中连已知原版文件也报“格式不正确”，使用获准的原生 macOS 环境重试；签名成功和结构测试均不等同于 iPhone 实机运行。发布页为 `/shortcuts/national-avatar`，稳定安装地址为 `/national-avatar.shortcut`。每次版本更新应同步修改这里的版本号、构建脚本与页面及首页的版本/日期，重新签名并核对公开文件哈希。
+`/shortcuts/avatar-studio` 是新详情页，`/shortcuts/national-avatar` 永久跳转到它。`/avatar-studio.shortcut` 是新安装地址，`/national-avatar.shortcut` 为字节一致的旧地址兼容包。旧名称与新名称可能在 iOS 中并存，用户应按系统提示确认导入，需要时自行删除旧版；不会静默替换。版本发布需同步修改构建脚本、首页、详情页、文档与安装文件。
 
-## 待实机检查
+## 实机验收
 
-在 iPhone Safari 下载并导入；选一张已裁好的方形头像，核对三款菜单选择、渐变边缘和状态标记位置、1024 像素输出、照片权限与相册保存；最后手动在微信中选用。Mac 分段运行不等于 iPhone 完整流程验收。
+在 iPhone Safari 下载并导入；选择一张正方形照片，至少覆盖国庆渐变与五种在线状态分支，核对合成图片非空、1024 × 1024、边框位置、预览与照片保存。macOS 原生分段验证是已有证据，完整 iPhone 流程仍须在设备上确认。

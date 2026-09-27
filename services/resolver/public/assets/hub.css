@@ -65,3 +65,16 @@
 .variant-section{background:#171717;padding:60px 0 80px}.variant-intro{font-size:15px;color:#aaa;line-height:1.7;margin:0 0 30px}.variant-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}.variant-grid figure{margin:0;min-width:0}.variant-grid .avatar-preview{width:100%;box-shadow:none}.variant-grid figcaption{display:flex;flex-direction:column;gap:8px;border-top:1px solid #777;margin-top:16px;padding-top:14px}.variant-grid figcaption strong{font-size:20px}.variant-grid figcaption span{color:#aaa;font-size:14px;line-height:1.6}
 @media(max-width:700px){.variant-section{padding:45px 0 60px}.variant-grid{grid-template-columns:1fr;gap:34px}.variant-grid .avatar-preview{max-width:360px}.variant-grid figcaption{margin-top:12px}}
 @media(max-width:370px){.variant-section .section-line{flex-wrap:wrap}.variant-section .section-line:after{display:none}.variant-section .section-line>span{margin-left:auto}}
+/* Avatar Studio: a portrait led tool within the Shunshou visual system. */
+.detail-avatar-studio .detail-hero{background:linear-gradient(115deg,#141414 40%,#303033)}
+.detail-avatar-studio .detail-hero h1 span{color:#ffdf35}
+.detail-avatar-studio .story-band{background:#262626;color:#f5f3ea}
+.detail-avatar-studio .feature-section{background:#eeeae1}
+.detail-avatar-studio .steps li{border-top:3px solid #c9a827}
+.detail-avatar-studio .install-section{background:#ffdf35}
+.avatar-category{margin:42px 0 22px;font-size:26px}.avatar-category small{font:11px var(--mono);color:#aaa;letter-spacing:.18em;margin-left:12px}
+.avatar-grid-two{grid-template-columns:repeat(2,minmax(0,360px))}
+.avatar-grid-status{grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
+.avatar-grid-status figcaption strong{font-size:17px}.avatar-grid-status figcaption span{font-size:12px}
+@media(max-width:900px){.avatar-grid-status{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:700px){.avatar-grid-two{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.avatar-grid-status{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.avatar-category{font-size:21px}.avatar-grid-two figcaption strong,.avatar-grid-status figcaption strong{font-size:16px}}

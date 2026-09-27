@@ -62,4 +62,4 @@ The 大众点评快写 source, signed artifact and release instructions are in [
 
 The 出差开销 source, signed artifact, private iCloud CSV location and migration notes are in [business-trip/README.md](business-trip/README.md). Its public guide is at `/shortcuts/business-trip`.
 
-国庆头像的本地图片合成捷径、签名文件和实机验收说明在 [national-avatar/README.md](national-avatar/README.md)；公开介绍页为 `/shortcuts/national-avatar`。
+头像装扮（原国庆头像）的本地图片合成捷径、签名文件和实机验收说明在 [national-avatar/README.md](national-avatar/README.md)；公开介绍页为 `/shortcuts/avatar-studio`，旧地址保留跳转。
