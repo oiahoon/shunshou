@@ -3,6 +3,7 @@
 - 原「国庆头像」扩展为七种样式：两款国庆主题、五款内置在线状态边框。移除固定「国庆在线」标识。捷径 37 个动作，无网络下载动作。
 - 透明状态素材为本地 SVG/PNG；签名文件与两个公开安装文件字节一致。旧详情页 308 跳转到新页，旧安装地址保留兼容。首轮生产验收发现 Vercel 仍指向已移除的旧 HTML 且缺少新页 rewrite，导致旧页 404、新页 500；已补正 Vercel 路由配置并重新部署。
 - 自动检查：Shortcuts 单元测试 16 项、FastAPI 测试 48 项通过。桌面与 390 px 手机浏览器已查看首屏和样式区。完整 iPhone 照片选择、合成与相册保存尚待实机确认。
+- 生产部署 `dpl_DzZCq2Eo6c5kw45oePYXtGm82JAR` 达到 READY，构建日志对应 `1f272b7`，别名为 `shunshou.miaowu.org`。线上验收首轮头像页面、跳转与安装包全部通过，一个既有 Reel 样例暂时返回 502；立即复验 25/25 项通过，报告保存在忽略的 `ops/production-acceptance.json`。线上 HTTP 与签名文件哈希不等于 iPhone 完整运行通过。
 
 # Production Acceptance
 
