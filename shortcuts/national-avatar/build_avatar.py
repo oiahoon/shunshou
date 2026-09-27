@@ -8,16 +8,15 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from build import Workflow, attachment, uid  # noqa: E402
 
 BASE = Path(__file__).resolve().parent
-VERSION = "2.0.0"
+VERSION = "2.1.0"
 
 STYLES = [
     ("经典旗帜", "overlay.png"),
     ("柔和渐变", "overlay-gradient.png"),
-    ("在线 · 绿色边框", "status-online.png"),
-    ("忙碌 · 金色边框", "status-busy.png"),
-    ("离开 · 橙色边框", "status-away.png"),
-    ("请勿打扰 · 红色边框", "status-dnd.png"),
-    ("隐身 · 灰色边框", "status-invisible.png"),
+    ("在线", "status-online.png"),
+    ("离开", "status-away.png"),
+    ("请勿打扰", "status-dnd.png"),
+    ("离线", "status-offline.png"),
 ]
 
 
@@ -25,7 +24,7 @@ def build():
     w = Workflow()
     w.action("comment", WFCommentActionText=(
         f"头像装扮 {VERSION}。请先在照片 App 中把头像裁成正方形，再选择照片和喜欢的样式。"
-        "可选国庆旗帜或在线状态边框，捷径在本机缩放并叠加透明装饰。"
+        "可选国庆旗帜或右下角状态符号；离线样式还会用半透明灰色降低整张照片的饱和感。"
         "预览后保存到照片。原图不会修改；照片不会上传到本站或第三方。"
         "非正方形照片会被拉伸，请先裁好再运行。"
     ))
@@ -34,7 +33,7 @@ def build():
                      WFImageResizeWidth=1024, WFImageResizeHeight=1024)
     menu = uid()
     w.action("choosefrommenu", WFControlFlowMode=0, GroupingIdentifier=menu,
-             WFMenuPrompt="选择头像样式：国庆主题或在线状态边框。每次选择一种样式。",
+             WFMenuPrompt="选择头像样式：国庆主题或右下角状态符号。每次选择一种样式。",
              WFMenuItems=[label for label, _ in STYLES])
     for label, filename in STYLES:
         w.action("choosefrommenu", WFControlFlowMode=1, GroupingIdentifier=menu,

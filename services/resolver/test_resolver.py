@@ -278,6 +278,7 @@ def test_public_homepage_and_assets(client):
     assert client.get("/assets/national-avatar-gradient.png").status_code == 200
     assert client.get("/assets/national-avatar-gradient-status.png").status_code == 200
     assert client.get("/assets/national-avatar-sample.jpg").status_code == 200
+    assert client.get("/assets/avatar-status-offline.png").status_code == 200
     for page in (insta, dianping, trip):
         assert 'class="journey-visual"' in page.text
     assert 'id="install"' in avatar.text and 'id="update"' in avatar.text
@@ -285,7 +286,7 @@ def test_public_homepage_and_assets(client):
     assert 'src="/assets/national-avatar-gradient.png"' in avatar.text
     assert 'src="/assets/avatar-status-dnd.png"' in avatar.text
     assert 'src="/assets/national-avatar-sample.jpg"' in avatar.text
-    assert "版本 2.0.0" in avatar.text
+    assert "版本 2.1.0" in avatar.text
     assert client.get("/shortcuts/national-avatar", follow_redirects=False).status_code == 308
     assert client.get("/shortcuts/unknown").status_code == 404
     assert client.get("/api/health").status_code == 401

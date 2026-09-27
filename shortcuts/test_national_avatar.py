@@ -21,6 +21,8 @@ class NationalAvatarTests(unittest.TestCase):
         self.assertEqual(ids.count("setvariable"), len(builder.STYLES))
         self.assertEqual(actions[3]["WFWorkflowActionParameters"]["WFMenuItems"],
                          [label for label, _ in builder.STYLES])
+        self.assertEqual([label for label, _ in builder.STYLES[2:]],
+                         ["在线", "离开", "请勿打扰", "离线"])
         self.assertEqual(actions[2]["WFWorkflowActionParameters"]["WFImage"],
                          builder.attachment({"Type": "ActionOutput",
                                              "OutputUUID": actions[1]["WFWorkflowActionParameters"]["UUID"],
@@ -34,6 +36,13 @@ class NationalAvatarTests(unittest.TestCase):
         self.assertNotIn("url", ids)
         for _, filename in builder.STYLES:
             self.assertTrue((SOURCE.parent / filename).read_bytes().startswith(b"\x89PNG\r\n\x1a\n"))
+        for style in ("online", "away", "dnd", "offline"):
+            svg = (SOURCE.parent / f"status-{style}.svg").read_text()
+            self.assertNotIn("<text", svg)
+            if style == "offline":
+                self.assertIn('opacity=".72"', svg)
+            else:
+                self.assertNotIn("<rect", svg)
         self.assertEqual((SOURCE.parent / "头像装扮.shortcut").read_bytes(),
                          (SOURCE.parents[2] / "services/resolver/public/national-avatar.shortcut").read_bytes())
 
