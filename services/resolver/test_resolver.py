@@ -299,7 +299,9 @@ def test_public_release_manifest(client):
     assert r.headers["content-type"].startswith("application/json")
     assert r.headers["cache-control"] == "private, no-store"
     assert r.json() == {"version": "0.4.0", "releasedAt": "2026-09-26",
-                        "installPage": "https://shunshou.miaowu.org/#update"}
+                        "installPage": "https://shunshou.miaowu.org/#update",
+                        "shortcuts": {"dianping": {"version": "1.1.0", "releasedAt": "2026-10-01",
+                            "installPage": "https://shunshou.miaowu.org/shortcuts/dianping#update"}}}
 
 
 def test_signed_shortcuts_are_public_not_secrets(client):

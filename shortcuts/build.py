@@ -6,6 +6,7 @@ import uuid
 
 BASE = "https://shunshou.miaowu.org"
 VERSION = "0.4.0"
+DIANPING_VERSION = "1.1.0"
 PLACEHOLDER = "FILL_ACCESS_CODE"
 
 
