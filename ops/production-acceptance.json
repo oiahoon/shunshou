@@ -1,7 +1,7 @@
 {
-  "checkedAt": "2026-09-26T14:42:25.678Z",
+  "checkedAt": "2026-09-30T17:12:18.371Z",
   "base": "https://shunshou.miaowu.org",
-  "commit": "88e61ce6b5d5bcffab9939ec6fcbfce6435506af",
+  "commit": "22a9854beb31e6e54464cc07c574a12b4579b434",
   "passed": true,
   "results": [
     {
@@ -25,8 +25,13 @@
       "passed": true
     },
     {
-      "name": "National Avatar page",
+      "name": "Avatar Studio page",
       "status": 200,
+      "passed": true
+    },
+    {
+      "name": "avatar legacy detail redirect",
+      "status": 308,
       "passed": true
     },
     {
@@ -107,7 +112,7 @@
     {
       "name": "signed shortcut dianping",
       "status": 200,
-      "bytes": 25020,
+      "bytes": 27940,
       "passed": true
     },
     {
@@ -119,7 +124,13 @@
     {
       "name": "signed shortcut national avatar",
       "status": 200,
-      "bytes": 213502,
+      "bytes": 224517,
+      "passed": true
+    },
+    {
+      "name": "avatar legacy installer alias",
+      "status": 200,
+      "bytes": 224517,
       "passed": true
     }
   ],

@@ -6,6 +6,7 @@
 - 自动验证：48 项 resolver 测试、20 项捷径测试通过；图文请求覆盖 0/1/6 张、引号、换行、反斜杠与 emoji，引用及控制流平衡通过。Apple `shortcuts sign --mode anyone` 签名成功；公开副本与签名文件字节一致。
 - 原生组件验证：读取本机 WorkflowKit 动作定义，确认 JPEG、去元数据、文件请求体参数，并修正 Base64 为 `WFBase64LineBreakMode=None`；ContentKit 原生字典转文本确认特殊字符按 JSON 转义。这是组件验证，未运行完整 iPhone 捷径。
 - 本机真实 Chrome（Playwright，独立临时 profile）390/1440 px 验证首页及详情、资源、无横向溢出、安装/更新锚点、键盘焦点、reduced motion 和真实签名文件下载。两种尺寸下载字节均匹配新版；初始 route mock 的下载仍访问旧生产文件，改为真实本机 FastAPI 服务后通过。
+- 生产部署 `dpl_Ge9bsXqjBgFRC6qf9S5rgURoak79` 为 READY，Vercel API 确认完整 Git SHA `22a9854beb31e6e54464cc07c574a12b4579b434`，alias 包含 `shunshou.miaowu.org`。24 项生产验收全部通过，脱敏结果见 `ops/production-acceptance.json`；大众点评安装文件 27,940 字节且哈希匹配。生产 Chrome 390/1440 px 的页面、图片、锚点、键盘焦点、reduced motion 和实际下载通过（延迟图片先滚动加载再检查）。
 - 待实机验收：iPhone 导入替换、照片权限、HEIC 转换、纯文字及 1/6 张照片的 DeepSeek 返回质量、超过 6 张提示、预览和复制。未使用用户 API Key 调用 DeepSeek，未宣称实机或模型质量验收完成。
 
 # 头像装扮新手教程（2026-09-30）
